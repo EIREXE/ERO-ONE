@@ -1,0 +1,92 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+
+code = "shader_type spatial;
+
+render_mode diffuse_burley, specular_schlick_ggx, depth_draw_always;
+
+uniform sampler2D fluidmap : hint_albedo;
+uniform sampler2D albedo : hint_albedo;
+uniform sampler2D texture_transmission : hint_albedo;
+
+uniform sampler2D texture_refraction;
+uniform float refraction : hint_range(-16,16);
+uniform vec4 refraction_texture_channel;
+uniform vec4 albedo_color : hint_color;
+
+varying vec3 light_direction;
+varying vec3 normal;
+
+vec3 rgb2hsb( vec3 c ){
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz),
+                 vec4(c.gb, K.xy),
+                 step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r),
+                 vec4(c.r, p.yzx),
+                 step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)),
+                d / (q.x + e),
+                q.x);
+}
+
+vec3 hsb2rgb( vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0,
+                     0.0,
+                     1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix(vec3(1.0), rgb, c.y);
+}
+
+void light() {
+	light_direction = NORMAL;
+}
+
+void vertex() {
+	normal = NORMAL;
+}
+
+void fragment() {
+	vec4 text_fluidmap = texture(fluidmap, UV);
+	vec4 text_albedo = texture(albedo, UV);
+	vec3 text_albedo_hsb = rgb2hsb(text_albedo.rgb);
+
+
+	vec3 transmission = vec3(0.24,0.24,0.24);
+	TRANSMISSION = (transmission.rgb);
+	
+	float fluidmap_strength = text_fluidmap.a;
+	vec4 fluidmap_point = vec4(1.0,1.0,1.0,1.0);
+	fluidmap_point.a = fluidmap_strength;
+
+	ALBEDO = text_albedo.rgb;
+	/*if (fluidmap_point.a > 0.1){
+		ROUGHNESS = 0.2;
+
+		SPECULAR = 0.5;
+		ANISOTROPY = fluidmap_point.a;
+		SSS_STRENGTH = fluidmap_point.a*0.2;
+		AO_LIGHT_AFFECT = fluidmap_point.a;
+		CLEARCOAT = 1.0;
+		CLEARCOAT_GLOSS = 1.0;
+		
+		//refraction
+
+	}*/
+	/*
+	vec3 ref_normal = NORMAL;
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(texture(texture_refraction,UV),refraction_texture_channel) * refraction;
+	float ref_amount = 1.0 - albedo_color.a * text_albedo.a;
+	EMISSION += textureLod(SCREEN_TEXTURE,ref_ofs,ROUGHNESS * 8.0).rgb * ref_amount;
+	ALBEDO *= 1.0 - ref_amount;*/
+	//ALPHA = 1.0;
+	
+	//TRANSMISSION = vec3(0.8,0.8,0.8);
+
+}"
+_sections_unfolded = [ "Resource" ]
+

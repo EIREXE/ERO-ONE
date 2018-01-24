@@ -1,0 +1,9 @@
+{
+	"name": "Elf Pantsu",
+	"model": "res://Content/TestContent/Clothing/ElfPantsu/ElfPantsu.tscn",
+	"armature": "",
+	"parameters": {
+	},
+	"scale": 0.1,
+	"slot": "Underwear",
+}

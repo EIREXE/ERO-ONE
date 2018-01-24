@@ -1,0 +1,9 @@
+{
+	"name": "Elf Top",
+	"model": "res://Content/TestContent/Clothing/ElfTop/ElfTop.tscn",
+	"armature": "",
+	"parameters": {
+	},
+	"scale": 0.1,
+	"slot": "Top",
+}

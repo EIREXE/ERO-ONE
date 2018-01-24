@@ -1,0 +1,9 @@
+{
+	"name": "Elf Bloomers",
+	"model": "res://Content/TestContent/Clothing/ElfBloomers/ElfBloomers.tscn",
+	"armature": "",
+	"parameters": {
+	},
+	"scale": 0.1,
+	"slot": "Bottom",
+}

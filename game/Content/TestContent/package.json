@@ -1,0 +1,12 @@
+{
+	"name": "ERO-ONE Test Content",
+	"description": "This is the ERO-ONE Tech Demo Base Content",
+	"author": "EIRTeam",
+	"version": 1.0,
+	"official": true,
+	"item_type_friendly_names": {
+		"Bodies": "Body",
+		"HairStyles": "Hair",
+		"Personalities": "Personality"
+	}
+}

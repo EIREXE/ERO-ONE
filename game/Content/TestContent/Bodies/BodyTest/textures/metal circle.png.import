@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/metal circle.png-1ea0211f491e77f73e4a77f1511b986f.stex"
+
+[deps]
+
+source_file="res://Content/TestContent/Bodies/BodyTest/textures/metal circle.png"
+source_md5="41d309d4e3513e1b3b9f4a495f3996aa"
+
+dest_files=[ "res://.import/metal circle.png-1ea0211f491e77f73e4a77f1511b986f.stex" ]
+dest_md5="f07c113b4561abbf35322c1778fa9232"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

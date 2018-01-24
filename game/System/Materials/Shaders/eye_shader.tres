@@ -1,0 +1,38 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+
+code = "shader_type spatial;
+
+uniform sampler2D texture_refraction;
+uniform float refraction : hint_range(-1,1);
+uniform vec4 refraction_texture_channel;
+
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+
+
+render_mode blend_add;
+
+void vertex() {
+	VERTEX += NORMAL*0.1;
+}
+
+void fragment() {
+	ALBEDO = vec3(1.0,1.0,1.0);
+	ROUGHNESS = 0.5;
+	//METALLIC = 0.9;
+	//SPECULAR = 0.5;
+	//ALPHA = 0.7;
+	
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	vec3 ref_normal = NORMAL;
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(texture(texture_refraction,base_uv),refraction_texture_channel) * refraction;
+	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
+	EMISSION += textureLod(SCREEN_TEXTURE,ref_ofs,ROUGHNESS * 8.0).rgb * ref_amount;
+	ALBEDO *= 1.0 - ref_amount;
+	ALPHA = 0.1;
+}"
+_sections_unfolded = [ "Resource" ]
+

@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://System/Scripts/Scenes/Menus/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://System/Textures/ui/logo.png" type="Texture" id=2]
+
+[node name="PauseMenu" type="Node2D"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Pause", "Visibility" ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="ActualPauseMenu" type="Node2D" parent="CanvasLayer" index="0"]
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ActualPauseMenu" index="0"]
+
+self_modulate = Color( 1, 1, 1, 0.392157 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 384, 720 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ActualPauseMenu/Panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 97.0
+margin_right = 369.0
+margin_bottom = 664.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Grow Direction", "Margin" ]
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/ActualPauseMenu/Panel/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 359.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Resume"
+flat = true
+align = 1
+
+[node name="FreeCameraModeButton" type="Button" parent="CanvasLayer/ActualPauseMenu/Panel/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 359.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Enable Free Camera"
+flat = true
+align = 1
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ActualPauseMenu/Panel" index="1"]
+
+position = Vector2( 190.049, 48.9586 )
+scale = Vector2( 0.196994, 0.196994 )
+texture = ExtResource( 2 )
+
+[connection signal="pressed" from="CanvasLayer/ActualPauseMenu/Panel/VBoxContainer/ResumeButton" to="." method="unpause_game"]
+
+[connection signal="pressed" from="CanvasLayer/ActualPauseMenu/Panel/VBoxContainer/FreeCameraModeButton" to="." method="_on_FreeCameraModeButton_pressed"]
+
+

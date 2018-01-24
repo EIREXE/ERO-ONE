@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/skin spa.png-367bfb00284bce8cca6b549e66d3f460.stex"
+
+[deps]
+
+source_file="res://Content/TestContent/Bodies/BodyTest/textures/skin spa.png"
+source_md5="bd038a2bb142709b61e2a34cc62b6452"
+
+dest_files=[ "res://.import/skin spa.png-367bfb00284bce8cca6b549e66d3f460.stex" ]
+dest_md5="912b460f5a38bb592ed1944e85fe051f"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

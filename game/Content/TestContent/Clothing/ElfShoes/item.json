@@ -1,0 +1,9 @@
+{
+	"name": "Elf Shoes",
+	"model": "res://Content/TestContent/Clothing/ElfShoes/ElfShoes.tscn",
+	"armature": "",
+	"parameters": {
+	},
+	"scale": 0.1,
+	"slot": "Shoes",
+}

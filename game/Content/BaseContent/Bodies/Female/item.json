@@ -1,0 +1,13 @@
+{
+	"name": "Female",
+	"model": "res://System/Models/Bodies/female/female.tscn",
+	"parameters": {
+		"skin_color": {
+			"name": "Skin Color",
+			"type": "albedo",
+			"node": "Body",
+			"material": 1,
+			"default": "Color( 1.0, 1.0, 1.0, 1.0)"
+		}
+	}
+}
