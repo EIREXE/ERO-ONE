@@ -4,7 +4,7 @@ render_mode diffuse_toon, specular_toon;
 uniform sampler2D color_ramp : hint_black_albedo;
 uniform sampler2D albedo : hint_albedo;
 uniform float specular;
-
+uniform float roughness = 1.0;
 uniform bool vertical = true;
 /*
 void vertex() {
@@ -35,10 +35,10 @@ void light() {
 	float mid = 1.0-ROUGHNESS;
 	mid*=mid;
 	float intensity = smoothstep(mid-ROUGHNESS*0.5, mid+ROUGHNESS*0.5, RdotV) * mid;
-	//DIFFUSE_LIGHT += LIGHT_COLOR * intensity * specular * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
+	DIFFUSE_LIGHT += LIGHT_COLOR * intensity * 0.5 * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
 }
 void fragment() {
-	ROUGHNESS = 1.0;
+	ROUGHNESS = roughness;
 	SPECULAR=1.0;
 	//float ramp_position_x = float(textureSize(color_ramp,0).y)*litness;
 	//vec4 ramp_point = texture(color_ramp, vec2(0.0,litness));

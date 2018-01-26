@@ -28,7 +28,7 @@ func _ready():
 		save_settings(main_config_path)
 		load_settings(main_config_path)
 		
-	Console.register_cvar("mouse_sensitivity", {
+	"""Console.register_cvar("mouse_sensitivity", {
 		description = "Mouse sensitvity",
 		arg = ["sensitivity", TYPE_REAL],
 		target = self
@@ -42,7 +42,7 @@ func _ready():
 		description = "Free camera speed",
 		arg = ["speed", TYPE_REAL],
 		target = self
-	})
+	})"""
 	
 func save_settings(path):
 	var config_file = ConfigFile.new()

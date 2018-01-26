@@ -41,7 +41,6 @@ func _process(delta):
 	# Zoom interpolation, because we use the wheel by default zoom looks like shit if we didn't
 	# interpolate it
 	set_zoom(lerp(zoom_level, zoom_target, delta*10))
-	
 func _input(event):
 	
 	if Input.is_action_pressed("reset_camera"):
@@ -58,6 +57,7 @@ func _input(event):
 			# Limit vertical rotation
 			if abs(rad2deg($RotationPivotInner.rotation.x)) >= 90:
 				$RotationPivotInner.rotation.x = deg2rad(90)*sign($RotationPivotInner.rotation.x)
+				
 		if Input.is_action_pressed("camera_pan"):
 			var y_offset = $RotationPivotInner.translation.y
 			var x_offset = $RotationPivotInner.translation.x

@@ -6,10 +6,20 @@ var items = {}
 var body
 const ERO_ITEM_SCENE = "res://Scenes/EROItem.tscn"
 
+var items_loading = []
 
 func _ready():
-	pass
+	set_process(true)
 	
+func _process(delta):
+	for item in items_loading:
+		var item_data = EROContent.get_item(item)
+		if EROResourceQueue.is_ready(item_data["model"]):
+			add_item(item)
+			items_loading.remove(item)
+		# Loading failed, we'll get em next time.
+		if EROResourceQueue.get_progress(item_data["model"]) == -1:
+			items_loading.remove(item)
 func load_character():
 	#init_character()
 	pass
@@ -27,7 +37,7 @@ func load_item(item_path):
 	var item_data = EROContent.get_item(item_path)
 	var item_model = item_data["model"]
 	if item_data:
-		var item_scene = load(item_model).instance()
+		var item_scene = EROResourceQueue.get_resource(item_model).instance()
 		item_scene.set_meta("data", item_data)
 		return item_scene
 # Loads an item and adds it to the body
@@ -37,6 +47,12 @@ func add_item(item_path):
 		body.get_node(get_body_data()["armature"]).add_child(item)
 		items[item_path] = item
 
+func add_item_async(item_path):
+	if not items.has(item_path):
+		var item_data = EROContent.get_item(item_path)
+		if item_data:
+			EROResourceQueue.queue_resource(item_data["model"])
+			items_loading.append(item_path)
 func get_body_data():
 	return body.get_meta("data")
 

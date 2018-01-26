@@ -40,6 +40,8 @@ var is_tab_pressed = false
 
 var _eraseTrash
 
+var is_console_shown = false
+
 const COLOR_WARN = "#FFFF00"
 const COLOR_ERR = "#FF0000"
 const COLOR_NORMAL = "#FFFFFF"
@@ -53,7 +55,7 @@ func _ready():
 
 	set_process_input(true)
 
-	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_finished")
+	animation_player.connect("animation_finished", self, "toggle_animation_finished")
 	console_line.connect("text_changed", self, "_on_LineEdit_text_changed")
 	console_line.connect("text_entered", self, "_on_LineEdit_text_entered")
 
@@ -73,11 +75,7 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("console_toggle"):
-		var opened = is_console_opened()
-		if opened == 1:
-			set_console_opened(false)
-		elif opened == 0:
-			set_console_opened(true)
+		toggle_console()
 	if Input.is_action_just_pressed("console_up"):
 		if (cmd_history_up > 0 and cmd_history_up <= cmd_history.size()):
 			cmd_history_up-=1
@@ -141,30 +139,34 @@ func quit():
 func set_console_opened(opened):
 	# Close the console
 	if opened == true:
-		animation_player.play("fade")
+		print("OPENING")
+		console_box.show()
+		console_line.grab_focus()
+		console_line.clear()
 		# Signal handles the hiding at the end of the animation
 	# Open the console
 	elif opened == false:
 		animation_player.play_backwards("fade")
+		print("CLOSING")
 		console_box.show()
 		console_line.grab_focus()
 		console_line.clear()
 
 # This signal handles the hiding of the console at the end of the fade-out animation
-func _on_AnimationPlayer_finished(anim):
-	if is_console_opened():
+func toggle_animation_finished(animation):  # void
+	if !is_console_shown:
 		console_box.hide()
 
-# Is the console fully opened?
-func is_console_opened():
-	if animation_player.get_current_animation()!="":
-		if animation_player.get_current_animation_position() == animation_player.get_current_animation_length():
-			return 1
-		elif animation_player.get_current_animation_position() == 0:
-			return 0
-		else:
-			return 2
-	return 0
+func toggle_console():  # void
+	# Open the console
+	if !is_console_shown:
+		console_box.show()
+		console_line.clear()
+		console_line.grab_focus()
+		animation_player.play('fade')
+	else:
+		animation_player.play_backwards('fade')
+	is_console_shown = !is_console_shown
 
 func set_linetext_by_code(string, move_to_end = false):
 	text_changed_by_player = false

@@ -186,7 +186,6 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="EditorUI" type="CanvasLayer" parent="." index="4"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0

@@ -60,6 +60,6 @@ func init_editor():
 func set_item(slot, item):
 	var current_item_path = character.get_item_path_by_slot(slot)
 	if item:
-		character.add_item(item)
+		character.add_item_async(item)
 	elif current_item_path:
 		character.remove_item(current_item_path)
