@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/editor.gd" type="Script" id=1]
 [ext_resource path="res://System/Models/Editor/EditorCenterPiece.dae" type="PackedScene" id=2]
-[ext_resource path="res://System/Scripts/Scenes/Editor/ClothingViewer.gd" type="Script" id=3]
-[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GIProbeData" id=1]
 
@@ -245,51 +244,19 @@ tab_align = 1
 tabs_visible = true
 _sections_unfolded = [ "Margin", "custom_styles" ]
 
-[node name="ClothingViewer" type="Panel" parent="EditorUI" index="1"]
-
-self_modulate = Color( 1, 1, 1, 0.4 )
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-margin_left = -300.0
-margin_bottom = 276.0
-rect_min_size = Vector2( 300, 10 )
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
-
-[node name="ClothingViewerButtonContainer" type="VBoxContainer" parent="EditorUI/ClothingViewer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="Camera" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Camera" parent="." index="5" instance=ExtResource( 3 )]
 
 [node name="RotationPivot" parent="Camera" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="EROCharacter" parent="." index="6" instance=ExtResource( 5 )]
+[node name="EROCharacter" parent="." index="6" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235253, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="TabTemplate" type="Control" parent="." index="7"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

@@ -7,10 +7,10 @@ path="res://.import/boot_splash.png-3292079f7b59a738cc2dbb9857f4a0b7.stex"
 [deps]
 
 source_file="res://System/Textures/ui/boot_splash.png"
-source_md5="fe6b5bf80d98e3b9edfed14d27b8bf81"
+source_md5="fa58dd679cfd685e7b135d34d5ba3fbf"
 
 dest_files=[ "res://.import/boot_splash.png-3292079f7b59a738cc2dbb9857f4a0b7.stex" ]
-dest_md5="6e0f2a687008dfac4cb6280c40ae76eb"
+dest_md5="4917295cfd4fa8f1f12aab60c57a9598"
 
 [params]
 
