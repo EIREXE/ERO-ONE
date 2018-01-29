@@ -5,7 +5,7 @@ extends Node
 
 var content_packs = {}
 const CONTENT_PACKS_DIR = "res://Content"
-
+const CHARACTERS_DIR = "user://Characters"
 const IEND_SIGNATURE = PoolByteArray([0x49,0x45,0x4E,0x44])
 
 const ALLOWED_ITEM_TYPES = ["Bodies", "HairStyles","Clothing"]
@@ -14,6 +14,8 @@ const ITEM_TYPE_FRIENDLY_NAMES = {
 		"HairStyles": "Hair",
 		"Clothing": "Clothes"
 }
+
+var characters = {}
 
 func _ready():
 	load_content_packs()
@@ -151,3 +153,20 @@ func get_item_type_friendly_name(item_type):
 		return ITEM_TYPE_FRIENDLY_NAMES[item_type]
 	else:
 		return item_type
+		
+func get_characters():
+	var characters = []
+	var dir = Directory.new()
+	if dir.open(CHARACTERS_DIR) == OK:
+		dir.list_dir_begin(true)
+		var file_name = dir.get_next()
+		while (file_name != ""):
+			
+			if not dir.current_is_dir():
+				if file_name.ends_with(".png"):
+					var image_path = CHARACTERS_DIR + "/%s" % [file_name]
+					var image_data = JSON.parse(EROContent.load_image_data(image_path)).result
+					image_data["image_path"] = image_path
+					characters.append(image_data)
+			file_name = dir.get_next()
+	return characters

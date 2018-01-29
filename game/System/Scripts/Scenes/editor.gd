@@ -9,18 +9,22 @@ onready var character = get_node("EROCharacter")
 onready var TAB_TEMPLATE = get_node("TabTemplate")
 onready var CLOTHING_VIEWER_CONTAINER = get_node("EditorUI/ClothingViewer/ClothingViewerButtonContainer")
 onready var CLOTHING_VIEWER = get_node("EditorUI/ClothingViewer")
+onready var characters_container_panel = get_node("EditorUI/Panel2")
+onready var characters_container = get_node("EditorUI/Panel2/ScrollContainer/CharacterListContainer")
+onready var overwrite_confirmation_dialog = get_node("EditorUI/OverwriteConfirmationDialog")
+onready var character_name_field = get_node("EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
+
 const ITEM_LIST_SCENE = preload("res://System/Scenes/Menus/Blocks/EROItemList.tscn")
 const ALLOWED_CLOTHING_SLOTS = ["Top", "Skirt", "Bottom", "Underwear", "Socks", "Shoes"]
 
 var clothing_tab
 var clothing_slot_button_container
 
-func _ready():
-	init_ui()
-	init_editor()
-func init_ui():
-	pass
+var loading_character_thumbnails = []
 
+func _ready():
+	init_editor()
+	
 func init_editor():
 	character.load_body("TestContent.Bodies.BodyTest")
 	character.add_item("TestContent.Clothing.ElfSocks")
@@ -63,6 +67,19 @@ func init_editor():
 		button.connect("pressed", self, "select_slot", [clothing_slot])
 		
 		clothing_slot_button_container = clothing_tab.get_node("TemplateContainer")
+		
+func update_ui():
+	character_name_field.text = character.character_name
+	
+# sets the character info from the ui to the character object
+func sync_character_info(new_text):
+	character.character_name = character_name_field.text
+		
+func load_character_from_data(data):
+	character.load_character_from_data(data)
+	characters_container_panel.hide()
+	update_ui()
+	
 func set_item(slot, item):
 	var current_item_path = character.get_item_path_by_slot(slot)
 
@@ -111,3 +128,38 @@ func select_slot(selected_clothing_slot):
 					button.text = item["name"]
 					button.connect("pressed", self, "set_item", [selected_clothing_slot, item_path])
 					new_button_container.add_child(button)
+
+func serialize_button():
+	save("user://screen.png")
+
+func save_character(add_to_list=false):
+	$EditorUI/Panel.hide()
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	var img = get_viewport().get_texture().get_data()
+	img.flip_y()
+	img.lock()
+	var original_width = img.get_size().x
+	var original_height = img.get_size().y
+	var final_image = Image.new()
+
+	final_image.create(original_height,original_height, false, img.get_format())
+	final_image.lock()
+	var source_rect = Rect2(original_width/2-original_height/2,0,original_height,original_height)
+	final_image.blit_rect(img, source_rect, Vector2(0,0))
+	final_image.resize(720,720)
+	
+	character.save_character_to_card(final_image)
+	if add_to_list:
+		characters_container.add_character(character.to_dict(), character.get_image_path())
+	
+	$EditorUI/Panel.show()
+
+func save_character_button_pressed():
+	if character.exists_on_disk():
+		overwrite_confirmation_dialog.popup()
+	else:
+		# We are not overwriting anything, save it without asking the user
+		save_character(true)
+
+
