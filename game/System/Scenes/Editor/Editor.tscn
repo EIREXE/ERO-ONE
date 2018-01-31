@@ -328,10 +328,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -34.0
-margin_right = -10.0
-margin_bottom = -58.0
+margin_top = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -450,7 +447,7 @@ scroll_vertical_enabled = true
 scroll_vertical = 0
 _sections_unfolded = [ "Scroll" ]
 
-[node name="CharacterListContainer" type="GridContainer" parent="EditorUI/Panel2/ScrollContainer" index="2"]
+[node name="CharacterListContainer" type="GridContainer" parent="EditorUI/Panel2/ScrollContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -492,6 +489,8 @@ dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog" ]
 
 [node name="Camera" parent="." index="5" instance=ExtResource( 4 )]
+
+editor/display_folded = true
 
 [node name="RotationPivot" parent="Camera" index="0"]
 
@@ -549,6 +548,49 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 stretch_mode = 0
 _sections_unfolded = [ "Hint", "Size Flags" ]
+
+[node name="Viewport" type="Viewport" parent="." index="9"]
+
+arvr = false
+size = Vector2( 450, 720 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 1
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Render Target", "Rendering" ]
+
+[node name="Camera2" type="Camera" parent="Viewport" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32298, 1.69366 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 50.0
+size = 1.0
+near = 0.05
+far = 100.0
 
 [connection signal="pressed" from="EditorUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
 

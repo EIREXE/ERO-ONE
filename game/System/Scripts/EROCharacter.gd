@@ -104,13 +104,19 @@ func to_dict():
 	return serialized_data
 	
 func save_character_to_card(image):
-	image.save_png(get_image_path())
-	EROContent.save_image_data(get_image_path(), serialize())
+	var CARD_FRAME = Image.new()
+	CARD_FRAME.load("res://System/Textures/cards/frame_0.png")
+	
+	image.convert(CARD_FRAME.get_format())
+	
+	var card_rect = Rect2(0,0, CARD_FRAME.get_width(), CARD_FRAME.get_height())
+	image.blit_rect_mask(CARD_FRAME, CARD_FRAME, card_rect, Vector2(0,0))
+	EROContent.save_image_data_to_disk(get_image_path(), image ,serialize())
 	
 func load_character_from_card(card_path):
 	var file = File.new()
 	if file.file_exists(card_path):
-		var data = EROContent.load_image_data(card_path)
+		var data = EROContent.load_image_data_from_disk(card_path)
 		load_character_from_data(data)
 func load_character_from_data(data):
 	load_body(data["body"])

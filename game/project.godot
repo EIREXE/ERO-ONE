@@ -24,6 +24,7 @@ EROPauseMenu="*res://System/Scenes/Menus/PauseMenu.tscn"
 EROFreeCamera="*res://System/Scenes/Cameras/FreeCamera.tscn"
 EROContent="*res://System/Scripts/EROContent.gd"
 EROResourceQueue="*res://System/Scripts/EROResourceQueue.gd"
+EROSteganography="*res://System/Scripts/EROSteganography.gd"
 
 [display]
 

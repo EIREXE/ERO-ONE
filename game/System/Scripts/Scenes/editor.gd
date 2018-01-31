@@ -22,6 +22,8 @@ var clothing_slot_button_container
 
 var loading_character_thumbnails = []
 
+
+
 func _ready():
 	init_editor()
 	
@@ -133,27 +135,12 @@ func serialize_button():
 	save("user://screen.png")
 
 func save_character(add_to_list=false):
-	$EditorUI/Panel.hide()
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
-	var img = get_viewport().get_texture().get_data()
-	img.flip_y()
-	img.lock()
-	var original_width = img.get_size().x
-	var original_height = img.get_size().y
-	var final_image = Image.new()
-
-	final_image.create(original_height,original_height, false, img.get_format())
-	final_image.lock()
-	var source_rect = Rect2(original_width/2-original_height/2,0,original_height,original_height)
-	final_image.blit_rect(img, source_rect, Vector2(0,0))
-	final_image.resize(720,720)
+	var viewport_image = $Viewport.get_texture().get_data()
+	viewport_image.flip_y()
 	
-	character.save_character_to_card(final_image)
+	character.save_character_to_card(viewport_image)
 	if add_to_list:
 		characters_container.add_character(character.to_dict(), character.get_image_path())
-	
-	$EditorUI/Panel.show()
 
 func save_character_button_pressed():
 	if character.exists_on_disk():
@@ -161,5 +148,3 @@ func save_character_button_pressed():
 	else:
 		# We are not overwriting anything, save it without asking the user
 		save_character(true)
-
-

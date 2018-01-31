@@ -99,32 +99,18 @@ func list_content_packs():
 	for pack in content_packs:
 		Console.info("%s: %s" % [pack, content_packs[pack]["name"]])
 		
-func load_image_data(image_path):
-	var file = File.new()
-	file.open(image_path, file.READ)
-	for i in range(file.get_len()):
-		file.seek(i)
-		if file.get_buffer(4) == IEND_SIGNATURE:
-			print("FOUND IEND at %X" % (file.get_position()-4))
-			var extra_data = file.get_buffer(file.get_len()-file.get_position())
-			return extra_data.get_string_from_utf8()
+func load_image_data_from_disk(image_path):
+	return EROSteganography.get_steganographic_data_from_file(image_path)
 
-func save_image_data(image_path, data):
-	var file = File.new()
-	var extra_data_position
-	file.open(image_path, file.READ)
-	for i in range(file.get_len()):
-		file.seek(i)
-		if file.get_buffer(4) == IEND_SIGNATURE:
-			extra_data_position = file.get_position()
-			file.seek(0)
-			var image_data = file.get_buffer(file.get_len()-(file.get_len()-extra_data_position))
-			var extra_data = data.to_utf8()
-			image_data.append_array(extra_data)
-			file.open(image_path, file.WRITE)
-			file.store_buffer(image_data)
-			file.close()
-			return
+func load_image_data(image):
+	return EROSteganography.get_steganographic_data_from_image(image)
+
+func save_image_data(image, data):
+	return EROSteganography.store_string_in_image(image,data)
+
+func save_image_data_to_disk(image_path, image, data):
+	
+	EROSteganography.store_string_in_image(image, data).save_png(image_path)
 			
 func get_item(item_path):
 	# Internally, item paths are divided in three parts, the content pack, the type
@@ -165,7 +151,9 @@ func get_characters():
 			if not dir.current_is_dir():
 				if file_name.ends_with(".png"):
 					var image_path = CHARACTERS_DIR + "/%s" % [file_name]
-					var image_data = JSON.parse(EROContent.load_image_data(image_path)).result
+					var uwu = EROContent.load_image_data_from_disk(image_path)
+					print(uwu)
+					var image_data = JSON.parse(uwu).result
 					image_data["image_path"] = image_path
 					characters.append(image_data)
 			file_name = dir.get_next()
