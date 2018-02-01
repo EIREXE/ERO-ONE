@@ -78,7 +78,7 @@ func update_ui():
 	dof_distance_label.text = str(env.dof_blur_far_distance)
 	fov_label.text = "%.2f" % fov_slider.value
 
-func _unhandled_input(event):
+func _input(event):
 		# Camera movement
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("camera_rotate"):

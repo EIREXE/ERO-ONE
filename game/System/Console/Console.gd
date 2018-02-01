@@ -139,7 +139,6 @@ func quit():
 func set_console_opened(opened):
 	# Close the console
 	if opened == true:
-		print("OPENING")
 		console_box.show()
 		console_line.grab_focus()
 		console_line.clear()
@@ -147,7 +146,6 @@ func set_console_opened(opened):
 	# Open the console
 	elif opened == false:
 		animation_player.play_backwards("fade")
-		print("CLOSING")
 		console_box.show()
 		console_line.grab_focus()
 		console_line.clear()
@@ -248,12 +246,13 @@ func append_bbcode(bbcode):
 	console_text.set_bbcode(console_text.get_bbcode() + bbcode)
 
 func write_line(message = '', color=COLOR_NORMAL, origin=""):  # void
+	var console_message
 	if origin != "":
-		message = "%s: [color=%s]%s[/color]" % [origin, color, str(message)]
+		console_message = "%s: [color=%s]%s[/color]" % [origin, color, str(message)]
 	else:
-		message = "[color=%s]%s[/color]" % [color, str(message)]
-	print(_eraseTrash.sub(message, '', true))
-	console_text.set_bbcode(console_text.get_bbcode() + message + '\n')
+		console_message = "[color=%s]%s[/color]" % [color, str(message)]
+	print(_eraseTrash.sub("%s: %s" % [origin ,str(message)], '', true))
+	console_text.set_bbcode(console_text.get_bbcode() + console_message + '\n')
 
 func info(message, origin=""):
 	write_line(message, COLOR_NORMAL, origin)

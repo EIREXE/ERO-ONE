@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/editor.gd" type="Script" id=1]
 [ext_resource path="res://System/Models/Editor/EditorCenterPiece.dae" type="PackedScene" id=2]
-[ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=3]
-[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/Menus/EROGameUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=4]
+[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GIProbeData" id=1]
 
@@ -186,14 +187,17 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="EditorUI" type="CanvasLayer" parent="." index="4"]
 
-layer = 1
+layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Panel" type="Panel" parent="EditorUI" index="0"]
+[node name="EROGameUI" parent="EditorUI" index="0" instance=ExtResource( 3 )]
 
+[node name="Panel" type="Panel" parent="EditorUI/EROGameUI" index="0"]
+
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0.4 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -209,7 +213,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorUI/Panel" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUI/EROGameUI/Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -227,7 +231,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Margin" ]
 
-[node name="CenterContainer" type="CenterContainer" parent="EditorUI/Panel/VBoxContainer" index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -242,7 +246,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 use_top_left = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/Panel/VBoxContainer/CenterContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -258,7 +262,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="SaveButton" type="Button" parent="EditorUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="0"]
+[node name="SaveButton" type="Button" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -280,7 +284,7 @@ text = "Save"
 flat = false
 align = 1
 
-[node name="LoadButton" type="Button" parent="EditorUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="1"]
+[node name="LoadButton" type="Button" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -303,7 +307,7 @@ text = "Load"
 flat = false
 align = 1
 
-[node name="TabContainer" type="TabContainer" parent="EditorUI/Panel/VBoxContainer" index="1"]
+[node name="TabContainer" type="TabContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -322,7 +326,7 @@ tab_align = 1
 tabs_visible = true
 _sections_unfolded = [ "Margin", "custom_styles" ]
 
-[node name="Info" type="Control" parent="EditorUI/Panel/VBoxContainer/TabContainer" index="0"]
+[node name="Info" type="Control" parent="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -335,7 +339,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="TemplateContainer" type="VBoxContainer" parent="EditorUI/Panel/VBoxContainer/TabContainer/Info" index="0"]
+[node name="TemplateContainer" type="VBoxContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -352,7 +356,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -367,7 +371,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
 
-[node name="Label" type="Label" parent="EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -387,7 +391,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="CharacterNameField" type="LineEdit" parent="EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer" index="1"]
+[node name="CharacterNameField" type="LineEdit" parent="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -411,17 +415,18 @@ caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Caret", "Margin", "Placeholder", "Rect" ]
 
-[node name="Panel2" type="Panel" parent="EditorUI" index="1"]
+[node name="Panel2" type="Panel" parent="EditorUI/EROGameUI" index="1"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -135.0
-margin_right = 256.0
-margin_bottom = 135.0
+margin_left = 364.0
+margin_top = 205.0
+margin_right = 876.0
+margin_bottom = 475.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -429,7 +434,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="EditorUI/Panel2" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorUI/EROGameUI/Panel2" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -447,7 +452,7 @@ scroll_vertical_enabled = true
 scroll_vertical = 0
 _sections_unfolded = [ "Scroll" ]
 
-[node name="CharacterListContainer" type="GridContainer" parent="EditorUI/Panel2/ScrollContainer" index="0"]
+[node name="CharacterListContainer" type="GridContainer" parent="EditorUI/EROGameUI/Panel2/ScrollContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -461,20 +466,20 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 columns = 4
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Anchor", "Hint", "Rect" ]
 
-[node name="OverwriteConfirmationDialog" type="ConfirmationDialog" parent="EditorUI" index="2"]
+[node name="OverwriteConfirmationDialog" type="ConfirmationDialog" parent="EditorUI/EROGameUI" index="2"]
 
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -216.0
-margin_top = -35.0
-margin_right = 216.0
-margin_bottom = 35.0
+margin_left = 404.0
+margin_top = 305.0
+margin_right = 836.0
+margin_bottom = 375.0
 rect_min_size = Vector2( 200, 70 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
@@ -488,7 +493,7 @@ dialog_text = "This character already exists, are you sure you want to overwrite
 dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog" ]
 
-[node name="Camera" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Camera" parent="." index="5" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
@@ -496,7 +501,7 @@ editor/display_folded = true
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="EROCharacter" parent="." index="6" instance=ExtResource( 5 )]
+[node name="EROCharacter" parent="." index="6" instance=ExtResource( 6 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235253, 0 )
 _sections_unfolded = [ "Transform" ]
@@ -592,13 +597,13 @@ size = 1.0
 near = 0.05
 far = 100.0
 
-[connection signal="pressed" from="EditorUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
+[connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
 
-[connection signal="pressed" from="EditorUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/LoadButton" to="EditorUI/Panel2" method="show"]
+[connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/LoadButton" to="EditorUI/EROGameUI/Panel2" method="show"]
 
-[connection signal="text_changed" from="EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField" to="." method="sync_character_info"]
+[connection signal="text_changed" from="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField" to="." method="sync_character_info"]
 
-[connection signal="confirmed" from="EditorUI/OverwriteConfirmationDialog" to="." method="save_character"]
+[connection signal="confirmed" from="EditorUI/EROGameUI/OverwriteConfirmationDialog" to="." method="save_character"]
 
 
 [editable path="Camera"]

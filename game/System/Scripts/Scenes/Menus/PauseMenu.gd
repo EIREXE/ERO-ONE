@@ -1,5 +1,8 @@
 extends Node2D
 
+signal show_game_ui
+signal hide_game_ui
+
 func _ready():
 	$CanvasLayer/ActualPauseMenu.visible = false
 	set_process_input(true)
@@ -9,8 +12,10 @@ func _input(event):
 		if is_paused:
 			if not EROFreeCamera.is_enabled():
 				unpause_game()
+				show_game_ui()
 		else:
 			pause_game()
+			hide_game_ui()
 			
 func show_pause_menu():
 	$CanvasLayer/ActualPauseMenu.visible = true
@@ -28,3 +33,8 @@ func unpause_game():
 
 func _on_FreeCameraModeButton_pressed():
 	EROFreeCamera.enable_free_camera()
+
+func hide_game_ui():
+	emit_signal("hide_game_ui")
+func show_game_ui():
+	emit_signal("show_game_ui")

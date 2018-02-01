@@ -24,6 +24,10 @@ func _ready():
 		args = [],
 		target = self
 	})
+
+func create_content_folders():
+	if not Directory.new().dir_exists():
+		Directory.new().make_dir_recursive(CHARACTERS_DIR)
 	
 func load_content_packs():
 	var dir = Directory.new()
@@ -151,9 +155,8 @@ func get_characters():
 			if not dir.current_is_dir():
 				if file_name.ends_with(".png"):
 					var image_path = CHARACTERS_DIR + "/%s" % [file_name]
-					var uwu = EROContent.load_image_data_from_disk(image_path)
-					print(uwu)
-					var image_data = JSON.parse(uwu).result
+					var file_content = EROContent.load_image_data_from_disk(image_path)
+					var image_data = JSON.parse(file_content).result
 					image_data["image_path"] = image_path
 					characters.append(image_data)
 			file_name = dir.get_next()

@@ -10,7 +10,6 @@ func add_item(item_path):
 		var item_folder = EROContent.get_item_folder(item_path)
 		var button = Button.new()
 		button.set_meta("item_path", item_path)
-		print(item_folder)
 		if File.new().file_exists(item_folder + "/icon.png"):
 			button.icon = load(item_folder + "/icon.png")
 			button.hint_tooltip = item["name"]

@@ -66,7 +66,6 @@ func add_item_async(item_path):
 			items_loading.append(item_path)
 			
 func remove_item(item_path):
-	print("REMOVE_ITEM: %s" % [item_path])
 	var item = get_item(item_path)
 	item.free()
 	item_scenes.erase(item_path)

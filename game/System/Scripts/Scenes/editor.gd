@@ -4,15 +4,15 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 
-onready var TABS_NODE = get_node("EditorUI/Panel/VBoxContainer/TabContainer")
+onready var TABS_NODE = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer")
 onready var character = get_node("EROCharacter")
 onready var TAB_TEMPLATE = get_node("TabTemplate")
 onready var CLOTHING_VIEWER_CONTAINER = get_node("EditorUI/ClothingViewer/ClothingViewerButtonContainer")
 onready var CLOTHING_VIEWER = get_node("EditorUI/ClothingViewer")
-onready var characters_container_panel = get_node("EditorUI/Panel2")
-onready var characters_container = get_node("EditorUI/Panel2/ScrollContainer/CharacterListContainer")
-onready var overwrite_confirmation_dialog = get_node("EditorUI/OverwriteConfirmationDialog")
-onready var character_name_field = get_node("EditorUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
+onready var characters_container_panel = get_node("EditorUI/EROGameUI/Panel2")
+onready var characters_container = get_node("EditorUI/EROGameUI/Panel2/ScrollContainer/CharacterListContainer")
+onready var overwrite_confirmation_dialog = get_node("EditorUI/EROGameUI/OverwriteConfirmationDialog")
+onready var character_name_field = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
 
 const ITEM_LIST_SCENE = preload("res://System/Scenes/Menus/Blocks/EROItemList.tscn")
 const ALLOWED_CLOTHING_SLOTS = ["Top", "Skirt", "Bottom", "Underwear", "Socks", "Shoes"]

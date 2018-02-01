@@ -9,12 +9,10 @@ var msaa = VisualServer.VIEWPORT_MSAA_2X setget set_msaa
 var mouse_sensitivity = 1.0 setget set_mouse_sensitivity
 
 var zoom_speed = 2.5 setget set_zoom_speed
-var free_camera_speed = 7.0 setget set_free_camera_speed
+var free_camera_speed = 4.0 setget set_free_camera_speed
 
 var main_config_path = "user://Config/settings.ini"
 var config_directory = "user://Config"
-
-var cum_resolution = 512
 
 func _ready():
 	
@@ -24,11 +22,9 @@ func _ready():
 	var ERR = load_settings(main_config_path)
 	
 	if ERR != OK:
-		print("ERRR")
 		save_settings(main_config_path)
-		load_settings(main_config_path)
 		
-	"""Console.register_cvar("mouse_sensitivity", {
+	Console.register_cvar("mouse_sensitivity", {
 		description = "Mouse sensitvity",
 		arg = ["sensitivity", TYPE_REAL],
 		target = self
@@ -42,7 +38,7 @@ func _ready():
 		description = "Free camera speed",
 		arg = ["speed", TYPE_REAL],
 		target = self
-	})"""
+	})
 	
 func save_settings(path):
 	var config_file = ConfigFile.new()
@@ -59,7 +55,7 @@ func save_settings(path):
 	
 	# Camera values
 	config_file.set_value("camera", "zoom_speed", zoom_speed)
-	
+	config_file.set_value("camera", "free_camera_speed", free_camera_speed)
 	config_file.save(path)
 func load_settings(path):
 	var config_file = ConfigFile.new()
