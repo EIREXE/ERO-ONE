@@ -75,11 +75,11 @@ auto_exposure_min_luma = 0.05
 auto_exposure_max_luma = 8.0
 auto_exposure_speed = 0.5
 ss_reflections_enabled = true
-ss_reflections_max_steps = 128
-ss_reflections_fade_in = 0.356763
-ss_reflections_fade_out = 1.23115
+ss_reflections_max_steps = 512
+ss_reflections_fade_in = 0.848532
+ss_reflections_fade_out = 8.57422
 ss_reflections_depth_tolerance = 0.1
-ss_reflections_roughness = false
+ss_reflections_roughness = true
 ssao_enabled = false
 ssao_radius = 31.8
 ssao_intensity = 52.4
@@ -159,7 +159,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
 
-transform = Transform( 0.934533, 0.20719, -0.289343, -0.156289, 0.96939, 0.18936, 0.319719, -0.131743, 0.938308, 0, 0, 0 )
+transform = Transform( 0.486403, -0.0913206, 0.868948, -0.156289, 0.96939, 0.18936, -0.859642, -0.227913, 0.457242, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 0.15
@@ -183,7 +183,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Visibility" ]
 
 [node name="EditorUI" type="CanvasLayer" parent="." index="4"]
 
@@ -423,10 +423,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 364.0
-margin_top = 205.0
-margin_right = 876.0
-margin_bottom = 475.0
+margin_left = -256.0
+margin_top = -135.0
+margin_right = 256.0
+margin_bottom = 135.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -596,6 +596,10 @@ fov = 50.0
 size = 1.0
 near = 0.05
 far = 100.0
+
+[node name="Scene Root" parent="." index="10" instance_placeholder="res://Content/TestContent/Bodies/BodyTest/elfbody.tscn"]
+
+transform = Transform( 0.0999918, 0, 0, 0, 0.0999918, 0, 0, 0, 0.0999918, 0, 0.255857, 0 )
 
 [connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
 

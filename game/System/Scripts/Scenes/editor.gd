@@ -35,6 +35,9 @@ func init_editor():
 	character.add_item("TestContent.Clothing.ElfBloomers")
 	character.add_item("TestContent.Clothing.ElfTop")
 	character.add_item("TestContent.Clothing.ElfSkirt")
+	
+	# RECODE
+	# Clean this up
 	for item_type in EROContent.ALLOWED_ITEM_TYPES:
 		if item_type != "Clothing":
 			var new_tab = TAB_TEMPLATE.duplicate()
@@ -57,7 +60,7 @@ func init_editor():
 						var item_path = "%s.%s.%s" % [content_pack_name, item_type, item_name]
 						item_list.add_item(item_path)
 						
-	# Clothing tab specific code
+	# Create buttons for all clothing slots
 	clothing_tab = TAB_TEMPLATE.duplicate()
 	clothing_tab.name = EROContent.get_item_type_friendly_name("Clothing")
 	remove_child(clothing_tab)
@@ -69,7 +72,6 @@ func init_editor():
 		button.connect("pressed", self, "select_slot", [clothing_slot])
 		
 		clothing_slot_button_container = clothing_tab.get_node("TemplateContainer")
-		
 func update_ui():
 	character_name_field.text = character.character_name
 	
@@ -91,6 +93,7 @@ func set_item(slot, item):
 		character.remove_item(current_item_path)
 		
 # This removes the slot selection and replaces it with a clothing item selection or vice versa
+# HACK? maybe?
 func select_slot(selected_clothing_slot):
 	#  If selected_clothing_slot is empty it means we should return to slot selection
 	if not selected_clothing_slot:
@@ -130,9 +133,6 @@ func select_slot(selected_clothing_slot):
 					button.text = item["name"]
 					button.connect("pressed", self, "set_item", [selected_clothing_slot, item_path])
 					new_button_container.add_child(button)
-
-func serialize_button():
-	save("user://screen.png")
 
 func save_character(add_to_list=false):
 	var viewport_image = $Viewport.get_texture().get_data()

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 signal show_game_ui
 signal hide_game_ui

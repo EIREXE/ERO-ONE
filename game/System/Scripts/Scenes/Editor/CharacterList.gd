@@ -1,6 +1,6 @@
 extends GridContainer
 
-onready var editor_main = get_node("../../../..")
+onready var editor_main = get_node("../../../../..")
 
 const THUMBNAIL_SIZE = Vector2(128,128)
 

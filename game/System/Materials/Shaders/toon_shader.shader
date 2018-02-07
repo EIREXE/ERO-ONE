@@ -31,7 +31,7 @@ void light() {
 	float mid = 1.0-ROUGHNESS;
 	mid*=mid;
 	float intensity = smoothstep(mid-ROUGHNESS*0.5, mid+ROUGHNESS*0.5, RdotV) * mid;
-	DIFFUSE_LIGHT += LIGHT_COLOR * intensity * specular * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
+	//DIFFUSE_LIGHT += LIGHT_COLOR * intensity * specular * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
 }
 void fragment() {
 	ROUGHNESS = roughness;

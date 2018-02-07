@@ -7,10 +7,10 @@ path="res://.import/loading_spinner.png-39ed8d4b84b16efdde6c41f28c6e0d05.stex"
 [deps]
 
 source_file="res://System/Textures/ui/loading_spinner.png"
-source_md5="b610d46d4287334782e3db7a223fd5fe"
+source_md5="bf9ffb12736cadbd900e97be1de9a297"
 
 dest_files=[ "res://.import/loading_spinner.png-39ed8d4b84b16efdde6c41f28c6e0d05.stex" ]
-dest_md5="098548a59855a4f20b0d978444552559"
+dest_md5="8aae59e735220d7b6df4200381b02771"
 
 [params]
 
