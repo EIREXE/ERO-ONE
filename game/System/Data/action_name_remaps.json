@@ -1,0 +1,12 @@
+{
+	"left": "Left",
+	"right": "Right",
+	"up": "Up",
+	"down": "down",
+	"forward": "Forward",
+	"back": "Back",
+	"camera_pan": "Pan camera",
+	"camera_fast": "Increase camera speed",
+	"zoom_in": "Zoom out",
+	"zoom_out": "Zoom in",
+}

@@ -1,7 +1,7 @@
 # Custom loading with loading screen and stuff, sounds fun? it kinda is.
 extends Node
 
-var _scene_path
+var _scene_path = ""
 var _scene_packed
 
 func _ready():

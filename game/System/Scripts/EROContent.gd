@@ -3,9 +3,13 @@ ERO-ONE: The Next-Generation Erotic game
 """
 extends Node
 
-var content_packs = {}
+var content_packs = {} setget ,get_allowed_content_packs
+var allowed_content_packs = []
 const CONTENT_PACKS_DIR = "res://Content"
 const CHARACTERS_DIR = "user://Characters"
+
+const CONTENT_CONFIG_FILE = "user://content.json"
+
 const IEND_SIGNATURE = PoolByteArray([0x49,0x45,0x4E,0x44])
 
 const ALLOWED_ITEM_TYPES = ["Bodies", "HairStyles","Clothing"]
@@ -19,16 +23,58 @@ var characters = {}
 
 func _ready():
 	load_content_packs()
+	load_content_config()
+	save_content_config()
 	Console.register_command('list_content_packs', {
 		description = 'Lists all the currently loaded content packs',
 		args = [],
 		target = self
 	})
 
+###########
+# Content config manipulation
+###########
+func save_content_config():
+	var content_config = {}
+	content_config["allowed_content_packs"] = allowed_content_packs
+	var file = File.new()
+	file.open(CONTENT_CONFIG_FILE, File.WRITE)
+	file.store_string(to_json(content_config))
+	file.close()
+	
+func load_content_config():
+	var file = File.new()
+	# Add content packs from the file
+	if file.file_exists(CONTENT_CONFIG_FILE):
+		file.open(CONTENT_CONFIG_FILE, File.READ)
+		var content_config = parse_json(file.get_as_text())
+		allowed_content_packs = []
+		for pack in content_config["allowed_content_packs"]:
+			allowed_content_packs.append(pack)
+
+	for pack_name in content_packs:
+		var content_pack = content_packs[pack_name]
+		if content_pack["official"]:
+			if not pack_name in allowed_content_packs:
+				allowed_content_packs.append(pack_name)
+
 func create_content_folders():
 	if not Directory.new().dir_exists():
 		Directory.new().make_dir_recursive(CHARACTERS_DIR)
-	
+
+###########
+# Content pack manipulation
+###########	
+
+func get_allowed_content_packs():
+	var packs = {}
+	for pack_name in allowed_content_packs:
+		if content_packs.has(pack_name): 
+			packs[pack_name] = content_packs[pack_name]
+	return packs
+func get_all_content_packs():
+	return content_packs
+
 func load_content_packs():
 	var dir = Directory.new()
 	if dir.open(CONTENT_PACKS_DIR) == OK:
@@ -103,6 +149,9 @@ func list_content_packs():
 	for pack in content_packs:
 		Console.info("%s: %s" % [pack, content_packs[pack]["name"]])
 		
+###########
+# Card Loading and writing
+###########
 func load_image_data_from_disk(image_path):
 	return EROSteganography.get_steganographic_data_from_file(image_path)
 
@@ -116,6 +165,9 @@ func save_image_data_to_disk(image_path, image, data):
 	
 	EROSteganography.store_string_in_image(image, data).save_png(image_path)
 			
+###########
+# Item manipulation
+###########
 func get_item(item_path):
 	# Internally, item paths are divided in three parts, the content pack, the type
 	# and the name, an example would be BaseContent.HairStyles.TestHair

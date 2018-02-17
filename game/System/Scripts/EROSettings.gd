@@ -1,4 +1,4 @@
-extends Node
+  extends Node
 
 var resolution = Vector2(1280,720) setget set_resolution
 var fullscreen = false setget set_fullscreen
@@ -40,7 +40,7 @@ func _ready():
 		target = self
 	})
 	
-func save_settings(path):
+func save_settings(path=main_config_path):
 	var config_file = ConfigFile.new()
 	# Display settings
 	config_file.set_value("display", "resolution", resolution)
@@ -48,7 +48,7 @@ func save_settings(path):
 	config_file.set_value("display", "borderless", borderless)
 	
 	# Graphics values
-	config_file.set_value("graphics", "msaa", msaa)
+	config_file.set_value("graphics", "MSAA", msaa)
 
 	# Input values
 	config_file.set_value("input", "mouse_sensitivity", mouse_sensitivity)
@@ -77,15 +77,21 @@ func set_resolution(new_resolution):
 		Console.write_line("Resolution must be a Vector2!", Console.COLOR_ERR, "EROSettings")
 		
 func set_fullscreen(new_fullscreen):
+	if not fullscreen == new_fullscreen:
+		OS.set_window_fullscreen(fullscreen)
 	fullscreen = new_fullscreen
-	OS.set_window_fullscreen(fullscreen)
 
 func set_borderless(new_borderless):
+	if not borderless == new_borderless:
+		OS.set_borderless_window(borderless)
 	borderless = new_borderless
-	OS.set_borderless_window(borderless)
 
 func set_msaa(new_msaa):
-	VisualServer.viewport_set_msaa(get_viewport(), new_msaa)
+
+	if not msaa == new_msaa:
+		print("setting MSAA to %d" % [new_msaa])
+		get_viewport().msaa = new_msaa
+	msaa = new_msaa
 
 func set_mouse_sensitivity(new_mouse_sensitivity):
 	mouse_sensitivity = new_mouse_sensitivity

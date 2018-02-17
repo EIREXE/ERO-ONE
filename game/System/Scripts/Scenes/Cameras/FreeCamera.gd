@@ -138,7 +138,7 @@ func enable_free_camera():
 	
 	visible = true
 	$CanvasLayer/FreeCameraMenu.visible = true
-	EROPauseMenu.hide_pause_menu()
+	EROOverlayedMenus.hide_overlayed_menus()
 	
 func disable_free_camera():
 	visible = false
@@ -149,7 +149,7 @@ func disable_free_camera():
 	$RotationGimball/Camera.clear_current()
 	$RotationGimball.set_rotation(Vector3())
 	old_camera.make_current()
-	EROPauseMenu.show_pause_menu()
+	EROOverlayedMenus.show_pause_menu()
 	
 	# Return the original DOF values to the environment
 	env.dof_blur_far_distance = _original_dof_distance

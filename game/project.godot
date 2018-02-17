@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="ERO-ONE"
-run/main_scene="res://System/Scenes/Menus/MainMenu.tscn"
+run/main_scene="res://System/Scenes/Menus/StartupScreen.tscn"
 boot_splash/image="res://System/Textures/ui/boot_splash.png"
 config/icon="res://System/Textures/ui/icon.png"
 
@@ -20,13 +20,13 @@ config/icon="res://System/Textures/ui/icon.png"
 Console="*res://System/Console/Console.tscn"
 game_manager="*res://System/Scripts/game_manager.gd"
 EROSettings="*res://System/Scripts/EROSettings.gd"
-EROPauseMenu="*res://System/Scenes/Menus/PauseMenu.tscn"
 EROFreeCamera="*res://System/Scenes/Cameras/FreeCamera.tscn"
 EROContent="*res://System/Scripts/EROContent.gd"
 EROResourceQueue="*res://System/Scripts/EROResourceQueue.gd"
 EROSteganography="*res://System/Scripts/EROSteganography.gd"
 EROLoadingScreen="*res://System/Scenes/Menus/LoadingScreen.tscn"
 EROSceneLoader="*res://System/Scripts/EROSceneLoader.gd"
+EROOverlayedMenus="*res://System/Scenes/Menus/OverlayedMenus.tscn"
 
 [display]
 

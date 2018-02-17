@@ -159,7 +159,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
 
-transform = Transform( 0.486403, -0.0913206, 0.868948, -0.156289, 0.96939, 0.18936, -0.859642, -0.227913, 0.457242, 0, 0, 0 )
+transform = Transform( 0.986599, 0.144125, 0.0764751, -0.156289, 0.96939, 0.18936, -0.0468431, -0.198776, 0.978924, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 0.15
@@ -194,6 +194,8 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="EROGameUI" parent="EditorUI" index="0" instance=ExtResource( 3 )]
+
+editor/display_folded = true
 
 [node name="Panel" type="Panel" parent="EditorUI/EROGameUI" index="0"]
 
