@@ -6,6 +6,8 @@ var borderless = false setget set_borderless
 
 var msaa = VisualServer.VIEWPORT_MSAA_2X setget set_msaa
 
+var fxaa = false setget set_fxaa
+
 var mouse_sensitivity = 1.0 setget set_mouse_sensitivity
 
 var zoom_speed = 2.5 setget set_zoom_speed
@@ -13,6 +15,8 @@ var free_camera_speed = 4.0 setget set_free_camera_speed
 
 var main_config_path = "user://Config/settings.ini"
 var config_directory = "user://Config"
+
+var show_fps = false setget set_show_fps
 
 func _ready():
 	
@@ -40,6 +44,11 @@ func _ready():
 		target = self
 	})
 	
+	Console.register_cvar("show_fps", {
+		description = "Show fps",
+		arg = ["enable", TYPE_BOOL],
+		target = self
+	})
 func save_settings(path=main_config_path):
 	var config_file = ConfigFile.new()
 	# Display settings
@@ -82,13 +91,13 @@ func set_fullscreen(new_fullscreen):
 	fullscreen = new_fullscreen
 
 func set_borderless(new_borderless):
-	if not borderless == new_borderless:
+	if borderless != new_borderless:
 		OS.set_borderless_window(borderless)
 	borderless = new_borderless
 
 func set_msaa(new_msaa):
 
-	if not msaa == new_msaa:
+	if msaa != new_msaa:
 		print("setting MSAA to %d" % [new_msaa])
 		get_viewport().msaa = new_msaa
 	msaa = new_msaa
@@ -102,6 +111,13 @@ func set_zoom_speed(new_zoom_speed):
 func set_free_camera_speed(new_free_camera_speed):
 	free_camera_speed = new_free_camera_speed
 
+func set_show_fps(new_value):
+	show_fps = new_value
+
+func set_fxaa(new_value):
+	if fxaa != new_value:
+		get_viewport().fxaa = true
+	fxaa = new_value
 
 # Config vlaue map, to make adding new stuff easier
 var config_values = [{
@@ -138,5 +154,15 @@ var config_values = [{
 		section="camera",
 		key="free_camera_speed",
 		set="set_free_camera_speed"
+	},
+	{
+		section="display",
+		key="show_fps",
+		set="set_show_fps"
+	},
+	{
+		section="display",
+		key="fxaa",
+		set="set_fxaa"
 	},
 ]

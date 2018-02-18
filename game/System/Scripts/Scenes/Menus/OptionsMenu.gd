@@ -1,6 +1,11 @@
 extends ConfirmationDialog
 
+# TODO: Figure out how FXAA works
+
 onready var msaa_option_button = get_node("TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol/MSAA/MSAAOption")
+onready var fxaa_option_checkbox = get_node("TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol/FXAA/FXAAOption")
+onready var show_fps_option_checkbox = get_node("TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol/ShowFPS/ShowFPSOption")
+
 onready var input_map_tree =  get_node("TabContainer/Controls/InputMapTree")
 const ACTION_NAME_REMAPS_FILE = "res://System/Data/action_name_remaps.json"
 const MOUSE_BUTTON_REMAPS_FILE = "res://System/Data/mouse_button_remaps.json"
@@ -8,7 +13,7 @@ var action_name_remaps
 var mouse_button_remaps
 func _ready():
 	# MSAA settings
-	$TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol.add_constant_override("separation", 50)
+	$TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol.add_constant_override("separation", 25)
 	var file = File.new()
 	file.open(ACTION_NAME_REMAPS_FILE, File.READ)
 	action_name_remaps = parse_json(file.get_as_text())
@@ -20,7 +25,8 @@ func _ready():
 func init_video_settings():
 	# MSAA settings
 	msaa_option_button.select(EROSettings.msaa)
-	
+	show_fps_option_checkbox.pressed = EROSettings.show_fps
+	fxaa_option_checkbox.pressed = EROSettings.fxaa
 func init_input_settings():
 	var root = input_map_tree.create_item()
 	input_map_tree.set_hide_root(true)
@@ -38,6 +44,7 @@ func init_input_settings():
 	
 func confirmed():
 	EROSettings.msaa = msaa_option_button.selected
+	EROSettings.show_fps = show_fps_option_checkbox.pressed
 	EROSettings.save_settings()
 
 func about_to_show():

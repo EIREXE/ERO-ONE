@@ -21,6 +21,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -142,6 +143,24 @@ texture = ExtResource( 2 )
 [node name="OptionsMenu" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
 
 visible = false
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer" index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -321.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/ResumeButton" to="." method="unpause_game"]
 

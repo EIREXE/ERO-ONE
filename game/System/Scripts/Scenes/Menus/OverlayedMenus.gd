@@ -10,6 +10,14 @@ onready var options_menu = get_node("CanvasLayer/OptionsMenu")
 func _ready():
 	hide_overlayed_menus()
 	set_process_input(true)
+	set_process(true)
+	
+func _process(delta):
+	if EROSettings.show_fps:
+		$CanvasLayer/FPSLabel.text = str(Engine.get_frames_per_second())
+	else:
+		$CanvasLayer/FPSLabel.text = ""
+	
 func _input(event):
 	var is_paused = get_tree().is_paused()
 	if event.is_action_pressed("pause") and not event.is_echo():
