@@ -28,14 +28,15 @@ func _ready():
 	init_editor()
 	
 func init_editor():
-	character.load_body("TestContent.Bodies.BodyTest")
+	character.load_body("BaseContent.Bodies.Female")
+	"""
 	character.add_item("TestContent.Clothing.ElfSocks")
 	character.add_item("TestContent.Clothing.ElfShoes")
 	character.add_item("TestContent.Clothing.ElfPantsu")
 	character.add_item("TestContent.Clothing.ElfBloomers")
 	character.add_item("TestContent.Clothing.ElfTop")
 	character.add_item("TestContent.Clothing.ElfSkirt")
-	
+	"""
 	# RECODE
 	# Clean this up
 	for item_type in EROContent.ALLOWED_ITEM_TYPES:

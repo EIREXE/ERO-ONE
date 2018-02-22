@@ -7,6 +7,7 @@ var content_packs = {} setget ,get_allowed_content_packs
 var allowed_content_packs = []
 const CONTENT_PACKS_DIR = "res://Content"
 const CHARACTERS_DIR = "user://Characters"
+const MODS_DIR = "user://Mods"
 
 const CONTENT_CONFIG_FILE = "user://content.json"
 
@@ -22,6 +23,7 @@ const ITEM_TYPE_FRIENDLY_NAMES = {
 var characters = {}
 
 func _ready():
+	load_mod_pcks()
 	load_content_packs()
 	load_content_config()
 	save_content_config()
@@ -30,6 +32,18 @@ func _ready():
 		args = [],
 		target = self
 	})
+
+# Loads mods from the Mods folder in user://
+func load_mod_pcks():
+	var dir = Directory.new()
+	if dir.open(MODS_DIR) == OK:
+		dir.list_dir_begin(true)
+		var file_name = dir.get_next()
+		while (file_name != ""):
+			if not dir.current_is_dir():
+				var file_path = MODS_DIR + "/%s" % [file_name]
+				ProjectSettings.load_resource_pack(file_path)
+				file_name = dir.get_next()
 
 ###########
 # Content config manipulation
@@ -59,9 +73,10 @@ func load_content_config():
 				allowed_content_packs.append(pack_name)
 
 func create_content_folders():
-	if not Directory.new().dir_exists():
+	if not Directory.new().dir_exists(CHARACTERS_DIR):
 		Directory.new().make_dir_recursive(CHARACTERS_DIR)
-
+	if not Directory.new().dir_exists(MODS_DIR):
+		Directory.new().make_dir_recursive(MODS_DIR)
 ###########
 # Content pack manipulation
 ###########	
@@ -84,7 +99,7 @@ func load_content_packs():
 			if dir.current_is_dir():
 				var file = File.new()
 				var pack_config_path = CONTENT_PACKS_DIR + "/%s/package.json" % [file_name]
-				
+				print(file_name)
 				if file.file_exists(pack_config_path):
 					var pack_name = file_name
 					load_content_pack(pack_name)
@@ -92,14 +107,14 @@ func load_content_packs():
 				file_name = dir.get_next()
 
 func load_content_pack(pack_name):
-	Console.info("Loading content pack %s..." % [pack_name],"EROContent")
+	#Console.info("Loading content pack %s..." % [pack_name],"EROContent")
 	var pack_file = File.new()
 	var pack_config_path = CONTENT_PACKS_DIR + "/%s/package.json" % [pack_name]
 	
 	pack_file.open(pack_config_path, pack_file.READ)
 	var pack_data = parse_json(pack_file.get_as_text())
 	content_packs[pack_name] = pack_data
-	Console.info("Loading %s succesful" % [pack_name],"EROContent")
+	#Console.info("Loading %s succesful" % [pack_name],"EROContent")
 	
 func load_content_pack_items(pack_name):
 	var dir = Directory.new()

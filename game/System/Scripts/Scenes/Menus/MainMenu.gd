@@ -16,7 +16,7 @@ func load_character_editor():
 	
 func populate_content_list():
 	for content_pack_name in EROContent.get_all_content_packs():
-		var pack = EROContent.content_packs[content_pack_name]
+		var pack = EROContent.get_all_content_packs()[content_pack_name]
 		var content_entry = CONTENT_ENTRY_SCENE.instance()
 		content_entry.load_entry(pack)
 		$ContentSettingsPanel/ScrollContainer/VBoxContainer2.add_child(content_entry)

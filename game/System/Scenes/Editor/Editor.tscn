@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/editor.gd" type="Script" id=1]
 [ext_resource path="res://System/Models/Editor/EditorCenterPiece.dae" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=4]
 [ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae" type="PackedScene" id=7]
 
 [sub_resource type="GIProbeData" id=1]
 
@@ -76,10 +77,10 @@ auto_exposure_max_luma = 8.0
 auto_exposure_speed = 0.5
 ss_reflections_enabled = true
 ss_reflections_max_steps = 512
-ss_reflections_fade_in = 0.848532
-ss_reflections_fade_out = 8.57422
+ss_reflections_fade_in = 0.395854
+ss_reflections_fade_out = 23.4255
 ss_reflections_depth_tolerance = 0.1
-ss_reflections_roughness = true
+ss_reflections_roughness = false
 ssao_enabled = false
 ssao_radius = 31.8
 ssao_intensity = 52.4
@@ -129,7 +130,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="Editor" type="Spatial" index="0"]
+[node name="Editor" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -602,6 +603,15 @@ far = 100.0
 [node name="Scene Root" parent="." index="10" instance_placeholder="res://Content/TestContent/Bodies/BodyTest/elfbody.tscn"]
 
 transform = Transform( 0.0999918, 0, 0, 0, 0.0999918, 0, 0, 0, 0.0999918, 0, 0.255857, 0 )
+visible = false
+
+[node name="Scene Root3" parent="." index="11" instance_placeholder="res://Content/BaseContent/Bodies/Female/GirlBody.tscn"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233431, 0 )
+
+[node name="Scene Root4" parent="." index="12" instance=ExtResource( 7 )]
+
+transform = Transform( 0.0968361, 0, 0, 0, 0.0968361, 0, 0, 0, 0.0968361, 0, 0.0739953, 0 )
 
 [connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
 

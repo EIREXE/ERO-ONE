@@ -35,22 +35,34 @@ func load_body(body_path):
 		for item_name in item_scenes.keys():
 			remove_item(item_name)
 	var body_scene = load_item(body_path)
-	add_child(body_scene)
-	body = body_scene
-	body.get_node("AnimationPlayer").play("PoseLib")
-	var body_data = get_body_data()
-	if body_data.has("scale"):
-		var model_scale = body_data["scale"]
-		body.scale = Vector3(model_scale,model_scale,model_scale)
+	
+	if body_scene:
+		add_child(body_scene)
+		body = body_scene
+		var body_data = get_body_data()
+		if body_data.has("scale"):
+			var model_scale = body_data["scale"]
+			body.scale = Vector3(model_scale,model_scale,model_scale)
+	else:
+		Console.err("Aborted body loading of %s" % [body_path], "EROCharacter")
+		return
+		
+
 # Loads an item but doesn't add it to the scene
 func load_item(item_path):
 	var item_data = EROContent.get_item(item_path)
-	var item_model = item_data["model"]
 	if item_data:
+		var item_model = item_data["model"]
 		var item_scene = EROResourceQueue.get_resource(item_model).instance()
-		item_scene.set_meta("data", item_data)
-		item_scene.set_meta("path", item_path)
-		return item_scene
+		if item_scene:
+			item_scene.set_meta("data", item_data)
+			item_scene.set_meta("path", item_path)
+			return item_scene
+		else:
+			Console.err("Item %s scene does not exist" % [item_path])
+	else:
+		Console.err("Item %s, not found or is corrupted." % [item_path], "EROCharacter")
+		return null
 # Loads an item and adds it to the body
 func add_item(item_path):
 	if not item_scenes.has(item_path):

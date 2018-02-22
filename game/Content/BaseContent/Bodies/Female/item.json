@@ -1,6 +1,6 @@
 {
 	"name": "Female",
-	"model": "res://System/Models/Bodies/female/female.tscn",
+	"model": "res://Content/BaseContent/Bodies/Female/GirlBody.tscn",
 	"parameters": {
 		"skin_color": {
 			"name": "Skin Color",

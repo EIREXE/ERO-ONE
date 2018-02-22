@@ -2,7 +2,7 @@
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/OptionsMenu.gd" type="Script" id=1]
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" index="0"]
+[node name="ConfirmationDialog" type="ConfirmationDialog"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -61,20 +61,21 @@ size_flags_vertical = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video" index="0"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -374.5
-margin_top = -177.5
-margin_right = 373.5
-margin_bottom = 202.5
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Margin" ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer" index="0"]
 
@@ -82,17 +83,20 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 748.0
+margin_right = 831.0
 margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_constants/separation = 50
 alignment = 0
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_constants" ]
 
 [node name="LeftCol" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -105,10 +109,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Margin" ]
+_sections_unfolded = [ "Anchor" ]
 
 [node name="MSAA" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -168,6 +173,7 @@ items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MS
 
 [node name="Resolution" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -228,6 +234,7 @@ items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MS
 
 [node name="FXAA" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -268,6 +275,7 @@ align = 0
 
 [node name="ShowFPS" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -305,6 +313,84 @@ group = null
 text = "Show FPS"
 flat = false
 align = 0
+
+[node name="RightCol" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 173.0
+margin_right = 302.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 0
+alignment = 0
+_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Rect", "Size Flags", "custom_constants" ]
+
+[node name="AnisotropicFiltering" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/RightCol" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 129.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="AnisotropicFilteringLabel" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer/RightCol/AnisotropicFiltering" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 129.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Anisotropic Filtering"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnisotropicFilteringOption" type="OptionButton" parent="TabContainer/Video/VBoxContainer/HBoxContainer/RightCol/AnisotropicFiltering" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 129.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Disabled"
+flat = false
+align = 0
+selected = 0
+items = [ "X1", null, false, 1, null, "X2", null, false, 2, null, "X4", null, false, 4, null, "X8", null, false, 8, null, "X16", null, false, 16, null ]
 
 [node name="Controls" type="Control" parent="TabContainer" index="1"]
 

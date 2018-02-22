@@ -14,6 +14,7 @@ var mouse_button_remaps
 func _ready():
 	# MSAA settings
 	$TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol.add_constant_override("separation", 25)
+	$TabContainer/Video/VBoxContainer/HBoxContainer/RightCol.add_constant_override("separation", 25)
 	var file = File.new()
 	file.open(ACTION_NAME_REMAPS_FILE, File.READ)
 	action_name_remaps = parse_json(file.get_as_text())
