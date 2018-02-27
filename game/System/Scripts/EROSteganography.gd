@@ -14,7 +14,7 @@ func store_string_in_image(image, string):
 	var text_binary = string.to_utf8()
 	var text_compressed = text_binary.compress(File.COMPRESSION_ZSTD)
 	
-	# split the int into four bytes
+	# split the data size int into four bytes (32 bits, we shouldn't need more)
 	var uncompressed_data_size = PoolByteArray([0x00,0x00,0x00,0x00])
 	uncompressed_data_size[3] = text_binary.size()
 	uncompressed_data_size[2] = text_binary.size() >> 8
@@ -28,8 +28,12 @@ func store_string_in_image(image, string):
 	
 	return store_data_in_image(image, payload)
 
-# Data should be a PoolByteArray
+
 func store_data_in_image(image, data):
+	# Ensure data is a PoolByteArray
+	if not typeof(data) == TYPE_RAW_ARRAY:
+		Console.err("Data passed to store_data_in_image is not a PoolByteArray, it should be one, call a programmer.", "EROSteganography")
+	
 	image.convert(Image.FORMAT_RGB8)
 	var image_data = image.get_data()
 	var writing_mask = 0
@@ -77,6 +81,8 @@ func get_steganographic_data_from_image(image):
 			
 			# Magic number check
 			var magic_number = PoolByteArray(STEGANO_MAGIC_NUMBER)
+			
+			# Ensure we only try to get the magic number if the magic number fits int he quantity of bytes we have extracted up until now.
 			if extracted_data.size() == DATA_OFFSET + magic_number.size():
 				var potential_magic_number = extracted_data.subarray(extracted_data.size()-PoolByteArray(STEGANO_MAGIC_NUMBER).size(), extracted_data.size()-1)
 				if potential_magic_number == PoolByteArray(STEGANO_MAGIC_NUMBER):

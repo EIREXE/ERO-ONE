@@ -13,6 +13,8 @@ const CONTENT_CONFIG_FILE = "user://content.json"
 
 const IEND_SIGNATURE = PoolByteArray([0x49,0x45,0x4E,0x44])
 
+const ENABLE_MODDING = false
+
 const ALLOWED_ITEM_TYPES = ["Bodies", "HairStyles","Clothing"]
 const ITEM_TYPE_FRIENDLY_NAMES = { 
 		"Bodies": "Body",
@@ -35,15 +37,16 @@ func _ready():
 
 # Loads mods from the Mods folder in user://
 func load_mod_pcks():
-	var dir = Directory.new()
-	if dir.open(MODS_DIR) == OK:
-		dir.list_dir_begin(true)
-		var file_name = dir.get_next()
-		while (file_name != ""):
-			if not dir.current_is_dir():
-				var file_path = MODS_DIR + "/%s" % [file_name]
-				ProjectSettings.load_resource_pack(file_path)
-				file_name = dir.get_next()
+	if ENABLE_MODDING:
+		var dir = Directory.new()
+		if dir.open(MODS_DIR) == OK:
+			dir.list_dir_begin(true)
+			var file_name = dir.get_next()
+			while (file_name != ""):
+				if not dir.current_is_dir():
+					var file_path = MODS_DIR + "/%s" % [file_name]
+					ProjectSettings.load_resource_pack(file_path)
+					file_name = dir.get_next()
 
 ###########
 # Content config manipulation
