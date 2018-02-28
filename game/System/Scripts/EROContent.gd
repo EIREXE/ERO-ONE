@@ -214,6 +214,15 @@ func get_item_type_friendly_name(item_type):
 	else:
 		return item_type
 		
+func delete_character(character_data):
+	if character_data.has("uuid"):
+		var file = File.new()
+		var image_path = "user://Characters/%s.png" % [character_data["uuid"]]
+		if file.file_exists(image_path):
+			var dir = Directory.new()
+			dir.remove(image_path)
+			characters.erase(character_data)
+			
 func get_characters():
 	var characters = []
 	var dir = Directory.new()

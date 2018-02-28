@@ -9,8 +9,7 @@ onready var character = get_node("EROCharacter")
 onready var TAB_TEMPLATE = get_node("TabTemplate")
 onready var CLOTHING_VIEWER_CONTAINER = get_node("EditorUI/ClothingViewer/ClothingViewerButtonContainer")
 onready var CLOTHING_VIEWER = get_node("EditorUI/ClothingViewer")
-onready var characters_container_panel = get_node("EditorUI/EROGameUI/Panel2")
-onready var characters_container = get_node("EditorUI/EROGameUI/Panel2/ScrollContainer/CharacterListContainer")
+onready var characters_container = get_node("EditorUI/EROGameUI/CharacterSelector")
 onready var overwrite_confirmation_dialog = get_node("EditorUI/EROGameUI/OverwriteConfirmationDialog")
 onready var character_name_field = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
 
@@ -82,7 +81,6 @@ func sync_character_info(new_text):
 		
 func load_character_from_data(data):
 	character.load_character_from_data(data)
-	characters_container_panel.hide()
 	update_ui()
 	
 func set_item(slot, item):
@@ -143,7 +141,7 @@ func save_character(add_to_list=false):
 	if add_to_list:
 		characters_container.add_character(character.to_dict(), character.get_image_path())
 
-func save_character_button_pressed():
+func save_current_character():
 	if character.exists_on_disk():
 		overwrite_confirmation_dialog.popup()
 	else:

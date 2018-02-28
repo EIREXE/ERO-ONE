@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/editor.gd" type="Script" id=1]
 [ext_resource path="res://System/Models/Editor/EditorCenterPiece.dae" type="PackedScene" id=2]
 [ext_resource path="res://System/Scenes/Menus/EROGameUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=4]
-[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae" type="PackedScene" id=7]
+[ext_resource path="res://System/Textures/cards/frame_0.png" type="Texture" id=5]
+[ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae" type="PackedScene" id=8]
 
 [sub_resource type="GIProbeData" id=1]
 
@@ -130,7 +131,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="Editor" type="Spatial"]
+[node name="Editor" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -196,11 +197,10 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="EROGameUI" parent="EditorUI" index="0" instance=ExtResource( 3 )]
 
-editor/display_folded = true
+rect_clip_content = false
 
 [node name="Panel" type="Panel" parent="EditorUI/EROGameUI" index="0"]
 
-editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0.4 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -210,6 +210,7 @@ margin_right = 400.0
 margin_bottom = -1.0
 rect_min_size = Vector2( 400, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -227,6 +228,7 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -243,72 +245,12 @@ anchor_bottom = 0.0
 margin_right = 380.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 use_top_left = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 146.0
-margin_right = 233.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-
-[node name="SaveButton" type="Button" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 41.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Save"
-flat = false
-align = 1
-
-[node name="LoadButton" type="Button" parent="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 45.0
-margin_right = 87.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Load"
-flat = false
-align = 1
 
 [node name="TabContainer" type="TabContainer" parent="EditorUI/EROGameUI/Panel/VBoxContainer" index="1"]
 
@@ -320,6 +262,7 @@ margin_top = 24.0
 margin_right = 380.0
 margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -337,6 +280,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -352,6 +296,7 @@ margin_top = 10.0
 margin_right = -1.0
 margin_bottom = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -368,6 +313,7 @@ anchor_bottom = 0.0
 margin_right = 379.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -385,6 +331,7 @@ margin_top = 5.0
 margin_right = 46.0
 margin_bottom = 19.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -405,6 +352,7 @@ margin_right = 375.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 325, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 1
@@ -418,59 +366,158 @@ caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Caret", "Margin", "Placeholder", "Rect" ]
 
-[node name="Panel2" type="Panel" parent="EditorUI/EROGameUI" index="1"]
+[node name="CharacterSelector" type="Panel" parent="EditorUI/EROGameUI" index="1"]
 
-editor/display_folded = true
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -135.0
-margin_right = 256.0
-margin_bottom = 135.0
+self_modulate = Color( 1, 1, 1, 0.4 )
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -287.0
+margin_bottom = 270.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Margin", "Rect" ]
+script = ExtResource( 4 )
+_sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="EditorUI/EROGameUI/Panel2" index="0"]
+[node name="VBoxContainer" type="VSplitContainer" parent="EditorUI/EROGameUI/CharacterSelector" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 220
+collapsed = false
+dragger_visibility = 2
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="ItemList" type="ItemList" parent="EditorUI/EROGameUI/CharacterSelector/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -47.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-scroll_horizontal_enabled = false
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-_sections_unfolded = [ "Scroll" ]
+items = [  ]
+select_mode = 0
+allow_reselect = false
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Columns", "Hint", "Icon", "Margin" ]
 
-[node name="CharacterListContainer" type="GridContainer" parent="EditorUI/EROGameUI/Panel2/ScrollContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/EROGameUI/CharacterSelector/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 512.0
-rect_min_size = Vector2( 512, 0 )
+margin_top = 220.0
+margin_right = 277.0
+margin_bottom = 260.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-columns = 4
-script = ExtResource( 4 )
-_sections_unfolded = [ "Anchor", "Hint", "Rect" ]
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="LoadCharacterButton" type="Button" parent="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_right = 139.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load Character"
+flat = false
+align = 1
+_sections_unfolded = [ "Grow Direction", "Hint", "Margin", "Rect" ]
+
+[node name="DeleteButton" type="Button" parent="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 143.0
+margin_right = 198.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Delete"
+flat = false
+align = 1
+_sections_unfolded = [ "Margin" ]
+
+[node name="SaveButton" type="Button" parent="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 202.0
+margin_right = 243.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save"
+flat = false
+align = 1
+_sections_unfolded = [ "Margin" ]
 
 [node name="OverwriteConfirmationDialog" type="ConfirmationDialog" parent="EditorUI/EROGameUI" index="2"]
 
@@ -485,6 +532,7 @@ margin_right = 836.0
 margin_bottom = 375.0
 rect_min_size = Vector2( 200, 70 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -496,7 +544,29 @@ dialog_text = "This character already exists, are you sure you want to overwrite
 dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog" ]
 
-[node name="Camera" parent="." index="5" instance=ExtResource( 5 )]
+[node name="CardPreview" type="TextureRect" parent="EditorUI/EROGameUI" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 756.0
+margin_top = 5.0
+margin_right = 1206.0
+margin_bottom = 725.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Hint", "Rect", "Visibility" ]
+
+[node name="Camera" parent="." index="5" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 
@@ -504,7 +574,7 @@ editor/display_folded = true
 
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="EROCharacter" parent="." index="6" instance=ExtResource( 6 )]
+[node name="EROCharacter" parent="." index="6" instance=ExtResource( 7 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235253, 0 )
 _sections_unfolded = [ "Transform" ]
@@ -517,10 +587,12 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1279.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Rect" ]
 
 [node name="TemplateContainer" type="VBoxContainer" parent="TabTemplate" index="0"]
 
@@ -532,6 +604,7 @@ margin_top = 10.0
 margin_right = -1.0
 margin_bottom = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -550,6 +623,7 @@ margin_top = 238.0
 margin_right = 1247.0
 margin_bottom = 667.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -609,15 +683,22 @@ visible = false
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233431, 0 )
 
-[node name="Scene Root4" parent="." index="12" instance=ExtResource( 7 )]
+[node name="Scene Root4" parent="." index="12" instance=ExtResource( 8 )]
 
 transform = Transform( 0.0968361, 0, 0, 0, 0.0968361, 0, 0, 0, 0.0968361, 0, 0.0739953, 0 )
-
-[connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="save_character_button_pressed"]
-
-[connection signal="pressed" from="EditorUI/EROGameUI/Panel/VBoxContainer/CenterContainer/HBoxContainer/LoadButton" to="EditorUI/EROGameUI/Panel2" method="show"]
+visible = false
 
 [connection signal="text_changed" from="EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField" to="." method="sync_character_info"]
+
+[connection signal="gui_input" from="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/ItemList" to="EditorUI/EROGameUI/CharacterSelector" method="show_character_preview"]
+
+[connection signal="mouse_exited" from="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/ItemList" to="EditorUI/EROGameUI/CharacterSelector" method="hide_character_preview"]
+
+[connection signal="pressed" from="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer/LoadCharacterButton" to="EditorUI/EROGameUI/CharacterSelector" method="select_character"]
+
+[connection signal="pressed" from="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer/DeleteButton" to="EditorUI/EROGameUI/CharacterSelector" method="delete_character"]
+
+[connection signal="pressed" from="EditorUI/EROGameUI/CharacterSelector/VBoxContainer/HBoxContainer/SaveButton" to="EditorUI/EROGameUI/CharacterSelector" method="save_button_pressed"]
 
 [connection signal="confirmed" from="EditorUI/EROGameUI/OverwriteConfirmationDialog" to="." method="save_character"]
 

@@ -23,7 +23,7 @@ void light() {
 	else {
 		ramp_point = texture(color_ramp, vec2(litness,0.5)).rgb;
 	}
-	float NdotL = dot(NORMAL,LIGHT);
+	float NdotL = 1.0;
 	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),NdotL);
 	DIFFUSE_LIGHT += ramp_point*LIGHT_COLOR*ATTENUATION*ALBEDO*mix(vec3(diffuse_brdf_NL), vec3(3.14159265359), vec3(0.40));
 	vec3 R = normalize(-reflect(LIGHT,NORMAL));
