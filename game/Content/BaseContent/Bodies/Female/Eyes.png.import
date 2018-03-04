@@ -8,10 +8,10 @@ path.etc2="res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.etc2.stex"
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/Eyes.png"
-source_md5="553fa87cae360f77ec8b5cbd82cb6111"
+source_md5="db4f9891ddead1d76901ad019fee1d27"
 
 dest_files=[ "res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.s3tc.stex", "res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.etc2.stex" ]
-dest_md5="a6cda6157884ce9fb2039354394f784b"
+dest_md5="e939020942ba23810791827b64c0e252"
 
 [params]
 
@@ -25,7 +25,7 @@ flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0

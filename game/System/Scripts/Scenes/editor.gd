@@ -1,34 +1,35 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 onready var TABS_NODE = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer")
 onready var character = get_node("EROCharacter")
 onready var TAB_TEMPLATE = get_node("TabTemplate")
-onready var CLOTHING_VIEWER_CONTAINER = get_node("EditorUI/ClothingViewer/ClothingViewerButtonContainer")
-onready var CLOTHING_VIEWER = get_node("EditorUI/ClothingViewer")
 onready var characters_container = get_node("EditorUI/EROGameUI/CharacterSelector")
 onready var overwrite_confirmation_dialog = get_node("EditorUI/EROGameUI/OverwriteConfirmationDialog")
 onready var character_name_field = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
 
 const ITEM_LIST_SCENE = preload("res://System/Scenes/Menus/Blocks/EROItemList.tscn")
+const EDITOR_PICKER_SCENE = preload("res://System/Scenes/Editor/EditorColorPicker.tscn")
 const ALLOWED_CLOTHING_SLOTS = ["Top", "Skirt", "Bottom", "Underwear", "Socks", "Shoes"]
 
 var clothing_tab
 var clothing_slot_button_container
+var clothing_tab_scroll
+
+var current_clothing_tab
+
+var body_tab
+var body_tab_container
 
 var loading_character_thumbnails = []
-
-
 
 func _ready():
 	init_editor()
 	
 func init_editor():
+	# TODO: By default we load the female body, maybe allow init_editor to specify an initial body to load?
 	character.load_body("BaseContent.Bodies.Female")
-	"""
+	
+	"""character.load_body("TestContent.Bodies.BodyTest")
 	character.add_item("TestContent.Clothing.ElfSocks")
 	character.add_item("TestContent.Clothing.ElfShoes")
 	character.add_item("TestContent.Clothing.ElfPantsu")
@@ -44,7 +45,11 @@ func init_editor():
 			new_tab.name = EROContent.get_item_type_friendly_name(item_type)
 			remove_child(new_tab)
 			TABS_NODE.add_child(new_tab)
-	
+			print(item_type)
+			if item_type == "Bodies":
+				
+				body_tab = new_tab
+				body_tab_container = new_tab.get_node("ScrollContainer/TemplateContainer")
 			
 			for content_pack_name in EROContent.content_packs:
 				var content_pack = EROContent.content_packs[content_pack_name]
@@ -54,11 +59,14 @@ func init_editor():
 				label.text = content_pack["name"]
 	
 				if content_pack["items"][item_type]:
-					new_tab.get_node("TemplateContainer").add_child(label)
-					new_tab.get_node("TemplateContainer").add_child(item_list)
+					new_tab.get_node("ScrollContainer/TemplateContainer").add_child(label)
+					new_tab.get_node("ScrollContainer/TemplateContainer").add_child(item_list)
 					for item_name in content_pack["items"][item_type]:
 						var item_path = "%s.%s.%s" % [content_pack_name, item_type, item_name]
 						item_list.add_item(item_path)
+			new_tab.get_node("ScrollContainer/TemplateContainer").add_child(HSeparator.new())
+						
+						
 						
 	# Create buttons for all clothing slots
 	clothing_tab = TAB_TEMPLATE.duplicate()
@@ -68,10 +76,14 @@ func init_editor():
 	for clothing_slot in ALLOWED_CLOTHING_SLOTS:
 		var button = Button.new()
 		button.text = clothing_slot
-		clothing_tab.get_node("TemplateContainer").add_child(button)
+		clothing_tab.get_node("ScrollContainer/TemplateContainer").add_child(button)
 		button.connect("pressed", self, "select_slot", [clothing_slot])
 		
-		clothing_slot_button_container = clothing_tab.get_node("TemplateContainer")
+	clothing_slot_button_container = clothing_tab.get_node("ScrollContainer/TemplateContainer")
+	clothing_tab_scroll = clothing_tab.get_node("ScrollContainer")
+		
+	init_body_parameters()
+		
 func update_ui():
 	character_name_field.text = character.character_name
 	
@@ -91,34 +103,40 @@ func set_item(slot, item):
 	elif current_item_path:
 		character.remove_item(current_item_path)
 		
+func init_body_parameters():
+	var body_path = character.body.get_meta("path")
+	var body_data = character.body.get_meta("data")
+	for parameter_name in body_data.parameters:
+		var picker = EDITOR_PICKER_SCENE.instance()
+		body_tab_container.add_child(picker)
+		picker.load_parameter(body_path, parameter_name)
 # This removes the slot selection and replaces it with a clothing item selection or vice versa
 # HACK? maybe?
 func select_slot(selected_clothing_slot):
 	#  If selected_clothing_slot is empty it means we should return to slot selection
 	if not selected_clothing_slot:
-		var old_tab = clothing_tab.get_children()[0]
-		clothing_tab.remove_child(old_tab)
-		old_tab.queue_free()
-		clothing_tab.add_child(clothing_slot_button_container)
+		current_clothing_tab.queue_free()
+		clothing_tab_scroll.add_child(clothing_slot_button_container)
 		return
 	
 	# Take the clothing tab button container and temporarily remove it
-	clothing_tab.remove_child(clothing_slot_button_container)
+	clothing_tab_scroll.remove_child(clothing_slot_button_container)
 	
 	# Create the new button set for the selected slot from the template and add
 	# it as a child to the tab
-	var new_button_container = $TabTemplate/TemplateContainer.duplicate()
+	current_clothing_tab = $TabTemplate/ScrollContainer/TemplateContainer.duplicate()
+	current_clothing_tab.visible = true
 	var back_button = Button.new()
 	back_button.text = "Back..."
 	back_button.connect("pressed", self, "select_slot", [null])
-	new_button_container.add_child(back_button)
+	current_clothing_tab.add_child(back_button)
 	
 	var none_button = Button.new()
 	none_button.text = "None"
 	none_button.connect("pressed", self, "set_item", [selected_clothing_slot, null])
-	new_button_container.add_child(none_button)
+	current_clothing_tab.add_child(none_button)
 	
-	clothing_tab.add_child(new_button_container)
+	clothing_tab_scroll.add_child(current_clothing_tab)
 	
 	for content_pack_name in EROContent.content_packs:
 		var content_pack = EROContent.content_packs[content_pack_name]
@@ -131,7 +149,10 @@ func select_slot(selected_clothing_slot):
 					var button = Button.new()
 					button.text = item["name"]
 					button.connect("pressed", self, "set_item", [selected_clothing_slot, item_path])
-					new_button_container.add_child(button)
+					current_clothing_tab.add_child(button)
+
+func set_item_parameter(item_path, parameter, value):
+	character.set_item_parameter(item_path, parameter, value)
 
 func save_character(add_to_list=false):
 	var viewport_image = $Viewport.get_texture().get_data()

@@ -2,31 +2,32 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.stex"
+path.s3tc="res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.s3tc.stex"
+path.etc2="res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.etc2.stex"
 
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/skin_color_mask.png"
-source_md5="d1348a340ec9508436c04314f0885cb5"
+source_md5="0a482eb7a5007d4b895fd4de65c0cde9"
 
-dest_files=[ "res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.stex" ]
-dest_md5="ceefa808d92d55379f4a279b935729bd"
+dest_files=[ "res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.s3tc.stex", "res://.import/skin_color_mask.png-b02c965a8269a2ae655028ed5cb2431b.etc2.stex" ]
+dest_md5="cc0cdae99acb96d0ece1e01878c663f3"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

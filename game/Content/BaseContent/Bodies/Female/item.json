@@ -4,10 +4,17 @@
 	"parameters": {
 		"skin_color": {
 			"name": "Skin Color",
-			"type": "albedo",
-			"node": "Body",
-			"material": 1,
-			"default": "Color( 1.0, 1.0, 1.0, 1.0)"
+			"type": "color_map",
+			"node": "GirlBody",
+			"material": 0,
+			"default": "Color( 1.0, 0.77, 0.68, 1.0)"
+		},
+		"eye_color": {
+			"name": "Eye Color",
+			"type": "color_map",
+			"node": "Eyes",
+			"material": 0,
+			"default": "Color( 0.72, 0.52, 0.49, 1.0)"
 		}
 	}
 }

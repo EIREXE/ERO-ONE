@@ -6,7 +6,7 @@ var item_scenes = {}
 var body
 const ERO_ITEM_SCENE = "res://Scenes/EROItem.tscn"
 
-var items_loading = []
+var items_loading = {}
 
 var character_uuid
 
@@ -57,25 +57,38 @@ func load_item(item_path):
 		if item_scene:
 			item_scene.set_meta("data", item_data)
 			item_scene.set_meta("path", item_path)
+			item_scenes[item_path] = item_scene
 			return item_scene
 		else:
 			Console.err("Item %s scene does not exist" % [item_path])
 	else:
 		Console.err("Item %s, not found or is corrupted." % [item_path], "EROCharacter")
 		return null
+		
 # Loads an item and adds it to the body
-func add_item(item_path):
+func add_item(item_path, user_item_data=null):
 	if not item_scenes.has(item_path):
 		var item = load_item(item_path)
+		
 		body.get_node(get_body_data()["armature"]).add_child(item)
-		item_scenes[item_path] = item
-
-func add_item_async(item_path):
+		if user_item_data:
+			apply_parameters_from_user_data(item_path, user_item_data)
+		
+# Same but async
+func add_item_async(item_path, user_item_data=null):
 	if not item_scenes.has(item_path):
 		var item_data = EROContent.get_item(item_path)
 		if item_data:
 			EROResourceQueue.queue_resource(item_data["model"])
-			items_loading.append(item_path)
+			var loading_item_data = {}
+			loading_item_data["user_data"] = user_item_data
+			items_loading[item_path] = loading_item_data
+			
+func apply_parameters_from_user_data(item_path, item_user_data):
+	if item_user_data.has("parameters"):
+		for parameter_name in item_user_data["parameters"]:
+			var value = item_user_data["parameters"][parameter_name]["value"]
+			set_item_parameter(item_path, parameter_name, value)
 			
 func remove_item(item_path):
 	var item = get_item(item_path)
@@ -96,19 +109,38 @@ func get_item_path_by_slot(slot_name):
 		if item_data["slot"] == slot_name:
 			return item_path
 			
-
+func set_item_parameter(item_path, parameter, value):
+	var item = get_item(item_path)
+	var item_data = get_item_data(item_path)
+	var parameter_data = item_data["parameters"][parameter]
+	
+	if parameter_data["type"] == "color_map":
+		var node = item.get_node(parameter_data["node"])
+		var material_number = parameter_data["material"]
+		var material = node.mesh.surface_get_material(material_number).next_pass
+		material.set_shader_param("item_color", value)
+		item_data["parameters"][parameter]["value"] = value
+		item_scenes[item_path].set_meta("data", item_data)
 	
 func serialize():
 	return to_json(to_dict())
 	
 func to_dict():
-	var item_names = []
+	var items = {}
 	for item_path in item_scenes:
-		item_names.append(item_path)
+		var item = {}
+		item["parameters"] = {}
+		var item_data = get_item_data(item_path)
+		for parameter_name in item_data["parameters"]:
+			var parameter = item_data["parameters"][parameter_name]
+			if parameter.has("value"):
+				item["parameters"][parameter_name] = {}
+				item["parameters"][parameter_name]["value"] = parameter["value"]
+		items.append(item_path)
 	
 	var serialized_data = {
 		name=character_name,
-		items=item_names,
+		items=items,
 		body=body.get_meta("path"),
 		uuid=character_uuid
 	}
@@ -134,7 +166,7 @@ func load_character_from_data(data):
 	character_name = data["name"]
 	character_uuid = data["uuid"]
 	for item_path in data["items"]:
-		add_item_async(item_path)
+		add_item_async(item_path, data["items"]["item_path"])
 	
 func exists_on_disk():
 	var file = File.new()
@@ -152,7 +184,6 @@ func get_image_path():
 				unique=true
 	image_path = "user://Characters/%s.png" % [character_uuid]
 	return image_path
-
 # uuid functionality
 static func getRandomInt(max_value):
   randomize()

@@ -2,7 +2,6 @@ extends Panel
 
 onready var editor_main = get_node("../../../")
 
-onready var BUTTON_CONTAINER = get_node("VBoxContainer/ScrollContainer/VBoxContainer")
 onready var ITEM_LIST = get_node("VBoxContainer/ItemList")
 onready var CARD_PREVIEW = get_node("../CardPreview")
 const THUMBNAIL_SIZE = Vector2(128,128)
