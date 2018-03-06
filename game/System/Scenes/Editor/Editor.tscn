@@ -132,7 +132,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="Editor" type="Spatial" index="0"]
+[node name="Editor" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -580,6 +580,7 @@ editor/display_folded = true
 [node name="RotationPivot" parent="Camera" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility" ]
+starting_y_offset = 1.0
 
 [node name="EROCharacter" parent="." index="6" instance=ExtResource( 7 )]
 
@@ -663,7 +664,6 @@ _sections_unfolded = [ "Hint", "Size Flags" ]
 
 [node name="Viewport" type="Viewport" parent="." index="9"]
 
-editor/display_folded = true
 arvr = false
 size = Vector2( 450, 720 )
 own_world = false

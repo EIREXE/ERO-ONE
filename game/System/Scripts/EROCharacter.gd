@@ -19,7 +19,13 @@ func _process(delta):
 	for item in items_loading:
 		var item_data = EROContent.get_item(item)
 		if EROResourceQueue.is_ready(item_data["model"]):
-			add_item(item)
+			var items_loading_data = items_loading[item]
+			print(items_loading_data)
+			if items_loading_data.has("user_data"):
+				print("HAS USER DATA")
+				add_item(item, items_loading_data["user_data"])
+			else:
+				add_item(item)
 			items_loading.erase(item)
 		# Loading failed, we'll get em next time.
 		if EROResourceQueue.get_progress(item_data["model"]) == -1:
@@ -27,14 +33,14 @@ func _process(delta):
 func load_character():
 	#init_character()
 	pass
-func load_body(body_path):
+func load_body(body_path, user_item_data=null):
 	if body:
 		body.queue_free()
 		# Using keys because godot interrupts for loops
 		# when the contents are modified
 		for item_name in item_scenes.keys():
 			remove_item(item_name)
-	var body_scene = load_item(body_path)
+	var body_scene = load_item(body_path, user_item_data)
 	
 	if body_scene:
 		add_child(body_scene)
@@ -49,7 +55,7 @@ func load_body(body_path):
 		
 
 # Loads an item but doesn't add it to the scene
-func load_item(item_path):
+func load_item(item_path, user_item_data=null):
 	var item_data = EROContent.get_item(item_path)
 	if item_data:
 		var item_model = item_data["model"]
@@ -58,6 +64,10 @@ func load_item(item_path):
 			item_scene.set_meta("data", item_data)
 			item_scene.set_meta("path", item_path)
 			item_scenes[item_path] = item_scene
+			if user_item_data:
+				apply_parameters_from_user_data(item_path, user_item_data)
+			else:
+				apply_item_parameter_defaults(item_path)
 			return item_scene
 		else:
 			Console.err("Item %s scene does not exist" % [item_path])
@@ -69,10 +79,8 @@ func load_item(item_path):
 func add_item(item_path, user_item_data=null):
 	if not item_scenes.has(item_path):
 		var item = load_item(item_path)
-		
 		body.get_node(get_body_data()["armature"]).add_child(item)
-		if user_item_data:
-			apply_parameters_from_user_data(item_path, user_item_data)
+
 		
 # Same but async
 func add_item_async(item_path, user_item_data=null):
@@ -88,7 +96,24 @@ func apply_parameters_from_user_data(item_path, item_user_data):
 	if item_user_data.has("parameters"):
 		for parameter_name in item_user_data["parameters"]:
 			var value = item_user_data["parameters"][parameter_name]["value"]
-			set_item_parameter(item_path, parameter_name, value)
+			set_item_parameter(item_path, parameter_name, str2var(value))
+			
+# Applies item parameter defaults from the EROContent store
+func apply_item_parameter_defaults(item_path):
+	var item_data = EROContent.get_item(item_path)
+	var item = get_item_data(item_path)
+	if item.has("parameters"):
+		for parameter_name in item["parameters"]:
+			var parameter = item["parameters"][parameter_name]
+			apply_parameter_defaults(item_path, parameter_name)
+	
+# Same as above but for a single parameter
+func apply_parameter_defaults(item_path, parameter_name):
+	var item_data = EROContent.get_item(item_path)
+	if item_data.has("parameters"):
+		if item_data["parameters"].has(parameter_name):
+			var parameter = item_data["parameters"][parameter_name]
+			set_item_parameter(item_path, parameter_name, str2var(parameter["default"]))
 			
 func remove_item(item_path):
 	var item = get_item(item_path)
@@ -102,6 +127,9 @@ func get_item(item_path):
 
 func get_item_data(item_path):
 	return item_scenes[item_path].get_meta("data")
+	
+func get_item_path_from_scene(scene):
+	return scene.get_meta("path")
 	
 func get_item_path_by_slot(slot_name):
 	for item_path in item_scenes:
@@ -135,8 +163,8 @@ func to_dict():
 			var parameter = item_data["parameters"][parameter_name]
 			if parameter.has("value"):
 				item["parameters"][parameter_name] = {}
-				item["parameters"][parameter_name]["value"] = parameter["value"]
-		items.append(item_path)
+				item["parameters"][parameter_name]["value"] = var2str(parameter["value"])
+		items[item_path] = item
 	
 	var serialized_data = {
 		name=character_name,
@@ -162,11 +190,14 @@ func load_character_from_card(card_path):
 		var data = EROContent.load_image_data_from_disk(card_path)
 		load_character_from_data(data)
 func load_character_from_data(data):
-	load_body(data["body"])
+	var body_path = data["body"]
+	load_body(body_path, data["items"][body_path])
 	character_name = data["name"]
 	character_uuid = data["uuid"]
 	for item_path in data["items"]:
-		add_item_async(item_path, data["items"]["item_path"])
+		# Body is loaded asynchronously...
+		if item_path != data["body"]:
+			add_item_async(item_path, data["items"][item_path])
 	
 func exists_on_disk():
 	var file = File.new()

@@ -1,29 +1,22 @@
-extends Control
-
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+extends HSplitContainer
 
 var parameter
 var parameter_name
+var character
 var item_path
-
 onready var editor_main = get_node("../../../../../../../../../")
+onready var label = get_node("HBoxContainer/Label")
+onready var color_picker = get_node("HBoxContainer2/ColorPickerButton")
 
-func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
-
-func load_parameter(item_path, parameter_name):
+func load_parameter(character, parameter_name):
 	
-	self.item_path = item_path
+	self.character = character
 	self.parameter_name = parameter_name
+	self.item_path = character.get_item_path_from_scene(character.body)
 	var item_data = editor_main.character.get_item_data(item_path)
 	self.parameter = item_data["parameters"][parameter_name]
-
-	$Label.text = parameter["name"]
-	$ColorPickerButton.color = str2var(parameter["default"])
+	label.text = parameter["name"]
+	color_picker.color = parameter["value"]
 
 func color_changed(color):
 	editor_main.set_item_parameter(item_path, parameter_name, color)

@@ -12,7 +12,7 @@ export var y_offset_min = 0
 export var x_offset_max = 3
 export var x_offset_min = -3
 
-export var starting_y_offset = 1.5
+export var starting_y_offset = 1.0
 
 export var starting_y_rotation = 35
 export var starting_x_rotation = -20
@@ -34,7 +34,6 @@ func reset_camera():
 
 func _ready():
 	set_process_input(true)
-	set_process_unhandled_input(true)
 	set_process(true)
 	reset_camera()
 	
@@ -42,7 +41,7 @@ func _process(delta):
 	# Zoom interpolation, because we use the wheel by default zoom looks like shit if we didn't
 	# interpolate it
 	set_zoom(lerp(zoom_level, zoom_target, delta*10))
-func __input(event):
+func _input(event):
 	if Input.is_action_pressed("reset_camera"):
 		reset_camera()
 		

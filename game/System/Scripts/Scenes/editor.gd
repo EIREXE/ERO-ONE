@@ -22,6 +22,8 @@ var body_tab_container
 
 var loading_character_thumbnails = []
 
+var body_pickers = []
+
 func _ready():
 	init_editor()
 	
@@ -94,6 +96,7 @@ func sync_character_info(new_text):
 func load_character_from_data(data):
 	character.load_character_from_data(data)
 	update_ui()
+	init_body_parameters()
 	
 func set_item(slot, item):
 	var current_item_path = character.get_item_path_by_slot(slot)
@@ -104,12 +107,22 @@ func set_item(slot, item):
 		character.remove_item(current_item_path)
 		
 func init_body_parameters():
+	# TODO: Fix this, godot seems to skip one of the arrays
+	var pickers_to_remove = []
+	for picker in body_pickers:
+		pickers_to_remove.append(picker)
+	for picker_to_remove in pickers_to_remove:
+		body_pickers.erase(pickers_to_remove)
+		picker_to_remove.queue_free()
+		body_pickers.clear()
+	print(body_pickers)
 	var body_path = character.body.get_meta("path")
 	var body_data = character.body.get_meta("data")
 	for parameter_name in body_data.parameters:
 		var picker = EDITOR_PICKER_SCENE.instance()
 		body_tab_container.add_child(picker)
-		picker.load_parameter(body_path, parameter_name)
+		picker.load_parameter(character, parameter_name)
+		body_pickers.append(picker)
 # This removes the slot selection and replaces it with a clothing item selection or vice versa
 # HACK? maybe?
 func select_slot(selected_clothing_slot):

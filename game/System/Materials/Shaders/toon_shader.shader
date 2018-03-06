@@ -18,17 +18,15 @@ void light() {
 	}
 	
 	float litness = dot(LIGHT,NORMAL);
-	litness = clamp(litness, 0.1,0.9);
+	litness = clamp(litness, 0.01,1.0);
 	litness = 1.0-litness; // Inverted because toon maps are inverted too
 	float ramp_position_x = 0.0;
+	
+	// Color ramp tinting
 	vec3 ramp_point = vec3(0.0);
-	if (vertical) {
-		ramp_point = texture(color_ramp, vec2(0.5,litness)).rgb;
-	}
-	else {
-		ramp_point = texture(color_ramp, vec2(litness,0.5)).rgb;
-	}
-	float NdotL = 1.0;
+	ramp_point = texture(color_ramp, vec2(0.5,litness)).rgb;
+	
+	float NdotL = 1.0; // To avoid gradients... right?
 	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),NdotL);
 	DIFFUSE_LIGHT += ramp_point*LIGHT_COLOR*ATTENUATION*ALBEDO*mix(vec3(diffuse_brdf_NL), vec3(3.14159265359), vec3(0.40));
 	
