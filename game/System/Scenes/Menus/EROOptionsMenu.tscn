@@ -2,7 +2,7 @@
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/OptionsMenu.gd" type="Script" id=1]
 
-[node name="ConfirmationDialog" type="ConfirmationDialog"]
+[node name="ConfirmationDialog" type="ConfirmationDialog" index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -14,11 +14,12 @@ margin_right = 437.0
 margin_bottom = 246.0
 rect_min_size = Vector2( 200, 70 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-popup_exclusive = false
+popup_exclusive = true
 window_title = "Settings"
 resizable = false
 dialog_hide_on_ok = true
@@ -36,6 +37,7 @@ margin_top = -238.5
 margin_right = 429.5
 margin_bottom = 210.5
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -45,6 +47,7 @@ tabs_visible = true
 
 [node name="Video" type="Control" parent="TabContainer" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -54,6 +57,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -70,6 +74,7 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -86,6 +91,7 @@ anchor_bottom = 0.0
 margin_right = 831.0
 margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -104,6 +110,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -121,6 +128,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -136,6 +144,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -155,6 +164,7 @@ margin_top = 18.0
 margin_right = 123.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -168,8 +178,8 @@ group = null
 text = "Disabled"
 flat = false
 align = 0
-selected = 0
 items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MSAA 4X", null, false, 2, null, "MSAA X8", null, false, 3, null, "MSAA X16", null, false, 4, null ]
+selected = 0
 
 [node name="Resolution" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="1"]
 
@@ -182,6 +192,7 @@ margin_top = 42.0
 margin_right = 123.0
 margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -197,6 +208,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -216,6 +228,7 @@ margin_top = 18.0
 margin_right = 123.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -229,8 +242,8 @@ group = null
 text = "Disabled"
 flat = false
 align = 0
-selected = 0
 items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MSAA 4X", null, false, 2, null, "MSAA X8", null, false, 3, null, "MSAA X16", null, false, 4, null ]
+selected = 0
 
 [node name="FXAA" type="VBoxContainer" parent="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol" index="2"]
 
@@ -243,6 +256,7 @@ margin_top = 84.0
 margin_right = 123.0
 margin_bottom = 108.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -259,6 +273,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -284,6 +299,7 @@ margin_top = 112.0
 margin_right = 123.0
 margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -300,6 +316,7 @@ anchor_bottom = 0.0
 margin_right = 123.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -324,6 +341,7 @@ margin_left = 173.0
 margin_right = 302.0
 margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -341,6 +359,7 @@ anchor_bottom = 0.0
 margin_right = 129.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -357,6 +376,7 @@ anchor_bottom = 0.0
 margin_right = 129.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -376,6 +396,7 @@ margin_top = 18.0
 margin_right = 129.0
 margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -386,15 +407,14 @@ action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Disabled"
+text = "X1"
 flat = false
 align = 0
-selected = 0
 items = [ "X1", null, false, 1, null, "X2", null, false, 2, null, "X4", null, false, 4, null, "X8", null, false, 8, null, "X16", null, false, 16, null ]
+selected = 0
 
 [node name="Controls" type="Control" parent="TabContainer" index="1"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -404,6 +424,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -426,7 +447,7 @@ columns = 1
 allow_reselect = false
 allow_rmb_select = false
 hide_folding = false
-hide_root = false
+hide_root = true
 drop_mode_flags = 0
 select_mode = 0
 
@@ -442,6 +463,7 @@ margin_top = -29.0
 margin_right = 236.0
 margin_bottom = 29.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -466,6 +488,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -476,5 +499,7 @@ size_flags_vertical = 1
 [connection signal="confirmed" from="." to="." method="confirmed"]
 
 [connection signal="item_selected" from="TabContainer/Video/VBoxContainer/HBoxContainer/LeftCol/MSAA/MSAAOption" to="." method="change_msaa"]
+
+[connection signal="item_activated" from="TabContainer/Controls/InputMapTree" to="." method="input_item_double_clicked"]
 
 
