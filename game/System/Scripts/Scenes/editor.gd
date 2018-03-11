@@ -24,30 +24,31 @@ var loading_character_thumbnails = []
 
 var body_pickers = []
 
+const DEFAULT_BODY = "BaseContent.Bodies.Female"
+
 func _ready():
-	init_editor()
+	# If _scene_path is empty then it means this scene has been loaded from the editor and should load defaults
+	if not EROSceneLoader._scene_path:
+		load_body(DEFAULT_BODY)
 	
 func init_editor():
-	# TODO: By default we load the female body, maybe allow init_editor to specify an initial body to load?
-	character.load_body("BaseContent.Bodies.Female")
-	
-	"""character.load_body("TestContent.Bodies.BodyTest")
-	character.add_item("TestContent.Clothing.ElfSocks")
-	character.add_item("TestContent.Clothing.ElfShoes")
-	character.add_item("TestContent.Clothing.ElfPantsu")
-	character.add_item("TestContent.Clothing.ElfBloomers")
-	character.add_item("TestContent.Clothing.ElfTop")
-	character.add_item("TestContent.Clothing.ElfSkirt")
-	"""
 	# RECODE
 	# Clean this up
+	
+	# Remove existing tabs:
+	for tab in TABS_NODE.get_children().duplicate():
+		if tab.name != "Info":
+			tab.queue_free()
+			
+	# Add tabs
 	for item_type in EROContent.ALLOWED_ITEM_TYPES:
 		if item_type != "Clothing":
 			var new_tab = TAB_TEMPLATE.duplicate()
 			new_tab.name = EROContent.get_item_type_friendly_name(item_type)
 			remove_child(new_tab)
 			TABS_NODE.add_child(new_tab)
-			print(item_type)
+			
+			# Body tab specific stuff
 			if item_type == "Bodies":
 				
 				body_tab = new_tab
@@ -86,6 +87,10 @@ func init_editor():
 		
 	init_body_parameters()
 		
+func load_body(body_path):
+	character.load_body(body_path)
+	init_editor()
+		
 func update_ui():
 	character_name_field.text = character.character_name
 	
@@ -107,15 +112,11 @@ func set_item(slot, item):
 		character.remove_item(current_item_path)
 		
 func init_body_parameters():
-	# TODO: Fix this, godot seems to skip one of the arrays
-	var pickers_to_remove = []
-	for picker in body_pickers:
-		pickers_to_remove.append(picker)
+	# Duplicate to avoid modifying the original array while looping
+	var pickers_to_remove = body_pickers.duplicate()
 	for picker_to_remove in pickers_to_remove:
-		body_pickers.erase(pickers_to_remove)
+		body_pickers.erase(picker_to_remove)
 		picker_to_remove.queue_free()
-		body_pickers.clear()
-	print(body_pickers)
 	var body_path = character.body.get_meta("path")
 	var body_data = character.body.get_meta("data")
 	for parameter_name in body_data.parameters:

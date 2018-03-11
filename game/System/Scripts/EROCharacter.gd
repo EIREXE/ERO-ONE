@@ -20,9 +20,7 @@ func _process(delta):
 		var item_data = EROContent.get_item(item)
 		if EROResourceQueue.is_ready(item_data["model"]):
 			var items_loading_data = items_loading[item]
-			print(items_loading_data)
 			if items_loading_data.has("user_data"):
-				print("HAS USER DATA")
 				add_item(item, items_loading_data["user_data"])
 			else:
 				add_item(item)
@@ -30,14 +28,14 @@ func _process(delta):
 		# Loading failed, we'll get em next time.
 		if EROResourceQueue.get_progress(item_data["model"]) == -1:
 			items_loading.erase(item)
+			Console.err("Aborted loading of %s" % [item], "EROCharacter")
 func load_character():
 	#init_character()
 	pass
 func load_body(body_path, user_item_data=null):
 	if body:
 		body.queue_free()
-		# Using keys because godot interrupts for loops
-		# when the contents are modified
+		# Using keys because godot breaks when you modify arrays during loops
 		for item_name in item_scenes.keys():
 			remove_item(item_name)
 	var body_scene = load_item(body_path, user_item_data)
@@ -119,6 +117,7 @@ func remove_item(item_path):
 	var item = get_item(item_path)
 	item.free()
 	item_scenes.erase(item_path)
+
 func get_body_data():
 	return body.get_meta("data")
 
@@ -189,7 +188,9 @@ func load_character_from_card(card_path):
 	if file.file_exists(card_path):
 		var data = EROContent.load_image_data_from_disk(card_path)
 		load_character_from_data(data)
+
 func load_character_from_data(data):
+	print(to_json(data))
 	var body_path = data["body"]
 	load_body(body_path, data["items"][body_path])
 	character_name = data["name"]

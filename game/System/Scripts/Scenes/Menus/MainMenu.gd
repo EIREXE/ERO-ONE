@@ -12,7 +12,7 @@ func set_version_label():
 	version_label.text = game_manager.get_version_string()
 
 func load_character_editor():
-	EROSceneLoader.change_scene(EDITOR_SCENE_PATH)
+	EROSceneLoader.change_scene(EDITOR_SCENE_PATH, true, {"load_body": ["BaseContent.Bodies.Female"]})
 	
 func populate_content_list():
 	for content_pack_name in EROContent.get_all_content_packs():
