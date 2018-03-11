@@ -27,6 +27,7 @@ EROSteganography="*res://System/Scripts/EROSteganography.gd"
 EROLoadingScreen="*res://System/Scenes/Menus/LoadingScreen.tscn"
 EROSceneLoader="*res://System/Scripts/EROSceneLoader.gd"
 EROOverlayedMenus="*res://System/Scenes/Menus/OverlayedMenus.tscn"
+EROInputSettings="*res://System/Scripts/EROInputSettings.gd"
 
 [display]
 

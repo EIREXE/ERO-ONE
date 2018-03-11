@@ -21,6 +21,7 @@ var config_directory = "user://Config"
 var show_fps = false setget set_show_fps
 
 func _ready():
+	
 	if not Directory.new().dir_exists(config_directory):
 		Directory.new().make_dir_recursive(config_directory)
 	
@@ -78,6 +79,7 @@ func load_settings(path):
 		return OK
 	else:
 		return FAILED
+
 
 func set_resolution(new_resolution):
 	if typeof(new_resolution) == TYPE_VECTOR2:
