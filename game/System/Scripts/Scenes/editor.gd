@@ -24,7 +24,9 @@ var loading_character_thumbnails = []
 
 var body_pickers = []
 
-const DEFAULT_BODY = "BaseContent.Bodies.Female"
+const DEFAULT_BODY = "TestContent.Bodies.BodyTest"
+
+
 
 func _ready():
 	# If _scene_path is empty then it means this scene has been loaded from the editor and should load defaults
@@ -89,14 +91,15 @@ func init_editor():
 		
 func load_body(body_path):
 	character.load_body(body_path)
+	character.set_clothing_slot("normal")
 	init_editor()
 		
 func update_ui():
-	character_name_field.text = character.character_name
+	character_name_field.text = character.character_data["name"]
 	
 # sets the character info from the ui to the character object
 func sync_character_info(new_text):
-	character.character_name = character_name_field.text
+	character.character_data["name"] = character_name_field.text
 		
 func load_character_from_data(data):
 	character.load_character_from_data(data)
@@ -117,13 +120,14 @@ func init_body_parameters():
 	for picker_to_remove in pickers_to_remove:
 		body_pickers.erase(picker_to_remove)
 		picker_to_remove.queue_free()
-	var body_path = character.body.get_meta("path")
-	var body_data = character.body.get_meta("data")
-	for parameter_name in body_data.parameters:
-		var picker = EDITOR_PICKER_SCENE.instance()
-		body_tab_container.add_child(picker)
-		picker.load_parameter(character, parameter_name)
-		body_pickers.append(picker)
+	var body_path = character.character_data["body"]
+	var body_data = character.get_body_data()
+	if body_data.has("parameters"):
+		for parameter_name in body_data["parameters"]:
+			var picker = EDITOR_PICKER_SCENE.instance()
+			body_tab_container.add_child(picker)
+			picker.load_parameter(character, parameter_name)
+			body_pickers.append(picker)
 # This removes the slot selection and replaces it with a clothing item selection or vice versa
 # HACK? maybe?
 func select_slot(selected_clothing_slot):
@@ -175,6 +179,8 @@ func save_character(add_to_list=false):
 	character.save_character_to_card(viewport_image)
 	if add_to_list:
 		characters_container.add_character(character.to_dict(), character.get_image_path())
+	else:
+		characters_container.update_character_image(character.character_data["uuid"])
 
 func save_current_character():
 	if character.exists_on_disk():
@@ -182,3 +188,11 @@ func save_current_character():
 	else:
 		# We are not overwriting anything, save it without asking the user
 		save_character(true)
+
+func _on_ClothingSlotOption_item_selected(ID):
+	if ID == 0:
+		character.set_clothing_slot("normal")
+	if ID == 1:
+		character.set_clothing_slot("swimwear")
+	if ID == 2:
+		character.set_clothing_slot("sleep")

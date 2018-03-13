@@ -26,13 +26,29 @@ func add_character(character_data, image_path):
 	
 	var metadata = {
 		"character_data": character_data,
-		"preview_image": preview_image
+		"preview_image": preview_image,
+		"image_path": image_path
 	}
 	
 	var item = ITEM_LIST.get_item_count()-1
 	
 	ITEM_LIST.set_item_metadata(item, metadata)
 	ITEM_LIST.set_item_tooltip_enabled(item, false)
+	
+func update_character_image(uuid):
+	for item in range(ITEM_LIST.get_item_count()):
+		var item_data = ITEM_LIST.get_item_metadata(item)["character_data"]
+		if item_data.has("uuid"):
+			if item_data["uuid"] == uuid:
+				var image_path = ITEM_LIST.get_item_metadata(item)["image_path"]
+				
+				var preview_image = ImageTexture.new()
+				preview_image.load(image_path)
+				preview_image.set_size_override(THUMBNAIL_SIZE)
+				
+				item_data["preview_image"] = preview_image
+				
+				ITEM_LIST.set_item_metadata(item, item_data)
 	
 func delete_character():
 	if ITEM_LIST.get_selected_items():
