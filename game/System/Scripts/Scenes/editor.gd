@@ -6,6 +6,7 @@ onready var TAB_TEMPLATE = get_node("TabTemplate")
 onready var characters_container = get_node("EditorUI/EROGameUI/CharacterSelector")
 onready var overwrite_confirmation_dialog = get_node("EditorUI/EROGameUI/OverwriteConfirmationDialog")
 onready var character_name_field = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer/CharacterNameField")
+onready var personalities_option_button = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer/Info/TemplateContainer/HBoxContainer2/CharacterNameField/PersonalitiesOptionButton")
 
 const ITEM_LIST_SCENE = preload("res://System/Scenes/Menus/Blocks/EROItemList.tscn")
 const EDITOR_PICKER_SCENE = preload("res://System/Scenes/Editor/EditorColorPicker.tscn")
@@ -24,7 +25,7 @@ var loading_character_thumbnails = []
 
 var body_pickers = []
 
-const DEFAULT_BODY = "TestContent.Bodies.BodyTest"
+const DEFAULT_BODY = "BaseContent.Bodies.Female"
 
 
 
@@ -36,6 +37,13 @@ func _ready():
 func init_editor():
 	# RECODE
 	# Clean this up
+	# Init personalities
+	var current_personality_id = 0
+	for personality_name in EROContent.personalities:
+		var personality_data = EROContent.personalities[personality_name]
+		personalities_option_button.add_item(EROContent.personalities[personality_name]["name"], current_personality_id)
+		personalities_option_button.set_item_metadata(current_personality_id, {"personality_name": personality_name})
+		current_personality_id += 1
 	
 	# Remove existing tabs:
 	for tab in TABS_NODE.get_children().duplicate():
@@ -108,11 +116,14 @@ func load_character_from_data(data):
 	
 func set_item(slot, item):
 	var current_item_path = character.get_item_path_by_slot(slot)
-
+	
+	
+	
+	if current_item_path and current_item_path != item:
+		character.remove_item(current_item_path)
 	if item:
 		character.add_item_async(item)
-	elif current_item_path:
-		character.remove_item(current_item_path)
+
 		
 func init_body_parameters():
 	# Duplicate to avoid modifying the original array while looping
@@ -148,9 +159,9 @@ func select_slot(selected_clothing_slot):
 	back_button.text = "Back..."
 	back_button.connect("pressed", self, "select_slot", [null])
 	current_clothing_tab.add_child(back_button)
-	
+	1
 	var none_button = Button.new()
-	none_button.text = "None"
+	none_button.text = "Remove"
 	none_button.connect("pressed", self, "set_item", [selected_clothing_slot, null])
 	current_clothing_tab.add_child(none_button)
 	

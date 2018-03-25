@@ -35,6 +35,10 @@ window/size/width=1280
 window/size/height=720
 window/vsync/use_vsync=false
 
+[gui]
+
+theme/custom="res://System/ui_theme.tres"
+
 [input]
 
 console_toggle=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777253,"unicode":0,"echo":false,"script":null)

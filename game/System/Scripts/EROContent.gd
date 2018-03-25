@@ -24,11 +24,14 @@ const ITEM_TYPE_FRIENDLY_NAMES = {
 
 var characters = {}
 
+const PERSONALITIES_FILE = "res://System/Data/Editor/personalities.json"
+var personalities = {}
 func _ready():
 	load_mod_pcks()
 	load_content_packs()
 	load_content_config()
 	save_content_config()
+	load_personalities()
 	Console.register_command('list_content_packs', {
 		description = 'Lists all the currently loaded content packs',
 		args = [],
@@ -240,3 +243,11 @@ func get_characters():
 					characters.append(image_data)
 			file_name = dir.get_next()
 	return characters
+	
+# Personality loading
+func load_personalities():
+	var file = File.new()
+	# Add content packs from the file
+	if file.file_exists(PERSONALITIES_FILE):
+		file.open(PERSONALITIES_FILE, File.READ)
+		personalities = parse_json(file.get_as_text())

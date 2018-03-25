@@ -57,6 +57,7 @@ func save_settings(path=main_config_path):
 	config_file.set_value("display", "resolution", resolution)
 	config_file.set_value("display", "fullscreen", fullscreen)
 	config_file.set_value("display", "borderless", borderless)
+	config_file.set_value("display", "show_fps", show_fps)
 	
 	# Graphics values
 	config_file.set_value("graphics", "MSAA", msaa)
