@@ -7,10 +7,7 @@ path="res://.import/metal circle.png-1ea0211f491e77f73e4a77f1511b986f.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/metal circle.png"
-source_md5="41d309d4e3513e1b3b9f4a495f3996aa"
-
 dest_files=[ "res://.import/metal circle.png-1ea0211f491e77f73e4a77f1511b986f.stex" ]
-dest_md5="f07c113b4561abbf35322c1778fa9232"
 
 [params]
 

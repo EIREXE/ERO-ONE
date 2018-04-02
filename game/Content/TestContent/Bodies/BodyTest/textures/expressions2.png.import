@@ -7,10 +7,7 @@ path="res://.import/expressions2.png-89fe1737a8abf014bcf2a18022797020.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/expressions2.png"
-source_md5="8de3610e1e4f0fd86a37da7c50ef0f56"
-
 dest_files=[ "res://.import/expressions2.png-89fe1737a8abf014bcf2a18022797020.stex" ]
-dest_md5="bf7876e3d4fa5a6d47d312066c9946dc"
 
 [params]
 

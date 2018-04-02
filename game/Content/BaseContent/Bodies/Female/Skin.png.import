@@ -8,10 +8,7 @@ path.etc2="res://.import/Skin.png-25b46bc80b33daa496350dffd2e39a5f.etc2.stex"
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/Skin.png"
-source_md5="ceae23577c6fb530dc12e255ac8fa803"
-
 dest_files=[ "res://.import/Skin.png-25b46bc80b33daa496350dffd2e39a5f.s3tc.stex", "res://.import/Skin.png-25b46bc80b33daa496350dffd2e39a5f.etc2.stex" ]
-dest_md5="6f00b77760e4402bb210e2b2a248e775"
 
 [params]
 

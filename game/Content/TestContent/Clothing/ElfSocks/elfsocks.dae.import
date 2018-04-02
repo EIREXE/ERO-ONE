@@ -7,10 +7,7 @@ path="res://.import/elfsocks.dae-daca820b3bce29cd0cebbbe7b173271a.scn"
 [deps]
 
 source_file="res://Content/TestContent/Clothing/ElfSocks/elfsocks.dae"
-source_md5="62303432263cd2ecc01db1dc8f980107"
-
 dest_files=[ "res://.import/elfsocks.dae-daca820b3bce29cd0cebbbe7b173271a.scn" ]
-dest_md5="a7bab7bfffc8e50ef52fde3949c82ee0"
 
 [params]
 

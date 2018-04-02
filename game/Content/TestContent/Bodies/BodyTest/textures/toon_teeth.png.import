@@ -8,10 +8,7 @@ path.etc2="res://.import/toon_teeth.png-905677f6253458453cd2f89ad0d51368.etc2.st
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/toon_teeth.png"
-source_md5="8ee3c73d6bf0e80d15db27b58afee625"
-
 dest_files=[ "res://.import/toon_teeth.png-905677f6253458453cd2f89ad0d51368.s3tc.stex", "res://.import/toon_teeth.png-905677f6253458453cd2f89ad0d51368.etc2.stex" ]
-dest_md5="950d95e1c2dde0f6e3c6c4e896ee69e4"
 
 [params]
 

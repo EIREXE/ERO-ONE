@@ -7,10 +7,7 @@ path="res://.import/camera_screenshot.png-b007de8da7889216eb13c80e7ab50a3f.stex"
 [deps]
 
 source_file="res://System/Textures/ui/Icons/camera_screenshot.png"
-source_md5="b9e6e3a462513e3fb17d5ab9a5ad7651"
-
 dest_files=[ "res://.import/camera_screenshot.png-b007de8da7889216eb13c80e7ab50a3f.stex" ]
-dest_md5="66221dfdae8a5719cdaf866248d6bb1c"
 
 [params]
 

@@ -8,10 +8,7 @@ path.etc2="res://.import/Skin_Roughness.png-53d10b09a3089010508af5d347665959.etc
 [deps]
 
 source_file="res://System/Textures/models/bodies/female/Skin_Roughness.png"
-source_md5="6d367df61a0b71549dd9c251b18a3400"
-
 dest_files=[ "res://.import/Skin_Roughness.png-53d10b09a3089010508af5d347665959.s3tc.stex", "res://.import/Skin_Roughness.png-53d10b09a3089010508af5d347665959.etc2.stex" ]
-dest_md5="26c760547cd4676d63f82a35124e4500"
 
 [params]
 

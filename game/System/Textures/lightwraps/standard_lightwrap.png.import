@@ -8,10 +8,7 @@ path.etc2="res://.import/standard_lightwrap.png-0cf02ec13dc98e45e30f907984b92704
 [deps]
 
 source_file="res://System/Textures/lightwraps/standard_lightwrap.png"
-source_md5="9c704859010ab635d53865373b9f2437"
-
 dest_files=[ "res://.import/standard_lightwrap.png-0cf02ec13dc98e45e30f907984b92704.s3tc.stex", "res://.import/standard_lightwrap.png-0cf02ec13dc98e45e30f907984b92704.etc2.stex" ]
-dest_md5="72a315131411ca8e13ee74931031097b"
 
 [params]
 

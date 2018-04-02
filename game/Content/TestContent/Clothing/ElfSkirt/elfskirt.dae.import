@@ -7,10 +7,7 @@ path="res://.import/elfskirt.dae-192771b3c301560bff5f96c7ec19b40a.scn"
 [deps]
 
 source_file="res://Content/TestContent/Clothing/ElfSkirt/elfskirt.dae"
-source_md5="83751db21986c5155a37db104710a65e"
-
 dest_files=[ "res://.import/elfskirt.dae-192771b3c301560bff5f96c7ec19b40a.scn" ]
-dest_md5="4c940c504ea063c80b8b857921f8ff1a"
 
 [params]
 

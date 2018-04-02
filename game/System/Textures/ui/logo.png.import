@@ -7,10 +7,7 @@ path="res://.import/logo.png-cea6ac38d2bf4e9ea11769a12a9554ac.stex"
 [deps]
 
 source_file="res://System/Textures/ui/logo.png"
-source_md5="344f3b6d86a73e85b7e0a80070081979"
-
 dest_files=[ "res://.import/logo.png-cea6ac38d2bf4e9ea11769a12a9554ac.stex" ]
-dest_md5="bb3338d6d989d02fce32f3cd586ac27e"
 
 [params]
 

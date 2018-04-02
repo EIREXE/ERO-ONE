@@ -7,10 +7,7 @@ path="res://.import/test_cube.dae-7e5c9cb2bdd511b9f3fbfbaeed614b23.scn"
 [deps]
 
 source_file="res://System/Models/test_cube.dae"
-source_md5="fcf4d9acec42c95c7f3a6ddb96d98678"
-
 dest_files=[ "res://.import/test_cube.dae-7e5c9cb2bdd511b9f3fbfbaeed614b23.scn" ]
-dest_md5="a22e276ffd3fe04dd66e27ac5e9be985"
 
 [params]
 

@@ -8,10 +8,7 @@ path.etc2="res://.import/fluidmap.png-477a39281b5d72febbd30e72e33693a3.etc2.stex
 [deps]
 
 source_file="res://Content/Textures/demos/fluidmap/fluidmap.png"
-source_md5="7198589660d4756705822dfc310a313d"
-
 dest_files=[ "res://.import/fluidmap.png-477a39281b5d72febbd30e72e33693a3.s3tc.stex", "res://.import/fluidmap.png-477a39281b5d72febbd30e72e33693a3.etc2.stex" ]
-dest_md5="707e0f706d2b569f953e8294464f1e8c"
 
 [params]
 

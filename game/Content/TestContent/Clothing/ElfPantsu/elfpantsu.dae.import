@@ -7,10 +7,7 @@ path="res://.import/elfpantsu.dae-a1b9182190764e96cf3e1a5206c51be0.scn"
 [deps]
 
 source_file="res://Content/TestContent/Clothing/ElfPantsu/elfpantsu.dae"
-source_md5="dd173295cb6bba7c9766a67a63136a03"
-
 dest_files=[ "res://.import/elfpantsu.dae-a1b9182190764e96cf3e1a5206c51be0.scn" ]
-dest_md5="9d6396af59026682e21fa2249c67ef0e"
 
 [params]
 

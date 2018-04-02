@@ -7,10 +7,7 @@ path="res://.import/EditorCenterPiece.dae-a7aa5329ac83f517a620038e0fe20484.scn"
 [deps]
 
 source_file="res://System/Models/Editor/EditorCenterPiece.dae"
-source_md5="75fc7ca31080484f79f1e6f83727677c"
-
 dest_files=[ "res://.import/EditorCenterPiece.dae-a7aa5329ac83f517a620038e0fe20484.scn" ]
-dest_md5="7892c467011b683a3016b754a3bb6452"
 
 [params]
 

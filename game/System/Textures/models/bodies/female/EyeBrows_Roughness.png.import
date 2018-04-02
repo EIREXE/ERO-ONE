@@ -8,10 +8,7 @@ path.etc2="res://.import/EyeBrows_Roughness.png-44c29b2d6b05b93e40437dc6e5688d06
 [deps]
 
 source_file="res://System/Textures/models/bodies/female/EyeBrows_Roughness.png"
-source_md5="cd9abc4fb06ad368ec7931a5f0c1c68a"
-
 dest_files=[ "res://.import/EyeBrows_Roughness.png-44c29b2d6b05b93e40437dc6e5688d06.s3tc.stex", "res://.import/EyeBrows_Roughness.png-44c29b2d6b05b93e40437dc6e5688d06.etc2.stex" ]
-dest_md5="d6a339ecfb98239ac5c06d7c05e7c91e"
 
 [params]
 

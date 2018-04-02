@@ -8,10 +8,7 @@ path.etc2="res://.import/test_ramp.png-927cf198d365e08abe595445ee661f48.etc2.ste
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/test_ramp.png"
-source_md5="74fe61ad66f2758e2143dbf68710c412"
-
 dest_files=[ "res://.import/test_ramp.png-927cf198d365e08abe595445ee661f48.s3tc.stex", "res://.import/test_ramp.png-927cf198d365e08abe595445ee661f48.etc2.stex" ]
-dest_md5="31d00ebf0990d89f22681d55cce3ab2e"
 
 [params]
 

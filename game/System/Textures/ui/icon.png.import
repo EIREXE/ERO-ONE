@@ -7,10 +7,7 @@ path="res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.stex"
 [deps]
 
 source_file="res://System/Textures/ui/icon.png"
-source_md5="d27cef801796d5a6b820e40e3aac27ee"
-
 dest_files=[ "res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.stex" ]
-dest_md5="17e29a52a6ebe958a63249dd30ce33ef"
 
 [params]
 

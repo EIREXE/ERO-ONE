@@ -8,10 +8,7 @@ path.etc2="res://.import/Lashes_Roughness.png-243d8727ab7289b38bc410831394102e.e
 [deps]
 
 source_file="res://System/Textures/models/bodies/female/Lashes_Roughness.png"
-source_md5="a53c33bc852904f932673e5c581eca68"
-
 dest_files=[ "res://.import/Lashes_Roughness.png-243d8727ab7289b38bc410831394102e.s3tc.stex", "res://.import/Lashes_Roughness.png-243d8727ab7289b38bc410831394102e.etc2.stex" ]
-dest_md5="f60485845c0ee67f824ff7b1c7aba648"
 
 [params]
 

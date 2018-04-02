@@ -7,10 +7,7 @@ path="res://.import/skin spa.png-367bfb00284bce8cca6b549e66d3f460.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/skin spa.png"
-source_md5="bd038a2bb142709b61e2a34cc62b6452"
-
 dest_files=[ "res://.import/skin spa.png-367bfb00284bce8cca6b549e66d3f460.stex" ]
-dest_md5="912b460f5a38bb592ed1944e85fe051f"
 
 [params]
 

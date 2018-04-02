@@ -8,10 +8,7 @@ path.etc2="res://.import/hair.png-563d3d73fa5b797b0bb54f6ae597413d.etc2.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/hair.png"
-source_md5="050c69b0178795899d7a95879a528c26"
-
 dest_files=[ "res://.import/hair.png-563d3d73fa5b797b0bb54f6ae597413d.s3tc.stex", "res://.import/hair.png-563d3d73fa5b797b0bb54f6ae597413d.etc2.stex" ]
-dest_md5="bf9509baee738cab18f7a64727f7898b"
 
 [params]
 

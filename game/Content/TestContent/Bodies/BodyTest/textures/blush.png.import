@@ -7,10 +7,7 @@ path="res://.import/blush.png-42f5b45da5c2cc5a228ad20e6efc8e41.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/blush.png"
-source_md5="bc25b7fec6ea25a610d45c5d1f7e657e"
-
 dest_files=[ "res://.import/blush.png-42f5b45da5c2cc5a228ad20e6efc8e41.stex" ]
-dest_md5="21a4f2cd5d8ed88fd3ea1234fe2b78c9"
 
 [params]
 

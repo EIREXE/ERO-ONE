@@ -8,10 +8,7 @@ path.etc2="res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.etc2.stex"
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/Eyes.png"
-source_md5="db4f9891ddead1d76901ad019fee1d27"
-
 dest_files=[ "res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.s3tc.stex", "res://.import/Eyes.png-b05078dd2870f145e5e10f2c156277f6.etc2.stex" ]
-dest_md5="e939020942ba23810791827b64c0e252"
 
 [params]
 

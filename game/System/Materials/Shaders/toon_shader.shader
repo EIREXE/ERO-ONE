@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode diffuse_toon, specular_toon;
+render_mode shadows_disabled;
 
 uniform sampler2D color_ramp : hint_black_albedo;
 uniform sampler2D albedo : hint_albedo;

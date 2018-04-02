@@ -7,10 +7,7 @@ path="res://.import/elfbloomers.dae-1d7b37575c2ae87c0eab5ced66ea9451.scn"
 [deps]
 
 source_file="res://Content/TestContent/Clothing/ElfBloomers/elfbloomers.dae"
-source_md5="aab0368826fab5a3d15c3365b31874d6"
-
 dest_files=[ "res://.import/elfbloomers.dae-1d7b37575c2ae87c0eab5ced66ea9451.scn" ]
-dest_md5="13e651aecf460a933f3fbde546e82beb"
 
 [params]
 

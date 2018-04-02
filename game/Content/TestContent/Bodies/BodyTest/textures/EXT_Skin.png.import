@@ -8,10 +8,7 @@ path.etc2="res://.import/EXT_Skin.png-5fdef0d0ad0f36e7ea7296cf1ca8f64f.etc2.stex
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/EXT_Skin.png"
-source_md5="0ea84fb0973e51fc8158619abce7c140"
-
 dest_files=[ "res://.import/EXT_Skin.png-5fdef0d0ad0f36e7ea7296cf1ca8f64f.s3tc.stex", "res://.import/EXT_Skin.png-5fdef0d0ad0f36e7ea7296cf1ca8f64f.etc2.stex" ]
-dest_md5="cf48734bc3786efaa8dd1c22b2cf165a"
 
 [params]
 

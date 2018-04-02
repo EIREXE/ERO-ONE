@@ -7,10 +7,7 @@ path="res://.import/ELFHAIR.dae-54b9b947554ebc180e86917f6265c505.scn"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae"
-source_md5="f7344fd8393c83893f0632f56e4174a5"
-
 dest_files=[ "res://.import/ELFHAIR.dae-54b9b947554ebc180e86917f6265c505.scn" ]
-dest_md5="5493109b4e0f7bb64293c39bbfdee883"
 
 [params]
 

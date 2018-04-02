@@ -7,10 +7,7 @@ path="res://.import/Background.png-129269ea1cd4cc6ebe61363656ed6500.stex"
 [deps]
 
 source_file="res://System/Textures/ui/Background.png"
-source_md5="ac8b7ae07af0fbddc5ef41f2649b2f07"
-
 dest_files=[ "res://.import/Background.png-129269ea1cd4cc6ebe61363656ed6500.stex" ]
-dest_md5="06509e112977a0d0d5653621997d2737"
 
 [params]
 

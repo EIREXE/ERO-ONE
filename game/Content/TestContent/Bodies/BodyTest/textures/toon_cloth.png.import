@@ -8,10 +8,7 @@ path.etc2="res://.import/toon_cloth.png-e91069e3a75aa453f869ec5359db836b.etc2.st
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/toon_cloth.png"
-source_md5="fc5b4655b09f97752a44e178c65f3d20"
-
 dest_files=[ "res://.import/toon_cloth.png-e91069e3a75aa453f869ec5359db836b.s3tc.stex", "res://.import/toon_cloth.png-e91069e3a75aa453f869ec5359db836b.etc2.stex" ]
-dest_md5="a45a5fc54271d4328a53951bb484d970"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/tears.png-e685c01b438de2a5c15f73d676822488.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/tears.png"
-source_md5="336419418a8b4220053447e747f1c9aa"
-
 dest_files=[ "res://.import/tears.png-e685c01b438de2a5c15f73d676822488.stex" ]
-dest_md5="eb2284367767f0c7e8f83a0bdf5b64f5"
 
 [params]
 

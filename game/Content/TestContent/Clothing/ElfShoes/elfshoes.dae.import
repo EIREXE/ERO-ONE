@@ -7,10 +7,7 @@ path="res://.import/elfshoes.dae-8649ff3e6fd38b8bee96f86c384bb64b.scn"
 [deps]
 
 source_file="res://Content/TestContent/Clothing/ElfShoes/elfshoes.dae"
-source_md5="b4b40a9ab99ac8c801e5884b079eab24"
-
 dest_files=[ "res://.import/elfshoes.dae-8649ff3e6fd38b8bee96f86c384bb64b.scn" ]
-dest_md5="d1f1d69e8cf1885a971356afdbc4601c"
 
 [params]
 

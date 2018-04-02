@@ -8,10 +8,7 @@ path.etc2="res://.import/underpants.png-2123657846716e7f6ba1055bbe124271.etc2.st
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/underpants.png"
-source_md5="5ca68d4b4628356864fb805a7f4653bd"
-
 dest_files=[ "res://.import/underpants.png-2123657846716e7f6ba1055bbe124271.s3tc.stex", "res://.import/underpants.png-2123657846716e7f6ba1055bbe124271.etc2.stex" ]
-dest_md5="c5df0a85bbc045e4e53ad3faa45ca874"
 
 [params]
 

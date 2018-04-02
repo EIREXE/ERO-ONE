@@ -7,10 +7,7 @@ path="res://.import/logo-eirteam.png-504332b9c4d0f6fa0970dc942076b77c.stex"
 [deps]
 
 source_file="res://System/Textures/ui/logo-eirteam.png"
-source_md5="9a904a7869aaa07548df1e06e2baf146"
-
 dest_files=[ "res://.import/logo-eirteam.png-504332b9c4d0f6fa0970dc942076b77c.stex" ]
-dest_md5="6e864debab701e34cfdf1b314e36264c"
 
 [params]
 

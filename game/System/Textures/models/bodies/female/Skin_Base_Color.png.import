@@ -8,10 +8,7 @@ path.etc2="res://.import/Skin_Base_Color.png-1d1371e83124a43d8a2806559ffca89f.et
 [deps]
 
 source_file="res://System/Textures/models/bodies/female/Skin_Base_Color.png"
-source_md5="ec3b3d48d0d2b61560c7963bac9da8ef"
-
 dest_files=[ "res://.import/Skin_Base_Color.png-1d1371e83124a43d8a2806559ffca89f.s3tc.stex", "res://.import/Skin_Base_Color.png-1d1371e83124a43d8a2806559ffca89f.etc2.stex" ]
-dest_md5="4bf4ad1d7dababc7df9d81a5b4c4b0ab"
 
 [params]
 

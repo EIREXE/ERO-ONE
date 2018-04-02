@@ -7,10 +7,7 @@ path="res://.import/nail spa.png-5c559234a8da4f8daf7ac29e72b94b4d.stex"
 [deps]
 
 source_file="res://Content/TestContent/Bodies/BodyTest/textures/nail spa.png"
-source_md5="79247d403a833030b12d11d837522063"
-
 dest_files=[ "res://.import/nail spa.png-5c559234a8da4f8daf7ac29e72b94b4d.stex" ]
-dest_md5="88b3f7375b89f901c6ceaf0200be0e74"
 
 [params]
 

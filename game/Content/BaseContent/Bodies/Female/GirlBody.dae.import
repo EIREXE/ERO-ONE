@@ -7,10 +7,7 @@ path="res://.import/GirlBody.dae-863dad0b0f4bc08cb8035ed69d64e0cf.scn"
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/GirlBody.dae"
-source_md5="3d0c9c7fa0361afc76796b9da911222b"
-
 dest_files=[ "res://.import/GirlBody.dae-863dad0b0f4bc08cb8035ed69d64e0cf.scn" ]
-dest_md5="bedc34b35c8cf328d46cd2648a4c1793"
 
 [params]
 
