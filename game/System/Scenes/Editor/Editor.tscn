@@ -6,7 +6,7 @@
 [ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=4]
 [ext_resource path="res://System/Textures/cards/frame_0.png" type="Texture" id=5]
 [ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://System/Scenes/EROCharacter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://System/Scenes/EROCharacterRenderer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae" type="PackedScene" id=8]
 
 [sub_resource type="GIProbeData" id=1]
@@ -701,7 +701,7 @@ editor/display_folded = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 starting_y_offset = 1.0
 
-[node name="EROCharacter" parent="." index="6" instance=ExtResource( 7 )]
+[node name="EROCharacterRenderer" parent="." index="6" instance=ExtResource( 7 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235253, 0 )
 _sections_unfolded = [ "Transform" ]

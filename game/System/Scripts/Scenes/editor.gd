@@ -1,7 +1,7 @@
 extends Spatial
 
 onready var TABS_NODE = get_node("EditorUI/EROGameUI/Panel/VBoxContainer/TabContainer")
-onready var character = get_node("EROCharacter")
+onready var character_renderer = get_node("EROCharacterRenderer")
 onready var TAB_TEMPLATE = get_node("TabTemplate")
 onready var characters_container = get_node("EditorUI/EROGameUI/CharacterSelector")
 onready var overwrite_confirmation_dialog = get_node("EditorUI/EROGameUI/OverwriteConfirmationDialog")
@@ -98,31 +98,31 @@ func init_editor():
 	init_body_parameters()
 		
 func load_body(body_path):
-	character.load_body(body_path)
-	character.set_clothing_slot("normal")
+	character_renderer.load_body(body_path)
+	character_renderer.set_clothing_set("normal")
 	init_editor()
 		
 func update_ui():
-	character_name_field.text = character.character_data["name"]
+	character_name_field.text = character_renderer.character_data["name"]
 	
 # sets the character info from the ui to the character object
 func sync_character_info(new_text):
-	character.character_data["name"] = character_name_field.text
+	character_renderer.character_data["name"] = character_name_field.text
 		
 func load_character_from_data(data):
-	character.load_character_from_data(data)
+	character_renderer.load_character_from_data(data)
 	update_ui()
 	init_body_parameters()
 	
 func set_item(slot, item):
-	var current_item_path = character.get_item_path_by_slot(slot)
+	var current_item_path = character_renderer.get_item_path_by_slot(slot)
 	
 	
 	
 	if current_item_path and current_item_path != item:
-		character.remove_item(current_item_path)
+		character_renderer.remove_item(current_item_path)
 	if item:
-		character.add_item_async(item)
+		character_renderer.add_item_async(item)
 
 		
 func init_body_parameters():
@@ -131,13 +131,13 @@ func init_body_parameters():
 	for picker_to_remove in pickers_to_remove:
 		body_pickers.erase(picker_to_remove)
 		picker_to_remove.queue_free()
-	var body_path = character.character_data["body"]
-	var body_data = character.get_body_data()
+	var body_path = character_renderer.character_data["body"]
+	var body_data = character_renderer.get_body_data()
 	if body_data.has("parameters"):
 		for parameter_name in body_data["parameters"]:
 			var picker = EDITOR_PICKER_SCENE.instance()
 			body_tab_container.add_child(picker)
-			picker.load_parameter(character, parameter_name)
+			picker.load_parameter(character_renderer, parameter_name)
 			body_pickers.append(picker)
 # This removes the slot selection and replaces it with a clothing item selection or vice versa
 # HACK? maybe?
@@ -181,20 +181,20 @@ func select_slot(selected_clothing_slot):
 					current_clothing_tab.add_child(button)
 
 func set_item_parameter(item_path, parameter, value):
-	character.set_item_parameter(item_path, parameter, value)
+	character_renderer.set_item_parameter(item_path, parameter, value)
 
 func save_character(add_to_list=false):
 	var viewport_image = $Viewport.get_texture().get_data()
 	viewport_image.flip_y()
 	
-	character.save_character_to_card(viewport_image)
+	character_renderer.save_character_to_card(viewport_image)
 	if add_to_list:
-		characters_container.add_character(character.to_dict(), character.get_image_path())
+		characters_container.add_character(character_renderer.to_dict(), character_renderer.get_image_path())
 	else:
-		characters_container.update_character_image(character.character_data["uuid"])
+		characters_container.update_character_image(character_renderer.character_data["uuid"])
 
 func save_current_character():
-	if character.exists_on_disk():
+	if character_renderer.exists_on_disk():
 		overwrite_confirmation_dialog.popup()
 	else:
 		# We are not overwriting anything, save it without asking the user
@@ -202,8 +202,8 @@ func save_current_character():
 
 func _on_ClothingSlotOption_item_selected(ID):
 	if ID == 0:
-		character.set_clothing_slot("normal")
+		character_renderer.set_clothing_set("normal")
 	if ID == 1:
-		character.set_clothing_slot("swimwear")
+		character_renderer.set_clothing_set("swimwear")
 	if ID == 2:
-		character.set_clothing_slot("sleep")
+		character_renderer.set_clothing_set("sleep")

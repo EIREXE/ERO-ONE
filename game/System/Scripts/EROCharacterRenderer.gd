@@ -14,7 +14,7 @@ var character_data = {
 	name="ERO-ONE Character"
 }
 
-var current_clothing_slot = "normal"
+var current_clothing_set = "normal"
 
 func _ready():
 	set_process(true)
@@ -90,9 +90,9 @@ func load_item(item_path, user_item_data=null):
 func add_item(item_path, user_item_data=null):
 	if not item_scenes.has(item_path):
 		if user_item_data:
-			character_data["items"][current_clothing_slot][item_path] = user_item_data
+			character_data["items"][current_clothing_set][item_path] = user_item_data
 		else:
-			character_data["items"][current_clothing_slot][item_path] = {}
+			character_data["items"][current_clothing_set][item_path] = {}
 		var item = load_item(item_path)
 		var body_item = EROContent.get_item(character_data["body"])
 		body.get_node(body_item["armature"]).add_child(item)
@@ -103,9 +103,9 @@ func add_item_async(item_path, user_item_data=null):
 	if not item_scenes.has(item_path):
 		var item_data = EROContent.get_item(item_path)
 		if user_item_data:
-			character_data["items"][current_clothing_slot][item_path] = user_item_data
+			character_data["items"][current_clothing_set][item_path] = user_item_data
 		else:
-			character_data["items"][current_clothing_slot][item_path] = {}
+			character_data["items"][current_clothing_set][item_path] = {}
 		if item_data:
 			EROResourceQueue.queue_resource(item_data["model"])
 			var loading_item_data = {}
@@ -149,9 +149,9 @@ func get_item(item_path):
 func get_item_data(item_path):
 	if item_path == character_data["body"]:
 		return get_body_data()
-	if character_data["items"].has(current_clothing_slot):
-		if character_data["items"][current_clothing_slot].has(item_path):
-			return character_data["items"][current_clothing_slot][item_path]
+	if character_data["items"].has(current_clothing_set):
+		if character_data["items"][current_clothing_set].has(item_path):
+			return character_data["items"][current_clothing_set][item_path]
 	else:
 		return null
 	
@@ -230,23 +230,23 @@ func load_character_from_card(card_path):
 		var data = EROContent.load_image_data_from_disk(card_path)
 		load_character_from_data(data)
 
-func load_character_from_data(data, clothing_slot="normal"):
+func load_character_from_data(data, clothing_set="normal"):
 	var body_path = data["body"]
 	character_data = data
 	load_body(body_path, data["body_data"])
 	character_data["name"] = data["name"]
 	character_data["uuid"] = data["uuid"]
-	set_clothing_slot(clothing_slot)
+	set_clothing_set(clothing_set)
 	
-func set_clothing_slot(clothing_slot):
-	current_clothing_slot = clothing_slot
+func set_clothing_set(clothing_set):
+	current_clothing_set = clothing_set
 	remove_all_items()
-	if not character_data["items"].has(current_clothing_slot):
-		character_data["items"][current_clothing_slot] = {}
-	for item_path in character_data["items"][clothing_slot]:
+	if not character_data["items"].has(current_clothing_set):
+		character_data["items"][current_clothing_set] = {}
+	for item_path in character_data["items"][clothing_set]:
 		# Body is loaded asynchronously...
 		if item_path != character_data["body"]:
-			add_item_async(item_path, character_data["items"][current_clothing_slot][item_path])
+			add_item_async(item_path, character_data["items"][current_clothing_set][item_path])
 	
 func exists_on_disk():
 	var file = File.new()
