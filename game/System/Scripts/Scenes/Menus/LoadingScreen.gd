@@ -10,4 +10,3 @@ func show():
 	
 func set_progress(progress):
 	progress_bar.value = progress
-	print(progress)
