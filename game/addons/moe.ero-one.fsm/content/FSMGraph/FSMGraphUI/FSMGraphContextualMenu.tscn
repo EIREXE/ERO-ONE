@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/moe.ero-one.fsm/content/FSMGraph/FSMGraphUI/FSMGraphContextualMenu.gd" type="Script" id=1]
+
+[node name="ContextualMenu" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 200, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="PopupMenu" type="PopupMenu" parent="." index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 201.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [ "New state", null, false, false, false, 0, 0, null, "", false, "New transition from existing", null, false, false, false, 1, 0, null, "", false, "New state inherited", null, false, false, false, 2, 0, null, "", false ]
+hide_on_state_item_selection = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Popup", "Rect" ]
+
+[node name="StateListMenu" type="PopupMenu" parent="." index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 201.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [ "New state", null, false, false, false, 0, 0, null, "", false, "New transition from existing", null, false, false, false, 1, 0, null, "", false ]
+hide_on_state_item_selection = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Popup", "Rect" ]
+
+[node name="StateNameDialog" type="ConfirmationDialog" parent="." index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 29.0
+margin_right = 306.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 280, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = true
+window_title = "New state name"
+resizable = false
+dialog_hide_on_ok = true
+_sections_unfolded = [ "Dialog", "Popup", "Rect" ]
+
+[node name="LineEdit" type="LineEdit" parent="StateNameDialog" index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -26.0
+margin_right = 132.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Rect" ]
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="on_contextual_option_selected"]
+
+[connection signal="id_pressed" from="StateListMenu" to="." method="on_create_inherited_state"]
+
+[connection signal="confirmed" from="StateNameDialog" to="." method="on_create_state"]
+
+[connection signal="text_entered" from="StateNameDialog/LineEdit" to="." method="on_create_state"]
+
+

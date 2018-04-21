@@ -3,6 +3,9 @@ extends Node
 signal show_game_ui
 signal hide_game_ui
 
+signal on_unpause
+signal on_pause
+
 var _exempted_scenes = ["res://Scenes/Menus/"]
 
 onready var options_menu = get_node("CanvasLayer/OptionsMenu")
@@ -31,6 +34,7 @@ func _input(event):
 			
 func show_pause_menu():
 	$CanvasLayer/PauseMenu.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func hide_overlayed_menus():
 	$CanvasLayer/PauseMenu.hide()
@@ -41,11 +45,13 @@ func pause_game():
 			return
 	get_tree().set_pause(true)
 	show_pause_menu()
+	emit_signal("on_pause")
 	
 func unpause_game():
 	get_tree().set_pause(false)
 	hide_overlayed_menus()
 	show_game_ui()
+	emit_signal("on_unpause")
 
 func _on_FreeCameraModeButton_pressed():
 	EROFreeCamera.enable_free_camera()

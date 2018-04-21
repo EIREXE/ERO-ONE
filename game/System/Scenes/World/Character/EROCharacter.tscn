@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://System/Scripts/Scenes/World/EROCharacter.gd" type="Script" id=1]
+[ext_resource path="res://addons/moe.ero-one.fsm/content/fsm.gd" type="Script" id=2]
+[ext_resource path="res://addons/moe.ero-one.fsm/assets/ico3d.png" type="Texture" id=3]
+[ext_resource path="res://System/Scenes/World/Character/Scripts/states/BaseState/BaseState.tscn" type="PackedScene" id=4]
+[ext_resource path="res://System/Scenes/World/Character/Scripts/states/StandState/StandState.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/World/Character/Scripts/states/WalkState/WalkState.tscn" type="PackedScene" id=6]
+[ext_resource path="res://System/Scenes/World/Character/Scripts/transitions/on_direction_input/on_direction_input.tscn" type="PackedScene" id=7]
+[ext_resource path="res://System/Scenes/World/Character/Scripts/transitions/on_direction_release/on_direction_release.tscn" type="PackedScene" id=8]
+[ext_resource path="res://System/Scenes/World/Character/FSM/transitions/on_wall_collision/on_wall_collision.tscn" type="PackedScene" id=9]
+[ext_resource path="res://System/Scenes/World/Character/FSM/transitions/on_wall_collision/on_wall_collision.gd" type="Script" id=10]
+[ext_resource path="res://System/Scenes/EROCharacterRenderer.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CapsuleShape" id=1]
+
+radius = 0.38
+height = 0.8
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 0.5, 0.168317, 0.5 )
+
+[node name="EROCharacter" type="KinematicBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="FSM3D" type="Spatial" parent="." index="0"]
+
+editor/display_folded = true
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+logic_root_path = NodePath("..")
+only_active_state_on_scene = false
+init_manually = false
+update_mode = 2
+receive_singals_only_on_activated_items = true
+debug_enabled = true
+"Initial state:" = "StandState"
+"Create new:/Subdirectory for FSM nodes:" = "FSM"
+"Create new:/Create state with name:" = null
+"Create new:/Create transition with name:" = null
+GraphData = {
+"BaseState": Vector2( -9, 27 ),
+"BaseState_": Vector2( -9, 27 ),
+"StandState": Vector2( 469, 53 ),
+"StandState_": Vector2( 469, 53 ),
+"WalkState": Vector2( 444, 506 ),
+"WalkState_": Vector2( 444, 506 ),
+"on_direction_input": Vector2( 191, 27 ),
+"on_direction_input_": Vector2( 191, 27 ),
+"on_direction_release": Vector2( 860, 277 ),
+"on_direction_release_": Vector2( 860, 277 ),
+"on_wall_collision": Vector2( 526, 268 ),
+"on_wall_collision_": Vector2( 412, 279 )
+}
+
+[node name="States" type="Spatial" parent="FSM3D" index="0"]
+
+[node name="BaseState" parent="FSM3D/States" index="0" instance=ExtResource( 4 )]
+
+[node name="StandState" parent="FSM3D/States" index="1" instance=ExtResource( 5 )]
+
+[node name="WalkState" parent="FSM3D/States" index="2" instance=ExtResource( 6 )]
+
+[node name="Transitions" type="Spatial" parent="FSM3D" index="1"]
+
+[node name="on_direction_input" parent="FSM3D/Transitions" index="0" instance=ExtResource( 7 )]
+
+path2SourceStates = [ NodePath(""), NodePath("../../States/StandState") ]
+path2Target_state = NodePath("../../States/WalkState")
+
+[node name="on_direction_release" parent="FSM3D/Transitions" index="1" instance=ExtResource( 8 )]
+
+path2SourceStates = [ NodePath(""), NodePath("../../States/WalkState") ]
+path2Target_state = NodePath("../../States/StandState")
+
+[node name="on_wall_collision" type="Node" parent="FSM3D/Transitions" index="2" instance=ExtResource( 9 )]
+
+script = ExtResource( 10 )
+path2SourceStates = [ NodePath(""), NodePath("../../States/WalkState") ]
+path2Target_state = NodePath("../../States/StandState")
+intervalBetweenChecks = -1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.780877, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CharacterCamera" type="Spatial" parent="." index="2"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716241, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CameraGimball" type="Spatial" parent="CharacterCamera" index="0"]
+
+[node name="Camera" type="Camera" parent="CharacterCamera/CameraGimball" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.42762 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 1000.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165507, 0 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="PivotPoint" type="Spatial" parent="." index="4"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="EROCharacterRenderer" parent="PivotPoint" index="0" instance=ExtResource( 11 )]
+
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+

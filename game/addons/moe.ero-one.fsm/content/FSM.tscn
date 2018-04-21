@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/moe.ero-one.fsm/content/fsm.gd" type="Script" id=1]
+
+[node name="FSM" type="Node" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+logic_root_path = NodePath("..")
+only_active_state_on_scene = false
+init_manually = false
+update_mode = 1
+receive_singals_only_on_activated_items = true
+debug_enabled = true
+"Initial state:" = ""
+"Create new:/Subdirectory for FSM nodes:" = "FSM"
+"Create new:/Create state with name:" = null
+"Create new:/Create transition with name:" = null
+GraphData = {
+
+}
+
+[node name="States" type="Node" parent="." index="0"]
+
+[node name="Transitions" type="Node" parent="." index="1"]
+
+

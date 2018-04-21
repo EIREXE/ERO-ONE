@@ -21,7 +21,12 @@ compress = false
 
 [node name="Scene Root" instance=ExtResource( 1 )]
 
-transform = Transform( 0.0999918, 0, 0, 0, 0.0999918, 0, 0, 0, 0.0999918, 0, 0, 0 )
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Elf Yamada Ver. 1.01" parent="." index="0"]
+
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Elf Yamada Ver. 1.01_mesh.003" parent="Elf Yamada Ver. 1.01/Elf Yamada Ver. 1.01_arm/Skeleton" index="1" instance=ExtResource( 2 )]
 
