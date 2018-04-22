@@ -8,6 +8,8 @@ onready var camera_gimball_base = get_node("CharacterCamera")
 onready var camera_gimball = get_node("CharacterCamera/CameraGimball")
 onready var camera = get_node("CharacterCamera/CameraGimball/Camera")
 
+const MAX_CAMERA_PITCH = 45
+
 var input_movement_vector = Vector3()
 
 var target_visual_direction = Vector3()
@@ -59,9 +61,10 @@ func _unhandled_input(event):
 		var rotation_x = event.get_relative().y * EROSettings.mouse_sensitivity
 		camera_gimball.rotate_x(-rotation_x*get_process_delta_time())
 		
+		
 		# Limit vertical rotation
-		if abs(rad2deg(camera_gimball.rotation.x)) >= 90:
-			camera_gimball.rotation.x = deg2rad(90)*sign(camera_gimball.rotation.x)
+		if abs(rad2deg(camera_gimball.rotation.x)) >= MAX_CAMERA_PITCH:
+			camera_gimball.rotation.x = deg2rad(MAX_CAMERA_PITCH)*sign(camera_gimball.rotation.x)
 			
 			
 func get_camera():

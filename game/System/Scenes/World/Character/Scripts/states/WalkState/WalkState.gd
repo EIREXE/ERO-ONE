@@ -41,8 +41,6 @@ func update(delta, args=null):
 
 	var target_visual_direction = input_world_direction
 	
-	print(input_world_direction)
-	
 	# Make input change the movement direciton
 	
 	logic_root.dir += input_world_direction*(WALK_SPEED*delta)
