@@ -16,11 +16,7 @@ func prepare(new_state, args = []):
 	motion_input_detected = false
 
 func input(event, args=[]):
-	for action in MOVEMENT_ACTIONS:
-		if event.is_action(action):
-			if event.is_pressed():
-				if not logic_root.is_on_wall():
-					motion_input_detected = true
+	pass
 
 func transition_condition(delta, args = []):
-	return motion_input_detected
+	return logic_root.input_movement_vector != Vector3()

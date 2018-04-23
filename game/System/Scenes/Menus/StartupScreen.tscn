@@ -37,7 +37,6 @@ tracks/1/keys = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" index="0"]
-
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -47,7 +46,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -61,7 +59,6 @@ size_flags_vertical = 1
 color = Color( 0.0901961, 0.101961, 0.129412, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]
-
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -82,7 +79,6 @@ stretch_mode = 0
 _sections_unfolded = [ "Material", "Theme" ]
 
 [node name="Fade" type="ColorRect" parent="." index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -97,7 +93,6 @@ color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -106,5 +101,4 @@ playback_speed = 1.0
 anims/fade = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
-
 

@@ -14,4 +14,4 @@ func prepare(new_state, args = []):
 
 func transition_condition(delta, args = []): 
 	# Return true/false
-	return logic_root.is_on_wall();
+	return false;

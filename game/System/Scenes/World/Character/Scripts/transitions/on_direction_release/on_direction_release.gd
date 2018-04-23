@@ -15,10 +15,5 @@ func prepare(new_state, args = []):
 	pass
 
 func transition_condition(delta, args = []): 
-	var movement_action_pressed = false
-	for action in MOVEMENT_ACTIONS:
-		if Input.is_action_pressed(action):
-			movement_action_pressed = true
-			
 
-	return !movement_action_pressed
+	return logic_root.input_movement_vector == Vector3()
