@@ -15,5 +15,4 @@ func prepare(new_state, args = []):
 	pass
 
 func transition_condition(delta, args = []): 
-
 	return logic_root.input_movement_vector == Vector3()
