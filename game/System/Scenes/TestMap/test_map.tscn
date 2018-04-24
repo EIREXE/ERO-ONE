@@ -4,7 +4,9 @@
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
 [ext_resource path="res://System/Scenes/TestMap/material_floor.material" type="Material" id=3]
 [ext_resource path="res://System/Scenes/World/Character/EROPlayerCharacter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://System/Scenes/UI/World/InteractionIndicator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/World/Button.tscn" type="PackedScene" id=5]
+
+
 
 [sub_resource type="ProceduralSky" id=1]
 
