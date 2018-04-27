@@ -37,7 +37,7 @@ window/vsync/use_vsync=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "godot-behavior-tree-plugin", "moe.ero-one.fsm" )
+enabled=PoolStringArray( "godot-behavior-tree-plugin", "moe.ero-one.dialog", "moe.ero-one.fsm" )
 
 [gui]
 

@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends GraphEdit
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+
+	
+	$GraphNode.set_slot(0, true, TYPE_VECTOR3, Color(1,1,1),false, TYPE_VECTOR3, Color())
+	var label = TextEdit.new()
+	label.text = \"test\"
+	$GraphNode.add_child(label)
+	
+	$GraphNode2.set_slot(0, false, TYPE_VECTOR3, Color(),true, TYPE_VECTOR3, Color(1,1,1))
+	var label2 = TextEdit.new()
+	label2.text = \"test\"
+	$GraphNode2.add_child(label2)
+
+	add_valid_connection_type(TYPE_VECTOR3, TYPE_VECTOR3)
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+
+
+func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
+	connect_node(from, from_slot, to, to_slot)"
+
+[node name="GraphEdit" type="GraphEdit" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+right_disconnects = false
+scroll_offset = Vector2( 0, 0 )
+snap_distance = 20
+use_snap = true
+zoom = 1.0
+script = SubResource( 1 )
+
+[node name="GraphNode" type="GraphNode" parent="." index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 130.318
+margin_top = 209.943
+margin_right = 549.318
+margin_bottom = 388.943
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+title = "Boober"
+offset = Vector2( 10, 0 )
+show_close = false
+resizable = false
+selected = false
+comment = false
+overlay = 0
+
+[node name="GraphNode2" type="GraphNode" parent="." index="2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 579.67
+margin_top = 256.597
+margin_right = 942.67
+margin_bottom = 285.597
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+title = "Boober2"
+offset = Vector2( 10, 0 )
+show_close = false
+resizable = false
+selected = false
+comment = false
+overlay = 0
+
+[connection signal="connection_request" from="." to="." method="_on_GraphEdit_connection_request"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/StartupScreen.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo-eirteam.png" type="Texture" id=2]
+[ext_resource path="res://addons/moe.ero-one.dialog/ERODialogTree.gd" type="Script" id=3]
+[ext_resource path="res://System/Scenes/Menus/StartupScreen.tres" type="Resource" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -90,7 +92,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("..")
@@ -101,4 +103,8 @@ playback_speed = 1.0
 anims/fade = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
+
+[node name="DialogTree" type="Node" parent="." index="4"]
+script = ExtResource( 3 )
+dialog = ExtResource( 4 )
 

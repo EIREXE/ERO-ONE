@@ -16,6 +16,8 @@ var character_data = {
 
 var current_clothing_set = "normal"
 
+signal character_finished_loading
+
 func _ready():
 	set_process(true)
 	 
@@ -28,12 +30,23 @@ func _process(delta):
 				add_item(item, items_loading_data["user_data"])
 			else:
 				add_item(item)
+				
+			if items_loading.size() == 1:
+				# If this is the last item, emit character_finished_loading
+				emit_signal("character_finished_loading")
+			
 			items_loading.erase(item)
-			return
-		# Loading failed, we'll get em next time.
+			return # This ensures we only load one item per cycle
+		# Loading either failed or it was loaded at the same time as something else.
 		if EROResourceQueue.get_progress(item_data["model"]) == -1:
+			# Try it anyways
+			var items_loading_data = items_loading[item]
+			if items_loading_data.has("user_data"):
+				add_item(item, items_loading_data["user_data"])
+			else:
+				add_item(item)
 			items_loading.erase(item)
-			Console.err("Aborted loading of %s" % [item], "EROCharacter")
+			Console.err("Warning loading of %s" % [item], "EROCharacter")
 func load_character():
 	#init_character()
 	pass

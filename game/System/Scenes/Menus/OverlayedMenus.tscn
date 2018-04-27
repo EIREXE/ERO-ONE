@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/OverlayedMenus.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo.png" type="Texture" id=2]
 [ext_resource path="res://System/Scenes/Menus/EROOptionsMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://System/Scenes/DialogRenderer.tscn" type="PackedScene" id=4]
 
-[node name="OverlayedMenus" type="Node"]
-
+[node name="OverlayedMenus" type="Node" index="0"]
 pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Pause", "Visibility" ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
+editor/display_folded = true
 layer = 99
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -20,20 +20,19 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" index="0"]
-
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu" index="0"]
-
 self_modulate = Color( 1, 1, 1, 0.392157 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -41,6 +40,7 @@ anchor_right = 0.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 384, 720 )
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -48,7 +48,6 @@ size_flags_vertical = 3
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/Panel" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -59,6 +58,7 @@ margin_right = 369.0
 margin_bottom = 664.0
 grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -67,14 +67,14 @@ alignment = 0
 _sections_unfolded = [ "Grow Direction", "Margin" ]
 
 [node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 359.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -89,15 +89,15 @@ flat = true
 align = 1
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" index="1"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 359.0
-margin_bottom = 44.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -112,15 +112,15 @@ flat = true
 align = 1
 
 [node name="FreeCameraModeButton" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 48.0
+margin_top = 52.0
 margin_right = 359.0
-margin_bottom = 68.0
+margin_bottom = 74.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -135,17 +135,14 @@ flat = true
 align = 1
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/PauseMenu/Panel" index="1"]
-
 position = Vector2( 190.049, 48.9586 )
 scale = Vector2( 0.196994, 0.196994 )
 texture = ExtResource( 2 )
 
 [node name="OptionsMenu" parent="CanvasLayer" index="1" instance=ExtResource( 3 )]
-
 visible = false
 
 [node name="FPSLabel" type="Label" parent="CanvasLayer" index="2"]
-
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -153,6 +150,7 @@ anchor_bottom = 0.0
 margin_left = -321.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -162,10 +160,8 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="ERODialogRenderer" parent="." index="1" instance=ExtResource( 4 )]
+
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/ResumeButton" to="." method="unpause_game"]
-
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/SettingsButton" to="." method="popup_options"]
-
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/FreeCameraModeButton" to="." method="_on_FreeCameraModeButton_pressed"]
-
-

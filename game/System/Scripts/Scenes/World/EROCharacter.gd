@@ -26,7 +26,7 @@ func _ready():
 	EROOverlayedMenus.connect("on_unpause", self, "capture_mouse")
 	set_process_unhandled_input(true)
 	set_physics_process(true)
-
+	
 	character_renderer.load_body("TestContent.Bodies.BodyTest")
 	character_renderer.set_clothing_set("normal")
 	character_renderer.add_item_async("TestContent.Clothing.ElfTop")

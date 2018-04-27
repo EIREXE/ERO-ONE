@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/moe.ero-one.dialog/ERODialog.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+connection_list = [ {
+"from": "GraphNode",
+"from_port": 0,
+"to": "GraphNode2",
+"to_port": 0
+} ]
+node_data = {
+"GraphNode": {
+"data": {
+"offset": Vector2( -684, -360 )
+},
+"name": "GraphNode",
+"offset": Vector2( -684, -360 ),
+"type": "InputNode"
+},
+"GraphNode2": {
+"data": {
+"text": ""
+},
+"name": "GraphNode2",
+"offset": Vector2( -232, -288 ),
+"type": "SpeechNode"
+}
+}
+

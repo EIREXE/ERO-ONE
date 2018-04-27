@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://System/Scenes/TestMap/grid_dragon.material" type="Material" id=1]
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
 [ext_resource path="res://System/Scenes/TestMap/material_floor.material" type="Material" id=3]
 [ext_resource path="res://System/Scenes/World/Character/EROPlayerCharacter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://System/Scenes/World/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://System/Scenes/DialogRenderer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/moe.ero-one.dialog/ERODialogTree.gd" type="Script" id=7]
 
 
 
@@ -186,7 +188,7 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 
 resource_name = "close_door"
 length = 1.0
@@ -219,9 +221,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
-resource_name = "open_door"
 length = 1.0
 loop = false
 step = 0.1
@@ -255,8 +256,7 @@ tracks/1/keys = {
 [node name="Spatial" type="Spatial" index="0"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
-
-transform = Transform( 0.794844, -0.355984, 0.491425, 0, 0.809845, 0.586644, -0.606814, -0.466291, 0.6437, 3.29337, 1.31188, 0 )
+transform = Transform( 0.794844, -0.355984, 0.491425, 0, 0.809845, 0.586644, -0.606814, -0.466291, 0.6437, 3.3009, 1.31188, -0.000606537 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.2
@@ -267,27 +267,25 @@ light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.1
-shadow_contact = 0.0
+shadow_bias = 0.01
+shadow_contact = 0.3
 shadow_reverse_cull_face = false
 editor_only = false
 directional_shadow_mode = 2
-directional_shadow_split_1 = 0.1
+directional_shadow_split_1 = 0.05
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.5
-directional_shadow_blend_splits = false
-directional_shadow_normal_bias = 0.8
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.7
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Light", "Shadow" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
-
 environment = SubResource( 2 )
 
 [node name="RigidBody" type="RigidBody" parent="." index="2"]
-
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -147.15, 20.6046, 0 )
 input_ray_pickable = true
@@ -317,7 +315,6 @@ angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody" index="0"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37402, 0 )
 layers = 1
 material_override = null
@@ -333,15 +330,14 @@ skeleton = NodePath("..")
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody" index="1"]
-
 shape = SubResource( 4 )
 disabled = false
 
 [node name="Scene Root" type="Spatial" parent="." index="3"]
+editor/display_folded = true
 
 [node name="Cube.003" type="MeshInstance" parent="Scene Root" index="0"]
-
-transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.09842, 7.73473e-09 )
+transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.14821, 7.73473e-09 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -357,7 +353,6 @@ material/0 = null
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Cube.003" index="0"]
-
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -368,16 +363,13 @@ constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Cube.003/StaticBody" index="0"]
-
 shape = SubResource( 6 )
 disabled = false
 
 [node name="Sun" type="Spatial" parent="Scene Root" index="1"]
-
 transform = Transform( 1, 0, 0, 0, 0.853215, -0.52156, 0, 0.52156, 0.853215, 0, 0, 0 )
 
 [node name="Cube.001" type="MeshInstance" parent="Scene Root" index="2"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0531044, 0.00208759, 0.0661316 )
 layers = 1
 material_override = null
@@ -393,7 +385,6 @@ skeleton = NodePath("..")
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Cube.001" index="0"]
-
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -404,7 +395,6 @@ constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="Cube" type="MeshInstance" parent="Scene Root" index="3"]
-
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0460434, 0.0513878, -0.115665 )
 layers = 1
@@ -422,7 +412,6 @@ material/0 = null
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Cube" index="0"]
-
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -433,12 +422,10 @@ constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Cube/StaticBody" index="0"]
-
 shape = SubResource( 9 )
 disabled = false
 
 [node name="Camera" type="Camera" parent="." index="4"]
-
 transform = Transform( -0.183953, 0, -0.982935, 0, 1, 0, 0.982935, 0, -0.183953, -9.22104, 3.99702, 0 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -455,22 +442,36 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.50169, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" parent="EROPlayerCharacter/EROCharacter/CharacterCamera/CameraGimball" index="0"]
+[node name="FSM3D" parent="EROPlayerCharacter/EROCharacter" index="0"]
+GraphData = {
+"BaseState": Vector2( -9, 27 ),
+"BaseState_": Vector2( -9, 27 ),
+"StandState": Vector2( 432, 118 ),
+"StandState_": Vector2( -9, 27 ),
+"WalkState": Vector2( 888, 508 ),
+"WalkState_": Vector2( -9, 27 ),
+"on_direction_input": Vector2( 1134, 227 ),
+"on_direction_input_": Vector2( 191, 27 ),
+"on_direction_release": Vector2( 895, 222 ),
+"on_direction_release_": Vector2( 191, 27 ),
+"on_wall_collision": Vector2( 606, 400 ),
+"on_wall_collision_": Vector2( 191, 27 )
+}
 
+[node name="Camera" parent="EROPlayerCharacter/EROCharacter/CharacterCamera/CameraGimball" index="0"]
 h_offset = 0.0
 v_offset = 0.0
 
 [node name="Door" type="Spatial" parent="." index="6"]
-
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10664, 1.25671, 1.69004 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Door" index="0"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.452747 )
 layers = 1
 material_override = null
@@ -487,14 +488,12 @@ material/0 = null
 _sections_unfolded = [ "material" ]
 
 [node name="ButtonOpen" parent="Door/MeshInstance" index="0" instance=ExtResource( 5 )]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176055, 0.0666221, 0.384283 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 MODE = 1
 text = "Open"
 
 [node name="ButtonClose" parent="Door/MeshInstance" index="1" instance=ExtResource( 5 )]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176055, 0.0666221, 0.384283 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 MODE = 1
@@ -502,20 +501,23 @@ starts_disabled = true
 text = "Close"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Door" index="1"]
-
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/close_door = SubResource( 12 )
-anims/open_door = SubResource( 11 )
+anims/close_door = SubResource( 11 )
+anims/open_door = SubResource( 12 )
 blend_times = [  ]
 
-[connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
+[node name="ERODialogRenderer" parent="." index="7" instance=ExtResource( 6 )]
 
+[node name="DialogTree" type="Node" parent="." index="8"]
+script = ExtResource( 7 )
+
+[connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]
 
-
 [editable path="EROPlayerCharacter"]
+
 [editable path="EROPlayerCharacter/EROCharacter"]
