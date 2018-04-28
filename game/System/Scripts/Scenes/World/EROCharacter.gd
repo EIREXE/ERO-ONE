@@ -49,8 +49,8 @@ func consume_input():
 	input_movement_vector = Vector3()
 
 func capture_mouse():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 func add_movement_input(input):
 	input_movement_vector += input
 

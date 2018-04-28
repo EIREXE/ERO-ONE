@@ -7,27 +7,37 @@ var character_option_button
 
 var is_initialized = false
 
+var node_data = {}
 
 func to_dict():
-	var dict = {
-		text=input_area.text,
-		selected_character=character_option_button.get_selected_id()
-	}
-	return dict
+	update_data_from_ui() # just in case...
+	return node_data
 	
 func from_dict(dict):
-	add_ui_elements()
-	input_area.text = dict["text"]
-	print("SELECTING %d" % dict["selected_character"])
-	character_option_button.select(dict["selected_character"])
+
+	node_data["text"] = dict["text"]
+	node_data["selected_character"] = dict["selected_character"]
+	
+	if Engine.editor_hint:
+		add_ui_elements()
+		update_ui_from_data()
+	
+func update_ui_from_data():
+	input_area.text = node_data["text"]
+	character_option_button.select(node_data["selected_character"])
+
+func update_data_from_ui():
+	node_data["text"] = input_area.text
+	node_data["selected_character"] = character_option_button.get_selected_id()
 
 func _ready():
-	set_slot(0, true, TYPE_NIL, Color(1.0,1.0,1.0), true, TYPE_NIL, Color(1.0,1.0,1.0))
+	if Engine.editor_hint:
+		set_slot(0, true, TYPE_NIL, Color(1.0,1.0,1.0), true, TYPE_NIL, Color(1.0,1.0,1.0))
+		
+		if not is_initialized:
+			add_ui_elements()
 	
-	if not is_initialized:
-		add_ui_elements()
-
-	title = "Speech"
+		title = "Speech"
 
 func add_ui_elements():
 	
@@ -59,8 +69,19 @@ func add_ui_elements():
 	add_child(options_container)
 	add_child(input_area)
 	
+	
 func on_node_update(a=null):
+	update_data_from_ui()
 	emit_signal("on_node_update")
 	
 static func get_dialog_node_type():
 	return "SpeechNode"
+
+func execute_node(dialog, connections=null):
+	print("EXECUTE %s" % [node_data["text"]])
+	dialog.dialog_renderer.show_text(node_data["text"])
+	dialog.dialog_renderer.connect("on_finish_displaying_text", self, "on_finish_execution", [dialog, connections], CONNECT_ONESHOT)
+"""func execute_node(dialog, connections=null):
+	randomize()
+	var connection = connections[randi()%connections.size()]
+	dialog.execute_node(connection["to"])"""

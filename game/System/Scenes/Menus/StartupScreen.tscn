@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/StartupScreen.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo-eirteam.png" type="Texture" id=2]
 [ext_resource path="res://addons/moe.ero-one.dialog/ERODialogTree.gd" type="Script" id=3]
-[ext_resource path="res://System/Scenes/Menus/StartupScreen.tres" type="Resource" id=4]
+[ext_resource path="res://addons/moe.ero-one.dialog/ERODialog.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -38,7 +38,67 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="CanvasLayer" type="CanvasLayer" index="0"]
+[sub_resource type="Resource" id=2]
+
+script = ExtResource( 4 )
+connection_list = [ {
+"from": "GraphNode4",
+"from_port": 0,
+"to": "GraphNode",
+"to_port": 0
+}, {
+"from": "GraphNode",
+"from_port": 0,
+"to": "GraphNode3",
+"to_port": 0
+}, {
+"from": "GraphNode",
+"from_port": 0,
+"to": "GraphNode5",
+"to_port": 0
+} ]
+node_data = {
+"GraphNode": {
+"data": null,
+"name": "GraphNode",
+"offset": Vector2( 540, 280 ),
+"type": "Random Choice"
+},
+"GraphNode2": {
+"data": null,
+"name": "GraphNode2",
+"offset": Vector2( 1300, 300 ),
+"type": "Random Choice"
+},
+"GraphNode3": {
+"data": {
+"selected_character": 0,
+"text": "dfd"
+},
+"name": "GraphNode3",
+"offset": Vector2( 880, 160 ),
+"type": "SpeechNode"
+},
+"GraphNode4": {
+"data": {
+"offset": Vector2( 260, 300 )
+},
+"name": "GraphNode4",
+"offset": Vector2( 260, 300 ),
+"type": "InputNode"
+},
+"GraphNode5": {
+"data": {
+"selected_character": 0,
+"text": ""
+},
+"name": "GraphNode5",
+"offset": Vector2( 860, 380 ),
+"type": "SpeechNode"
+}
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -106,5 +166,6 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="DialogTree" type="Node" parent="." index="4"]
 script = ExtResource( 3 )
-dialog = ExtResource( 4 )
+dialog = SubResource( 2 )
+dialog_renderer = null
 

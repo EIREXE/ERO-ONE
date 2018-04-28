@@ -53,7 +53,7 @@ func get_plugin_name():
 func get_plugin_icon():
 	return icon
 
-func get_dialog_node_of_type(type):
+static func get_dialog_node_of_type(type):
 	for node_type in DIALOG_NODE_SCRIPTS:
 		if node_type.get_dialog_node_type() == type:
 			return node_type

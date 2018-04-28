@@ -83,6 +83,10 @@ func create_node(type, node_data=null):
 		print(type)
 		var node_type = plugin.get_dialog_node_of_type(type)
 		var new_node = node_type.new()
+		if new_node.is_unique():
+			for node in graph_editor.get_children():
+				if node is node_type:
+					return
 		if node_data:
 			new_node.name = node_data["name"]
 			new_node.offset = node_data["offset"]

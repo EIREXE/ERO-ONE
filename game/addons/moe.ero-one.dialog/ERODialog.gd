@@ -1,4 +1,4 @@
-tool
+ tool
 extends Resource
 
 export var connection_list = []

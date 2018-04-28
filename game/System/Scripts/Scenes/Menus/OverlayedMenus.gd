@@ -9,7 +9,7 @@ signal on_pause
 var _exempted_scenes = ["res://Scenes/Menus/"]
 
 onready var options_menu = get_node("CanvasLayer/OptionsMenu")
-
+onready var dialog_renderer = get_node("ERODialogRenderer")
 func _ready():
 	hide_overlayed_menus()
 	set_process_input(true)
@@ -20,6 +20,9 @@ func _process(delta):
 		$CanvasLayer/FPSLabel.text = str(Engine.get_frames_per_second())
 	else:
 		$CanvasLayer/FPSLabel.text = ""
+	
+
+	
 	
 func _input(event):
 	var is_paused = get_tree().is_paused()
@@ -46,6 +49,13 @@ func pause_game():
 	get_tree().set_pause(true)
 	show_pause_menu()
 	emit_signal("on_pause")
+	
+func show_dialog_renderer():
+	dialog_renderer.show()
+	
+func hide_dialog_renderer():
+	dialog_renderer.hide()
+	
 	
 func unpause_game():
 	get_tree().set_pause(false)

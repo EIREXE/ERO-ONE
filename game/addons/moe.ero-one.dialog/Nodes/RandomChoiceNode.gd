@@ -15,3 +15,10 @@ func _ready():
 	title = "Random"
 static func get_dialog_node_type():
 	return "Random Choice"
+	
+func execute_node(dialog, connections=null):
+	randomize()
+	var index = randi()%connections.size()
+	print("RAND_INDEX: %d" % index)
+	var connection = connections[index]
+	dialog.execute_node(connection["to"])

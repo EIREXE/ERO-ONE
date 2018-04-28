@@ -18,3 +18,9 @@ func _ready():
 
 static func get_dialog_node_type():
 	return "InputNode"
+	
+static func is_unique():
+	return true
+	
+func execute_node(dialog, connections=null):
+	on_finish_execution(dialog, connections)
