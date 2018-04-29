@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://System/Scenes/TestMap/grid_dragon.material" type="Material" id=1]
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
@@ -136,6 +136,7 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 24
 }
+_sections_unfolded = [ "Resource", "surface_1" ]
 
 [sub_resource type="ConvexPolygonShape" id=6]
 
@@ -174,6 +175,7 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 40
 }
+_sections_unfolded = [ "surface_1" ]
 
 [sub_resource type="ConvexPolygonShape" id=9]
 
@@ -347,6 +349,20 @@ node_data = {
 }
 }
 
+[sub_resource type="GIProbeData" id=14]
+
+bounds = AABB( -311.136, -56.7, -176.844, 622.273, 113.4, 353.689 )
+cell_size = 4.86151
+to_cell_xform = Transform( 0.205698, 0, 0, 0, 0.205698, 0, 0, 0, 0.205698, 64, 11.663, 36.3764 )
+dynamic_data = PoolIntArray( 0, 8, 128, 32, 128, 1, 0, 1099956224, 0, 0, 1098907648, 1098907648, -389790576, 723, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+dynamic_range = 4
+energy = 0.5
+bias = 1.5
+normal_bias = 0.0
+propagation = 0.7
+interior = false
+compress = false
+
 [node name="Spatial" type="Spatial" index="0"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
@@ -357,7 +373,7 @@ light_energy = 1.2
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
-light_bake_mode = 1
+light_bake_mode = 2
 light_cull_mask = -1
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -436,7 +452,7 @@ layers = 1
 material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
-use_in_baked_light = false
+use_in_baked_light = true
 lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
@@ -444,7 +460,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Geometry", "LOD", "Transform" ]
 
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Cube.003" index="0"]
 input_ray_pickable = true
@@ -495,7 +511,7 @@ layers = 1
 material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
-use_in_baked_light = false
+use_in_baked_light = true
 lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
@@ -503,7 +519,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 8 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
 
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Cube" index="0"]
 input_ray_pickable = true
@@ -611,6 +627,19 @@ text = "Test Dialog"
 [node name="ERODialogTree" type="Node" parent="." index="8"]
 script = ExtResource( 6 )
 dialog = SubResource( 13 )
+
+[node name="GIProbe" type="GIProbe" parent="." index="9"]
+layers = 1
+subdiv = 1
+extents = Vector3( 311.136, 56.7, 176.844 )
+dynamic_range = 4
+energy = 0.5
+propagation = 0.7
+bias = 1.5
+normal_bias = 0.0
+interior = false
+compress = false
+data = SubResource( 14 )
 
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]
