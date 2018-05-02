@@ -20,8 +20,7 @@ height = 0.8
 
 extents = Vector3( 0.5, 0.168317, 0.5 )
 
-[node name="EROCharacter" type="KinematicBody"]
-
+[node name="EROCharacter" type="KinematicBody" index="0"]
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -37,7 +36,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="FSM3D" type="Spatial" parent="." index="0"]
-
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
@@ -78,36 +76,30 @@ GraphData = {
 [node name="Transitions" type="Spatial" parent="FSM3D" index="1"]
 
 [node name="on_direction_input" parent="FSM3D/Transitions" index="0" instance=ExtResource( 7 )]
-
 path2SourceStates = [ NodePath(""), NodePath("../../States/StandState") ]
 path2Target_state = NodePath("../../States/WalkState")
 
 [node name="on_direction_release" parent="FSM3D/Transitions" index="1" instance=ExtResource( 8 )]
-
 path2SourceStates = [ NodePath(""), NodePath("../../States/WalkState") ]
 path2Target_state = NodePath("../../States/StandState")
 
 [node name="on_wall_collision" parent="FSM3D/Transitions" index="2" instance=ExtResource( 9 )]
-
 path2SourceStates = [ NodePath(""), NodePath("../../States/WalkState") ]
 path2Target_state = NodePath("../../States/StandState")
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.780877, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="CharacterCamera" type="Spatial" parent="." index="2"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716241, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CameraGimball" type="Spatial" parent="CharacterCamera" index="0"]
 
 [node name="Camera" type="Camera" parent="CharacterCamera/CameraGimball" index="0"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.204384, 1.28282 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -124,18 +116,15 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2" type="CollisionShape" parent="." index="3"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165507, 0 )
 shape = SubResource( 2 )
 disabled = false
 
 [node name="PivotPoint" type="Spatial" parent="." index="4"]
-
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROCharacterRenderer" parent="PivotPoint" index="0" instance=ExtResource( 10 )]
-
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+visible = false
 _sections_unfolded = [ "Transform" ]
-
 

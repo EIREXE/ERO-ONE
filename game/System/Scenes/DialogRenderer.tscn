@@ -43,7 +43,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/DialogRenderer" index="1"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -126,6 +125,7 @@ directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="EROCharacterRenderer" parent="CanvasLayer/DialogRenderer/ViewportContainer/Viewport" index="2" instance=ExtResource( 2 )]
+visible = false
 
 [node name="Scene Root" parent="CanvasLayer/DialogRenderer/ViewportContainer/Viewport" index="3" instance_placeholder="res://Content/TestContent/Bodies/BodyTest/elfbody.tscn"]
 editor/display_folded = true

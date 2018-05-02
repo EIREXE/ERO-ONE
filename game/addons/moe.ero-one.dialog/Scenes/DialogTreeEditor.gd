@@ -62,7 +62,6 @@ func edit(object):
 			load_from_resource()
 
 func save_to_resource():
-	print("SAVING")
 	# Reset stuff
 	editing_object.node_data = {}
 	editing_object.connection_list = []

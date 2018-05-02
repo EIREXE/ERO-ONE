@@ -98,7 +98,7 @@ node_data = {
 }
 }
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" index="0"]
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -167,5 +167,8 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="DialogTree" type="Node" parent="." index="4"]
 script = ExtResource( 3 )
 dialog = SubResource( 2 )
-dialog_renderer = null
+
+[node name="ERODialogTree" type="Node" parent="." index="5"]
+script = ExtResource( 3 )
+dialog = null
 

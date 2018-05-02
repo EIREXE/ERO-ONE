@@ -33,11 +33,12 @@ func _exit_tree():
 	
 func handles(object):
 	if object is DialogTree:
-		return true
+		if object.dialog:
+			return true
+	return false
 	
 func edit(object):
 	if object is DialogTree:
-		
 		dialog_editor.edit(object.dialog)
 	
 func has_main_screen():

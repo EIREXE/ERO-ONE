@@ -20,7 +20,6 @@ func execute_node(dialog, connections=null):
 	pass
 	
 func on_finish_execution(dialog, connections=null, args=[]):
-	print(connections)
 	if connections:
 		if connections[0]:
 			dialog.execute_node(connections[0]["to"])

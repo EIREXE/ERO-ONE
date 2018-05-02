@@ -274,77 +274,61 @@ connection_list = [ {
 }, {
 "from": "GraphNode4",
 "from_port": 0,
-"to": "GraphNode5",
-"to_port": 0
-}, {
-"from": "GraphNode4",
-"from_port": 0,
 "to": "GraphNode6",
 "to_port": 0
 }, {
 "from": "GraphNode4",
 "from_port": 0,
-"to": "GraphNode7",
+"to": "GraphNode5",
 "to_port": 0
 } ]
 node_data = {
 "GraphNode": {
-"data": {
-"offset": Vector2( 540, 340 )
-},
+"data": null,
 "name": "GraphNode",
-"offset": Vector2( 540, 340 ),
+"offset": Vector2( -1060, -180 ),
 "type": "InputNode"
 },
 "GraphNode2": {
 "data": {
 "selected_character": 0,
-"text": "Testing..."
+"text": "speech 1"
 },
 "name": "GraphNode2",
-"offset": Vector2( 860, 360 ),
+"offset": Vector2( -840, -200 ),
 "type": "SpeechNode"
 },
 "GraphNode3": {
 "data": {
 "selected_character": 0,
-"text": "Testing 2"
+"text": "speech 2"
 },
 "name": "GraphNode3",
-"offset": Vector2( 1280, 360 ),
+"offset": Vector2( -460, -200 ),
 "type": "SpeechNode"
 },
 "GraphNode4": {
 "data": null,
 "name": "GraphNode4",
-"offset": Vector2( 1660, 360 ),
+"offset": Vector2( -40, -200 ),
 "type": "Random Choice"
 },
 "GraphNode5": {
 "data": {
 "selected_character": 0,
-"text": "Random 1"
+"text": "random 1"
 },
 "name": "GraphNode5",
-"offset": Vector2( 1980, 320 ),
+"offset": Vector2( 300, -280 ),
 "type": "SpeechNode"
 },
 "GraphNode6": {
 "data": {
 "selected_character": 0,
-"text": "Random 2"
+"text": "random 2"
 },
 "name": "GraphNode6",
-"offset": Vector2( 1980, 440 ),
-"type": "SpeechNode"
-},
-"GraphNode7": {
-"data": {
-"selected_character": 0,
-"text": "Random 3"
-},
-"name": "GraphNode7",
-"offset": Vector2( 1980, 560 ),
+"offset": Vector2( 300, -140 ),
 "type": "SpeechNode"
 }
 }

@@ -27,12 +27,6 @@ func _ready():
 			add_child(new_node)
 			
 			nodes[node_info["name"]] = new_node
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-#func _get_property_list():
-#	pass
 	
 func execute_dialog():
 	dialog_renderer.show()

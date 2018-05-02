@@ -2,13 +2,10 @@ tool
 extends "EROTreeNode.gd"
 
 func to_dict():
-	var dict = {
-		offset=offset
-	}
-	return dict
+	pass
 	
 func from_dict(dict):
-	offset = dict["offset"]
+	pass
 
 func _ready():
 	set_slot(0, false, TYPE_NIL, Color(1.0,1.0,1.0), true, TYPE_NIL, Color(1.0,1.0,1.0))
