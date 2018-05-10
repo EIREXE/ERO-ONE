@@ -109,7 +109,7 @@ func add_item(item_path, user_item_data=null):
 		var item = load_item(item_path)
 		var body_item = EROContent.get_item(character_data["body"])
 		body.get_node(body_item["armature"]).add_child(item)
-
+		
 		
 # Same but async
 func add_item_async(item_path, user_item_data=null):

@@ -111,6 +111,8 @@ _sections_unfolded = [ "Adjustments", "Ambient Light", "Auto Exposure", "Backgro
 
 [sub_resource type="CubeMesh" id=3]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -183,6 +185,8 @@ points = PoolVector3Array( -150, 0.25, 150, -150, -0.25, -150, -150, -0.25, 150,
 
 [sub_resource type="CubeMesh" id=10]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
 size = Vector3( 0.2, 1.9, 1 )
 subdivide_width = 0
 subdivide_height = 0
@@ -431,7 +435,7 @@ disabled = false
 
 [node name="Cube.003" type="MeshInstance" parent="Scene Root" index="0"]
 editor/display_folded = true
-transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.14821, 7.73473e-09 )
+transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.14821, 7.73473e-009 )
 layers = 1
 material_override = null
 cast_shadow = 1
