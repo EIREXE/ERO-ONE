@@ -541,7 +541,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.50169, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74087, 7.50169, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="FSM3D" parent="EROPlayerCharacter/EROCharacter" index="0"]

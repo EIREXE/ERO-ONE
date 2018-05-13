@@ -14,5 +14,9 @@ func prepare(new_state, args = []):
 	#you can optionally implement this to reset transition when related state has been activated
 	pass
 
-func transition_condition(delta, args = []): 
-	return logic_root.input_movement_vector == Vector3()
+func transition_condition(delta, args = []):
+	var movement_action_pressed = false
+	for action in MOVEMENT_ACTIONS:
+		if Input.is_action_pressed(action):
+			movement_action_pressed = true
+	return not movement_action_pressed

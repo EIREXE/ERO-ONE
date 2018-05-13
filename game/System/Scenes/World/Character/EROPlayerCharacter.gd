@@ -8,15 +8,8 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	var input_movement_vector = Vector3()
 	
-	input_movement_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	
-	input_movement_vector.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
-		
-	input_movement_vector = input_movement_vector.normalized()
-	
-	character.add_movement_input(input_movement_vector)
+
 	
 	var buttons = get_tree().get_nodes_in_group("Buttons")
 	

@@ -20,31 +20,40 @@ var last_dir = Vector3()
 #when entering state, usually you will want to reset internal state here somehow
 func enter(from_state = null, from_transition = null, args = []):
 	.enter(from_state, from_transition, args)
-	rotation_interp_value = 0
-	last_dir = Vector3()
+	#rotation_interp_value = 0
+	#last_dir = Vector3()
 
 #when updating state, paramx can be used only if updating fsm manually
 func update(delta, args=null):
 	
 	var cam_xform = logic_root.get_camera().get_global_transform()
 
-	var movement_vector = logic_root.input_movement_vector.normalized()
+	var input_direction = Vector3()
 
-	var input_world_direction = Vector3()
-	input_world_direction += -cam_xform.basis.z.normalized() * movement_vector.z
-	input_world_direction += cam_xform.basis.x.normalized() * movement_vector.x
+	input_direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
-	input_world_direction.y = 0
+	input_direction.z = Input.get_action_strength("forward") - Input.get_action_strength("back")
+
+	var movement_input = Vector3()
+	movement_input += -cam_xform.basis.z.normalized() * input_direction.z
+	movement_input += cam_xform.basis.x.normalized() * input_direction.x
+	
+	movement_input.y = 0
+	
+
+	
+	
+	logic_root.add_movement_input(movement_input)
 	
 	# While character direction changes are instantenous input-wise, they are not when it comes to visuals
 	# mainly because it looks terrible if done otherwise
 
-	var target_visual_direction = input_world_direction
+	var target_visual_direction = movement_input.normalized()
 	
 	# Make input change the movement direciton
 	
-	logic_root.dir += input_world_direction*(WALK_SPEED*delta)
-	logic_root.target_visual_direction = target_visual_direction
+	 #logic_root.dir += input_world_direction*(WALK_SPEED*delta)
+	#logic_root.target_visual_direction = target_visual_direction
 	.update(delta, args)
 #when exiting state
 func exit(to_state=null):

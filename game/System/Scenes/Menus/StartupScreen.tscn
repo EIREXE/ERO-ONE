@@ -41,61 +41,9 @@ tracks/1/keys = {
 [sub_resource type="Resource" id=2]
 
 script = ExtResource( 4 )
-connection_list = [ {
-"from": "GraphNode4",
-"from_port": 0,
-"to": "GraphNode",
-"to_port": 0
-}, {
-"from": "GraphNode",
-"from_port": 0,
-"to": "GraphNode3",
-"to_port": 0
-}, {
-"from": "GraphNode",
-"from_port": 0,
-"to": "GraphNode5",
-"to_port": 0
-} ]
+connection_list = [  ]
 node_data = {
-"GraphNode": {
-"data": null,
-"name": "GraphNode",
-"offset": Vector2( 540, 280 ),
-"type": "Random Choice"
-},
-"GraphNode2": {
-"data": null,
-"name": "GraphNode2",
-"offset": Vector2( 1300, 300 ),
-"type": "Random Choice"
-},
-"GraphNode3": {
-"data": {
-"selected_character": 0,
-"text": "dfd"
-},
-"name": "GraphNode3",
-"offset": Vector2( 880, 160 ),
-"type": "SpeechNode"
-},
-"GraphNode4": {
-"data": {
-"offset": Vector2( 260, 300 )
-},
-"name": "GraphNode4",
-"offset": Vector2( 260, 300 ),
-"type": "InputNode"
-},
-"GraphNode5": {
-"data": {
-"selected_character": 0,
-"text": ""
-},
-"name": "GraphNode5",
-"offset": Vector2( 860, 380 ),
-"type": "SpeechNode"
-}
+
 }
 
 [node name="CanvasLayer" type="CanvasLayer" index="0"]
@@ -164,11 +112,8 @@ anims/fade = SubResource( 1 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="DialogTree" type="Node" parent="." index="4"]
+[node name="ERODialogTree" type="Node" parent="." index="4"]
 script = ExtResource( 3 )
+_sections_unfolded = [ "Pause" ]
 dialog = SubResource( 2 )
-
-[node name="ERODialogTree" type="Node" parent="." index="5"]
-script = ExtResource( 3 )
-dialog = null
 

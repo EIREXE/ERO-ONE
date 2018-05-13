@@ -36,6 +36,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="FSM3D" type="Spatial" parent="." index="0"]
+editor/display_folded = true
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
@@ -54,15 +55,15 @@ GraphData = {
 "BaseState": Vector2( -9, 27 ),
 "BaseState_": Vector2( -9, 27 ),
 "StandState": Vector2( 432, 118 ),
-"StandState_": Vector2( -9, 27 ),
+"StandState_": Vector2( 432, 118 ),
 "WalkState": Vector2( 888, 508 ),
-"WalkState_": Vector2( -9, 27 ),
+"WalkState_": Vector2( 888, 508 ),
 "on_direction_input": Vector2( 1134, 227 ),
-"on_direction_input_": Vector2( 191, 27 ),
+"on_direction_input_": Vector2( 1134, 227 ),
 "on_direction_release": Vector2( 895, 222 ),
-"on_direction_release_": Vector2( 191, 27 ),
+"on_direction_release_": Vector2( 895, 222 ),
 "on_wall_collision": Vector2( 606, 400 ),
-"on_wall_collision_": Vector2( 191, 27 )
+"on_wall_collision_": Vector2( 606, 400 )
 }
 
 [node name="States" type="Spatial" parent="FSM3D" index="0"]
@@ -126,4 +127,28 @@ _sections_unfolded = [ "Transform" ]
 [node name="EROCharacterRenderer" parent="PivotPoint" index="0" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="MovementInputLabel" type="Label" parent="CanvasLayer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 8.0
+margin_bottom = 22.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 

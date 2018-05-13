@@ -8,9 +8,7 @@ var msaa = VisualServer.VIEWPORT_MSAA_2X setget set_msaa
 
 var fxaa = false setget set_fxaa
 
-
-
-var mouse_sensitivity = 1.0 setget set_mouse_sensitivity
+var mouse_sensitivity = 0.1 setget set_mouse_sensitivity
 
 var zoom_speed = 0.5 setget set_zoom_speed
 var free_camera_speed = 4.0 setget set_free_camera_speed
