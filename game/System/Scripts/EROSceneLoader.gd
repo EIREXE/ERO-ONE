@@ -7,8 +7,15 @@ var _current_scene
 var _current_scene_args
 var _scene_packed
 
+const LOADING_SCREEN_SCENE = preload("res://System/Scenes/Menus/LoadingScreen.tscn")
+
+var loading_screen
+
 func _ready():
-	EROLoadingScreen.hide() # Ensure this is hidden
+	
+	loading_screen = LOADING_SCREEN_SCENE.instance()
+	loading_screen.hide() # Ensure this is hidden
+	add_child(loading_screen)
 	set_process(false)
 
 func _process(delta):
@@ -24,12 +31,12 @@ func _process(delta):
 			var args = _current_scene_args[function]
 			_current_scene.callv(function, args)
 			
-		EROLoadingScreen.hide()
+		loading_screen.hide()
 		set_process(false)
 	else:
-		EROLoadingScreen.set_progress(EROResourceQueue.get_progress(_scene_path))
+		loading_screen.set_progress(EROResourceQueue.get_progress(_scene_path))
 		
-func change_scene(scene_path, loading_screen=true, args=null):
+func change_scene(scene_path, show_loading_screen=true, args=null):
 	_scene_path = scene_path
 	_current_scene_args = args
 	if _current_scene:
@@ -40,5 +47,5 @@ func change_scene(scene_path, loading_screen=true, args=null):
 		
 	EROResourceQueue.queue_resource(scene_path)
 	set_process(true)
-	if loading_screen:
-		EROLoadingScreen.show()
+	if show_loading_screen:
+		loading_screen.show()

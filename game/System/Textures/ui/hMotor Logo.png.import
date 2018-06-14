@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/hMotor Logo.png-50a65df6af93469e670e4b42ae95be76.stex"
+
+[deps]
+
+source_file="res://System/Textures/ui/hMotor Logo.png"
+dest_files=[ "res://.import/hMotor Logo.png-50a65df6af93469e670e4b42ae95be76.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

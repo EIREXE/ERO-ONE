@@ -1,10 +1,9 @@
 {
 	"name": "Elf Body",
 	"model": "res://Content/TestContent/Bodies/BodyTest/elfbody.tscn",
-	"armature": "",
 	"parameters": {
 	},
 	"scale": 0.1,
 	"editor_animation": "PoseLib",
-	"armature": "Elf Yamada Ver 101/Elf Yamada Ver 101_arm/Skeleton"
+	"armature": "Elf Yamada Ver. 1.01/Elf Yamada Ver. 1.01_arm/Skeleton"
 }

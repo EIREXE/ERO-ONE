@@ -1,12 +1,12 @@
 extends CanvasLayer
 
-onready var progress_bar = get_node("Control/ProgressBar")
+onready var progress_bar = get_node("LoadingScreen/ProgressBar")
 
 func hide():
-	$Control.hide()
+	$LoadingScreen.hide()
 
 func show():
-	$Control.show()
+	$LoadingScreen.show()
 	
 func set_progress(progress):
 	progress_bar.value = progress
