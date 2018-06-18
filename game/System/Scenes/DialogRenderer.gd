@@ -16,14 +16,14 @@ var is_writing_text = false
 signal on_finish_displaying_text
 
 func _ready():
-	character_renderer.load_body("TestContent.Bodies.BodyTest")
+	"""	character_renderer.load_body("TestContent.Bodies.BodyTest")
 	character_renderer.set_clothing_set("normal")
 	character_renderer.add_item_async("TestContent.Clothing.ElfTop")
 	character_renderer.add_item_async("TestContent.Clothing.ElfPanties")
 	character_renderer.add_item_async("TestContent.Clothing.ElfBloomers")
 	character_renderer.add_item_async("TestContent.Clothing.ElfSocks")
 	character_renderer.add_item_async("TestContent.Clothing.ElfShoes")
-	character_renderer.add_item_async("TestContent.Clothing.ElfSkirt")
+	character_renderer.add_item_async("TestContent.Clothing.ElfSkirt")"""
 	viewport.msaa = EROSettings.msaa
 	character_renderer.connect("character_finished_loading", self, "on_character_finished_loading")
 	visual_root.hide()

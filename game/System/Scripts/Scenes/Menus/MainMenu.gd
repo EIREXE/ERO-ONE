@@ -8,6 +8,7 @@ func _ready():
 	set_version_label()
 	populate_content_list()
 	$ContentSettingsPanel.hide()
+	$ServiceMenu.hide()
 func set_version_label():
 	version_label.text = game_manager.get_version_string()
 
@@ -30,3 +31,7 @@ func quit_game():
 func _on_SettingsButton_pressed():
 	EROOverlayedMenus.popup_options()
 	pass
+
+
+func _on_ServiceMenuButton_pressed():
+	$ServiceMenu.show()

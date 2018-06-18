@@ -2,16 +2,94 @@
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/Debug/LoadedContentList.gd" type="Script" id=1]
 
-[node name="LoadedContentList" type="Node"]
-
+[node name="LoadedContentList" type="Node" index="0"]
 script = ExtResource( 1 )
 
-[node name="Tree" type="Tree" parent="." index="0"]
-
+[node name="Panel" type="Panel" parent="." index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Tabs" type="TabContainer" parent="Panel" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tab_align = 1
+tabs_visible = true
+drag_to_rearrange_enabled = false
+
+[node name="Template" type="VSplitContainer" parent="Panel/Tabs" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 0
+collapsed = true
+dragger_visibility = 0
+
+[node name="PackageEditor" type="Control" parent="Panel/Tabs/Template" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1270.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel/Tabs/Template" index="1"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 8.0
+margin_right = 1270.0
+margin_bottom = 686.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+split_offset = 0
+collapsed = false
+dragger_visibility = 0
+
+[node name="Tree" type="Tree" parent="Panel/Tabs/Template/HSplitContainer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1270.0
+margin_bottom = 678.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
@@ -23,8 +101,8 @@ columns = 3
 allow_reselect = false
 allow_rmb_select = false
 hide_folding = false
-hide_root = false
+hide_root = true
 drop_mode_flags = 0
 select_mode = 0
 
-
+[connection signal="tab_changed" from="Panel/Tabs" to="." method="_on_Tabs_tab_changed"]

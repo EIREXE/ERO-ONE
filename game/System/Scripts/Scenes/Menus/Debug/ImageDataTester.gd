@@ -1,18 +1,30 @@
 extends CanvasLayer
 
-onready var text_editor = get_node("Panel/HSplitContainer/TextEdit")
-onready var texture_rect = get_node("Panel/HSplitContainer/VBoxContainer/TextureRect")
+onready var text_editor = get_node("Panel/HSplitContainer/HSplitContainer/TextEdit")
+onready var texture_rect = get_node("Panel/HSplitContainer/HSplitContainer/TextureRect")
 
 onready var save_button = get_node("Panel/HSplitContainer/VBoxContainer/SaveButton")
 
 onready var characters_container = get_node("Panel/HSplitContainer/VBoxContainer/CharactersContainer")
 
+const JSONBeautifier = preload("res://System/Scripts/Utils/JSONBeautifier.gd")
+
 var current_file_path
+
+var image
+
 
 func _ready():
 	var image_texture = load("res://Content/ModTest/modtest.png")
 	texture_rect.texture = image_texture
+	reload_characters()
+	
+func reload_characters():
 	var characters = EROContent.get_characters()
+	for child in characters_container.get_children():
+		child.queue_free()
+	
+	
 	for character in characters:
 		print(character["image_path"])
 		var button = Button.new()
@@ -21,12 +33,19 @@ func _ready():
 		characters_container.add_child(button)
 	
 func open_file(path):
-	#var image_data = EROContent.load_image_data(path)
-	#text_editor.text = image_data
-	var image_texture = load(path)
-	texture_rect.texture = image_texture
+
+	image = Image.new()
+	image.load(path)
+
 	current_file_path = path
+
+	var image_texture = ImageTexture.new()
+	image_texture.create_from_image(image)
+	texture_rect.texture = image_texture
 	save_button.disabled = false
+	text_editor.text = JSONBeautifier.beautify_json(EROSteganography.get_steganographic_data_from_image(image))
 
 func save_image():
-	EROContent.save_image_data(current_file_path, text_editor.text)
+	image = EROContent.save_image_data(image, text_editor.text)
+	image.save_png(current_file_path)
+	reload_characters()

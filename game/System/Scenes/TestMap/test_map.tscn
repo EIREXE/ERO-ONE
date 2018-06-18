@@ -629,6 +629,44 @@ interior = false
 compress = false
 data = SubResource( 14 )
 
+[node name="CSGBox" type="CSGBox" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36518, 0 )
+layers = 1
+operation = 0
+use_collision = false
+snap = 0.001
+invert_faces = false
+width = 1.0
+height = 1.0
+depth = 1.0
+material = null
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34286, 0, -1.46599 )
+layers = 1
+operation = 2
+use_collision = false
+snap = 0.001
+invert_faces = false
+width = 1.29942
+height = 1.16405
+depth = 1.65034
+material = null
+
+[node name="CSGTorus" type="CSGTorus" parent="CSGBox" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89377, 0 )
+layers = 1
+operation = 0
+use_collision = false
+snap = 0.001
+invert_faces = false
+inner_radius = 2.0
+outer_radius = 3.0
+sides = 8
+ring_sides = 6
+smooth_faces = true
+material = null
+
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]
 [connection signal="on_use" from="DialogTestButton" to="ERODialogTree" method="execute_dialog"]

@@ -9,9 +9,9 @@ const FILL_SPEED = 100
 
 onready var visibility_notifier = get_node("VisibilityNotifier")
 
-onready var progress = get_node("TextureProgress")
+onready var progress = get_node("EROGameUI/TextureProgress")
 
-onready var label = get_node("TextureProgress/NinePatchRect/Label") 
+onready var label = get_node("EROGameUI/TextureProgress/NinePatchRect/Label") 
 
 onready var position_dot = get_node("PositionDot") 
 

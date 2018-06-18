@@ -26,10 +26,10 @@ func _process(delta):
 			_current_scene = _scene_packed.instance()
 			
 		get_tree().get_root().add_child(_current_scene)
-		
-		for function in _current_scene_args:
-			var args = _current_scene_args[function]
-			_current_scene.callv(function, args)
+		if _current_scene_args:
+			for function in _current_scene_args:
+				var args = _current_scene_args[function]
+				_current_scene.callv(function, args)
 			
 		loading_screen.hide()
 		set_process(false)

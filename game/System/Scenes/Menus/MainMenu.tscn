@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://System/Scripts/Scenes/Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo.png" type="Texture" id=2]
 [ext_resource path="res://System/Textures/ui/Background.png" type="Texture" id=3]
+[ext_resource path="res://System/Scenes/Menus/Debug/ServiceMenu.tscn" type="PackedScene" id=4]
 
 [node name="CanvasLayer" type="CanvasLayer" index="0"]
-
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -14,7 +14,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -28,7 +27,6 @@ size_flags_vertical = 1
 color = Color( 0.0901961, 0.101961, 0.129412, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -48,7 +46,6 @@ expand = true
 stretch_mode = 0
 
 [node name="TextureRect2" type="TextureRect" parent="." index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -64,7 +61,6 @@ expand = true
 stretch_mode = 6
 
 [node name="VersionLabel" type="Label" parent="." index="3"]
-
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -85,7 +81,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "Anchor" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="4"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -103,13 +98,12 @@ size_flags_vertical = 1
 alignment = 0
 
 [node name="Button2" type="Button" parent="VBoxContainer" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 271.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -127,14 +121,13 @@ flat = false
 align = 1
 
 [node name="CharacterEditorButton" type="Button" parent="VBoxContainer" index="1"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 271.0
-margin_bottom = 44.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -142,6 +135,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -151,14 +145,13 @@ flat = false
 align = 1
 
 [node name="ContentSettingsButton" type="Button" parent="VBoxContainer" index="2"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 48.0
+margin_top = 52.0
 margin_right = 271.0
-margin_bottom = 68.0
+margin_bottom = 74.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -174,15 +167,37 @@ text = "Content Settings"
 flat = false
 align = 1
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer" index="3"]
-
+[node name="ServiceMenuButton" type="Button" parent="VBoxContainer" index="3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 72.0
+margin_top = 78.0
 margin_right = 271.0
-margin_bottom = 92.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Service Menu"
+flat = false
+align = 1
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" index="4"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 104.0
+margin_right = 271.0
+margin_bottom = 126.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -198,15 +213,14 @@ text = "Settings"
 flat = false
 align = 1
 
-[node name="Button3" type="Button" parent="VBoxContainer" index="4"]
-
+[node name="Button3" type="Button" parent="VBoxContainer" index="5"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 96.0
+margin_top = 130.0
 margin_right = 271.0
-margin_bottom = 116.0
+margin_bottom = 152.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -224,8 +238,7 @@ align = 1
 _sections_unfolded = [ "Material", "Theme", "Visibility", "custom_styles" ]
 
 [node name="ContentSettingsPanel" type="Panel" parent="." index="5"]
-
-editor/display_folded = true
+visible = false
 self_modulate = Color( 1, 1, 1, 0.850824 )
 anchor_left = 1.0
 anchor_top = 0.5
@@ -244,7 +257,6 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ContentSettingsPanel" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -259,14 +271,18 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+scroll_deadzone = 0
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ContentSettingsPanel/ScrollContainer" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 2.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -275,12 +291,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
 
+[node name="ServiceMenu" parent="." index="6" instance=ExtResource( 4 )]
+
 [connection signal="pressed" from="VBoxContainer/CharacterEditorButton" to="." method="load_character_editor"]
-
 [connection signal="pressed" from="VBoxContainer/ContentSettingsButton" to="." method="_on_ContentSettingsButton_pressed"]
-
+[connection signal="pressed" from="VBoxContainer/ServiceMenuButton" to="." method="_on_ServiceMenuButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="quit_game"]
-
-
