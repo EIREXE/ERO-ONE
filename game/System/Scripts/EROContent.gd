@@ -37,6 +37,8 @@ func _ready():
 		args = [],
 		target = self
 	})
+	
+	create_content_folders()
 
 # Loads mods from the Mods folder in user://
 func load_mod_pcks():
