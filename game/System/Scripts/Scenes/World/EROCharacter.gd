@@ -39,18 +39,11 @@ func _ready():
 	set_process_unhandled_input(true)
 	set_physics_process(true)
 	
-	character_renderer.load_body("TestContent.Bodies.BodyTest")
+	character_renderer.load_body("BaseContent.Bodies.Female")
 	character_renderer.set_clothing_set("normal")
-	character_renderer.add_item_async("TestContent.Clothing.ElfTop")
-	character_renderer.add_item_async("TestContent.Clothing.ElfPanties")
-	character_renderer.add_item_async("TestContent.Clothing.ElfBloomers")
-	character_renderer.add_item_async("TestContent.Clothing.ElfSocks")
-	character_renderer.add_item_async("TestContent.Clothing.ElfShoes")
-	character_renderer.add_item_async("TestContent.Clothing.ElfSkirt")
 
 func _physics_process(delta):
 	 # Walking
-	
 	var horizontal_input_direction = Vector3(input_direction.x, 0, input_direction.z)
 	
 	horizontal_input_direction = horizontal_input_direction.normalized()

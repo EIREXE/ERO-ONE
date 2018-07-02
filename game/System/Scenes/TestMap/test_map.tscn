@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://System/Scenes/TestMap/grid_dragon.material" type="Material" id=1]
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://System/Scenes/World/Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://addons/moe.ero-one.dialog/ERODialogTree.gd" type="Script" id=6]
 [ext_resource path="res://addons/moe.ero-one.dialog/ERODialog.gd" type="Script" id=7]
+[ext_resource path="res://Content/BaseContent/Bodies/Female/Female.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -354,7 +355,7 @@ compress = false
 [node name="Spatial" type="Spatial" index="0"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
-transform = Transform( 0.794844, -0.355984, 0.491425, 0, 0.809845, 0.586644, -0.606814, -0.466291, 0.6437, 3.3009, 1.31188, -0.000606537 )
+transform = Transform( 0.581971, -0.477065, 0.658573, 0, 0.809845, 0.586644, -0.81321, -0.34141, 0.471306, 3.3009, 1.31188, -0.000606537 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.2
@@ -540,7 +541,6 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74087, 7.50169, 0 )
 _sections_unfolded = [ "Transform" ]
 
@@ -667,6 +667,28 @@ ring_sides = 6
 smooth_faces = true
 material = null
 
+[node name="Scene Root2" parent="." index="11" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.18546, 0.29611, 0 )
+
+[node name="bra" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="0"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="collar" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="ribbon" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="shirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="skirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
+
+[node name="skirt_2" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
+
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]
 [connection signal="on_use" from="DialogTestButton" to="ERODialogTree" method="execute_dialog"]
@@ -674,3 +696,5 @@ material = null
 [editable path="EROPlayerCharacter"]
 
 [editable path="EROPlayerCharacter/EROCharacter"]
+
+[editable path="Scene Root2"]

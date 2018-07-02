@@ -1,6 +1,7 @@
 shader_type spatial;
 render_mode shadows_disabled;
-
+uniform float rim = 0.25;
+uniform float rim_tint = 0.5;
 uniform sampler2D color_ramp : hint_black_albedo;
 uniform sampler2D albedo : hint_albedo;
 uniform float specular;
@@ -27,16 +28,20 @@ void light() {
 	ramp_point = texture(color_ramp, vec2(0.5,litness)).rgb;
 	
 	float NdotL = 1.0; // To avoid gradients... right?
+	float NdotV = dot(NORMAL, VIEW);
+	float cNdotV = max(NdotV, 0.0);
 	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),NdotL);
-	DIFFUSE_LIGHT += ramp_point*0.6*ATTENUATION*ALBEDO*mix(vec3(diffuse_brdf_NL), vec3(3.14159265359), vec3(0.40));
+	DIFFUSE_LIGHT += ramp_point*0.8*ATTENUATION*ALBEDO*diffuse_brdf_NL*(LIGHT_COLOR*0.3);
 	
+	float rim_light = pow(max(0.0,1.0-cNdotV), max(0.0,(1.0-0.7)*16.0));
+	DIFFUSE_LIGHT += rim_light * rim * mix(vec3(1.0),ALBEDO,rim_tint) * LIGHT_COLOR;
 	// Specular stuff
-	/*vec3 R = normalize(-reflect(LIGHT,NORMAL));
+	vec3 R = normalize(-reflect(LIGHT,NORMAL));
 	float RdotV = dot(R,VIEW);
 	float mid = 1.0-ROUGHNESS;
 	mid*=mid;
-	float intensity = smoothstep(mid-ROUGHNESS*0.5, mid+ROUGHNESS*0.5, RdotV) * mid;*/
-	//DIFFUSE_LIGHT += LIGHT_COLOR * intensity * specular * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
+	float intensity = smoothstep(mid-ROUGHNESS*0.5, mid+ROUGHNESS*0.5, RdotV) * mid;
+	DIFFUSE_LIGHT += LIGHT_COLOR * intensity * specular * ATTENUATION; // write to diffuse_light, as in toon shading you generally want no reflection
 }
 void fragment() {
 	ROUGHNESS = roughness;
