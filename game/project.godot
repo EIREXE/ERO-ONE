@@ -216,6 +216,10 @@ decrease_thrust_speed={
  ]
 }
 
+[physics]
+
+3d/physics_engine="GodotPhysics - deprecated"
+
 [rendering]
 
 quality/filters/anisotropic_filter_level=16

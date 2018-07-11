@@ -9,26 +9,27 @@ uniform bool disable_lighting = false;
 
 uniform vec4 shadow_color : hint_color;
 
+float saturate(float x)
+{
+  return max(0, min(1, x));
+}
+
 void light() {
 	if (disable_lighting) {
 		DIFFUSE_LIGHT = ALBEDO;
 		return;
 	}
 	
-	float litness = dot(LIGHT,NORMAL);
-	litness = clamp(litness, 0.01,1.0);
-	litness = 1.0-litness; // Inverted because toon maps are inverted too
+	float NdotL = dot(LIGHT,NORMAL);
+	float litness = clamp(NdotL, 0.01,1.0);
 	
 	vec3 tint = vec3(1.0);
+	tint = vec3(saturate((floor(litness * 2.0))));
+	tint = mix(shadow_color.rgb, vec3(1.0), tint);
 	
-	if (litness > 0.5) {
-		tint = shadow_color.rgb;
-	}
-	
-	float NdotL = 1.0; // To avoid gradients... right?
 	float NdotV = dot(NORMAL, VIEW);
 	float cNdotV = max(NdotV, 0.0);
-	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),NdotL);
+	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),1.0);
 	DIFFUSE_LIGHT += tint*0.8*ATTENUATION*ALBEDO*diffuse_brdf_NL*(LIGHT_COLOR*0.3);
 	// rim
 	float rim_light = pow(max(0.0,1.0-cNdotV), max(0.0,(1.0-0.7)*16.0));
