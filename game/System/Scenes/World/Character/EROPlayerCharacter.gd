@@ -6,6 +6,7 @@ onready var character = get_node("EROCharacter")
 
 func _ready():
 	set_process(true)
+	EROOpenWorld.player = self
 
 func _process(delta):
 	

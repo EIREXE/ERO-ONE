@@ -8,11 +8,11 @@
 [ext_resource path="res://System/Fonts/DoHyeon-Regular-40.tres" type="DynamicFont" id=6]
 [ext_resource path="res://System/Textures/ui/World/button_container_rect.png" type="Texture" id=7]
 
-[node name="EROButton" type="Spatial" index="0" groups=[
+[node name="EROButton" type="Spatial" groups=[
 "Buttons",
 ]]
 script = ExtResource( 1 )
-MODE = null
+MODE = 0
 starts_disabled = false
 text = null
 max_distance = 3.0
@@ -42,7 +42,6 @@ _sections_unfolded = [ "Anchor", "Rect", "Visibility" ]
 [node name="ToolPlaceholder" parent="." index="2" instance_placeholder="res://System/Scenes/World/ToolPlaceholder.tscn"]
 
 [node name="EROGameUI" parent="." index="3" instance=ExtResource( 3 )]
-rect_clip_content = false
 
 [node name="TextureProgress" type="TextureProgress" parent="EROGameUI" index="0"]
 anchor_left = 0.0
@@ -151,4 +150,3 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="screen_entered" from="VisibilityNotifier" to="EROGameUI/TextureProgress" method="_on_VisibilityNotifier_screen_entered"]

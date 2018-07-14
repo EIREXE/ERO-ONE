@@ -2,28 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.s3tc.stex"
-path.etc2="res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.etc2.stex"
+path="res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.stex"
 
 [deps]
 
 source_file="res://Content/BaseContent/Bodies/Female/face_col.png"
-dest_files=[ "res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.s3tc.stex", "res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.etc2.stex" ]
+dest_files=[ "res://.import/face_col.png-6c26364c568772f94be3123f95a6007f.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/normal_map=0
+compress/hdr_mode=1
+compress/normal_map=2
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
-flags/anisotropic=false
+flags/anisotropic=true
 flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
+process/HDR_as_SRGB=true
 stream=false
 size_limit=0
 detect_3d=false

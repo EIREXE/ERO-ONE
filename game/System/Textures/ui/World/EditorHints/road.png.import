@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.s3tc.stex"
-path.etc2="res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.etc2.stex"
+path.s3tc="res://.import/road.png-10b15a496a7a1bbb218569b81015837d.s3tc.stex"
+path.etc2="res://.import/road.png-10b15a496a7a1bbb218569b81015837d.etc2.stex"
 
 [deps]
 
-source_file="res://System/Textures/ui/icon.png"
-dest_files=[ "res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.s3tc.stex", "res://.import/icon.png-46eae40e3a49ed220b7d1bb344d70ca0.etc2.stex" ]
+source_file="res://System/Textures/ui/World/EditorHints/road.png"
+dest_files=[ "res://.import/road.png-10b15a496a7a1bbb218569b81015837d.s3tc.stex", "res://.import/road.png-10b15a496a7a1bbb218569b81015837d.etc2.stex" ]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://System/Scripts/Scenes/HMode/HModeGauge.gd" type="Script" id=1]
 [ext_resource path="res://System/Scripts/Scenes/HMode/RotaryIndicator.gd" type="Script" id=2]
 
-[node name="HModeGauge" type="Control" index="0"]
+[node name="HModeGauge" type="Control"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -44,7 +44,7 @@ indicator_value = 0.574
 indicator_line = 0.75
 indicator_line_width = 2.0
 fill_post_line_color = Color( 0, 0, 0, 1 )
-base_post_line_color = Color( 0, 0, 0, 0.25 )
+base_post_line_color = Color( 0, 0, 0, 0.25098 )
 fill_color = Color( 0.627451, 0.819608, 1, 1 )
 
 [node name="PartnerPleasureIndicator" type="Control" parent="." index="1"]

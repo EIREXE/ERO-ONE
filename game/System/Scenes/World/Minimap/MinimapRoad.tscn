@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://System/Scripts/Scenes/World/Minimap/MinimapRoad.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/World/ToolPlaceholder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://System/Textures/ui/World/EditorHints/road.png" type="Texture" id=3]
+
+[node name="MinimapRoad4" type="Spatial"]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+disconnected = false
+
+[node name="EditorHint" parent="." index="0" instance=ExtResource( 2 )]
+texture = ExtResource( 3 )
+

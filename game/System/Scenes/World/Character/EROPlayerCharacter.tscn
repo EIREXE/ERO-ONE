@@ -8,3 +8,21 @@ script = ExtResource( 1 )
 
 [node name="EROCharacter" parent="." index="0" instance=ExtResource( 2 )]
 
+[node name="FSM3D" parent="EROCharacter" index="0"]
+GraphData = {
+"BaseState": Vector2( -9, 27 ),
+"BaseState_": Vector2( -9, 27 ),
+"StandState": Vector2( 432, 118 ),
+"StandState_": Vector2( 432, 118 ),
+"WalkState": Vector2( 888, 508 ),
+"WalkState_": Vector2( 888, 508 ),
+"on_direction_input": Vector2( 1134, 227 ),
+"on_direction_input_": Vector2( 1134, 227 ),
+"on_direction_release": Vector2( 895, 222 ),
+"on_direction_release_": Vector2( 895, 222 ),
+"on_wall_collision": Vector2( 606, 400 ),
+"on_wall_collision_": Vector2( 606, 400 )
+}
+
+
+[editable path="EROCharacter"]

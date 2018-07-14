@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://System/Scenes/World/ToolPlaceholder.tscn" type="PackedScene" id=1]
+[ext_resource path="res://System/Textures/ui/World/EditorHints/minimap.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends Spatial
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+export(bool) var update = false setget set_update
+
+func set_update(value):
+	pass
+
+func _ready():
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="MinimapInstance" type="Spatial"]
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+update = false
+
+[node name="EditorHint" parent="." index="0" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+

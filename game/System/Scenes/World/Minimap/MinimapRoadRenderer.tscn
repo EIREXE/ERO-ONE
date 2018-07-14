@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Viewport
+
+onready var renderer = get_node(\"MinimapRenderer\")
+
+func set_origin(origin):
+	renderer.set_origin(origin)
+	
+func global3d2minimap(position):
+	return renderer.global3d2minimap(position)"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Control
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+var scale = 3.0
+
+const ROAD_COLOR = Color(1.0, 1.0, 1.0 )
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	update()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func _draw():
+	var road_roots = get_tree().get_nodes_in_group(\"minimap_roads\")
+	for root_node in road_roots:
+		draw_roads(root_node)
+	
+func set_origin(origin):
+	rect_position = -Vector2(origin.x, origin.z) * scale
+	
+func global2minimap(position):
+	position *= scale
+	position += rect_size / 2
+	return position
+	
+func global3d2minimap(position):
+	return global2minimap(Vector2(position.x, position.z))
+	
+func draw_roads(node):
+	var from = global3d2minimap(node.global_transform.origin)
+	for child in node.get_children():
+		var to = global3d2minimap(child.global_transform.origin)
+		draw_line(from, to, ROAD_COLOR, 20)
+		if child.get_child_count() > 1:
+			draw_circle(to, 10, ROAD_COLOR)
+		draw_roads(child)"
+
+[node name="MinimapRoadRenderer" type="Viewport"]
+arvr = false
+size = Vector2( 1280, 720 )
+own_world = true
+world = null
+transparent_bg = true
+msaa = 0
+hdr = true
+disable_3d = true
+keep_3d_linear = false
+usage = 0
+debug_draw = 2
+render_target_v_flip = true
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+script = SubResource( 1 )
+_sections_unfolded = [ "Gui", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
+
+[node name="MinimapRenderer" type="Control" parent="." index="0"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 2 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Mouse", "Rect", "Visibility", "material" ]
+
+[node name="ColorRect" type="ColorRect" parent="MinimapRenderer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+

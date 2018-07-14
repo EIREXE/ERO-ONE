@@ -71,7 +71,7 @@ func _physics_process(delta):
 	# mainly because it looks terrible if done otherwise
 	
 	var new_transform = pivot_point.global_transform
-	new_transform = new_transform.looking_at(pivot_point.global_transform.origin + horizontal_input_direction, Vector3(0,1,0))
+	#new_transform = new_transform.looking_at(pivot_point.global_transform.origin + horizontal_input_direction, Vector3(0,1,0))
 	
 	pivot_point.global_transform = pivot_point.global_transform.interpolate_with(new_transform, ROTATION_SPEED*delta)
 	

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode shadows_disabled;
+render_mode shadows_disabled, ambient_light_disabled;
 uniform float rim = 0.25;
 uniform float rim_tint = 0.5;
 uniform sampler2D color_ramp : hint_black_albedo;
