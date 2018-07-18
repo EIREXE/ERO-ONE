@@ -36,11 +36,13 @@ func _input(event):
 			hide_game_ui()
 			
 func show_pause_menu():
-	$CanvasLayer/PauseMenu.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	pass
+	#$CanvasLayer/PauseMenu.show()
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func hide_overlayed_menus():
-	$CanvasLayer/PauseMenu.hide()
+	pass
+	#$CanvasLayer/PauseMenu.hide()
 	
 func pause_game():
 	for _exempted_scene in _exempted_scenes:

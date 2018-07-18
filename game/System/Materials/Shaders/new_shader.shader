@@ -14,6 +14,19 @@ float saturate(float x)
   return max(0, min(1, x));
 }
 
+float when_lt(float x, float y) {
+  return max(sign(y - x), 0.0);
+}
+
+
+float when_gt(float x, float y) {
+  return max(sign(x - y), 0.0);
+}
+
+float and(float a, float b) {
+  return a * b;
+}
+
 void light() {
 	if (disable_lighting) {
 		DIFFUSE_LIGHT += ALBEDO;
@@ -21,15 +34,22 @@ void light() {
 	}
 	
 	float NdotL = dot(LIGHT,NORMAL);
-	float litness = clamp(NdotL, 0.01,1.0);
-	
-	vec3 tint = vec3(1.0);
-	tint = vec3(saturate((floor(litness * 2.0))));
-	tint = mix(shadow_color.rgb, vec3(1.0), tint);
-	
 	float NdotV = dot(NORMAL, VIEW);
+	vec3 tint = vec3(0.0);
+	//tint = vec3(saturate((floor(NdotL * 2.0))));
+	
+	float transitionSmoothMin = 0.49;
+	float transitionSmoothMax = 0.51;
+	
+	tint += mix(shadow_color.rgb, vec3(1.0), 0.0) * when_lt(NdotL, transitionSmoothMin);
+	tint += mix(shadow_color.rgb, vec3(1.0), (NdotL - transitionSmoothMin)/ (transitionSmoothMax-transitionSmoothMin)) * and(when_gt(NdotL, transitionSmoothMin), when_lt(NdotL, transitionSmoothMax));
+	tint += vec3(1.0) * when_gt(NdotL, transitionSmoothMax);
+	
+	
+	
+
 	float cNdotV = max(NdotV, 0.0);
-	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01),1.0);
+	float diffuse_brdf_NL = smoothstep(-ROUGHNESS,max(ROUGHNESS,0.01), 1.0);
 	DIFFUSE_LIGHT += 0.8*tint*ATTENUATION*ALBEDO*diffuse_brdf_NL*(LIGHT_COLOR*0.3);
 	
 	// rim

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://System/Textures/ui/World/EditorHints/button.png" type="Texture" id=1]
 
@@ -14,6 +14,7 @@ flags_world_triplanar = false
 flags_fixed_size = false
 flags_albedo_tex_force_srgb = false
 flags_do_not_receive_shadows = false
+flags_disable_ambient_light = false
 flags_ensure_correct_normals = false
 vertex_color_use_as_albedo = false
 vertex_color_is_srgb = false
@@ -56,6 +57,26 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters", "Vertex Color" ]
 
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Sprite3D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if Engine.editor_hint:
+		show()
+	else:
+		hide()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
 [node name="Sprite3D" type="Sprite3D"]
 layers = 1
 material_override = SubResource( 1 )
@@ -84,5 +105,6 @@ hframes = 1
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "Region", "Transform" ]
 

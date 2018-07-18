@@ -493,7 +493,7 @@ surfaces/0 = {
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
-transform = Transform( -0.718153, -0.396712, 0.571731, -0.064948, 0.856212, 0.512525, -0.692848, 0.33094, -0.640656, 3.3009, 1.31188, -0.000606537 )
+transform = Transform( 0.962238, -0.0823242, 0.259463, -0.064948, 0.856212, 0.512525, -0.264349, -0.510024, 0.818532, 3.3009, 1.31188, -0.000606537 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.2
@@ -832,6 +832,7 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Lod", "Transform" ]
 
 [node name="Scene Root2" parent="." index="12" instance=ExtResource( 8 )]
+editor/display_folded = true
 transform = Transform( -0.160534, 0, 0.98703, 0, 1, 0, -0.98703, 0, -0.160534, 53.0476, 2.91827, -2.84444 )
 script = SubResource( 16 )
 
@@ -846,14 +847,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material" ]
 
 [node name="shirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-_sections_unfolded = [ "Transform", "mesh" ]
+transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 0 )
+_sections_unfolded = [ "Material", "Transform", "mesh" ]
 
 [node name="skirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
+transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 1.05173 )
 
 [node name="skirt_2" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
+transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 1.05173 )
 
 [node name="face" parent="Scene Root2/Schoolgirl_mod" index="3"]
 _sections_unfolded = [ "Material" ]
@@ -895,6 +896,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="14"]
+editor/display_folded = true
 navmesh = SubResource( 17 )
 enabled = true
 
@@ -1061,6 +1063,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2117, 3.53947, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MinimapRoad4" parent="." index="16" instance=ExtResource( 11 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.206, 4.43062, 0 )
 disconnected = true
 

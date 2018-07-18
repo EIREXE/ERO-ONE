@@ -5340,7 +5340,8 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 color = Color( 1, 1, 1, 0.1 )
-grow = 1.0
+grow_begin = 1.0
+grow_end = 1.0
 thickness = 1
 vertical = false
 
@@ -5630,7 +5631,8 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 color = Color( 1, 1, 1, 0.1 )
-grow = 7.0
+grow_begin = 1.0
+grow_end = 1.0
 thickness = 1
 vertical = false
 
@@ -5935,7 +5937,8 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 color = Color( 1, 1, 1, 0.1 )
-grow = 0.0
+grow_begin = 1.0
+grow_end = 1.0
 thickness = 1
 vertical = true
 
