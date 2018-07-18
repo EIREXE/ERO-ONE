@@ -33,23 +33,22 @@ func _input(event):
 				show_game_ui()
 		else:
 			pause_game()
+			show_pause_menu()
 			hide_game_ui()
 			
 func show_pause_menu():
-	pass
-	#$CanvasLayer/PauseMenu.show()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$CanvasLayer/PauseMenu.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func hide_overlayed_menus():
-	pass
-	#$CanvasLayer/PauseMenu.hide()
+	$CanvasLayer/PauseMenu.hide()
 	
 func pause_game():
 	for _exempted_scene in _exempted_scenes:
 		if _exempted_scene in EROSceneLoader._scene_path:
 			return
 	get_tree().set_pause(true)
-	show_pause_menu()
+	#show_pause_menu()
 	emit_signal("on_pause")
 	
 func show_dialog_renderer():

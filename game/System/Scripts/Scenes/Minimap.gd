@@ -1,4 +1,4 @@
-extends Control
+extends "res://System/Scripts/Scenes/Menus/EROGameUI.gd"
 onready var sprite = get_node("ViewportContainer/MinimapViewport/Sprite3D")
 
 export(NodePath) var renderer

@@ -682,9 +682,11 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-editor/display_folded = true
-transform = Transform( 0.0035316, 0, -0.999994, 0, 1, 0, 0.999994, 0, 0.0035316, 51.6184, 2.93186, -2.36149 )
+transform = Transform( 0.0035316, 0, -0.999994, 0, 1, 0, 0.999994, 0, 0.0035316, 51.6184, 2.93186, 0.0408688 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="EROCharacter" parent="EROPlayerCharacter" index="0"]
+transform = Transform( 1, 0, -2.32831e-10, 0, 1, 0, 2.32831e-10, 0, 1, 0, 0, 0 )
 
 [node name="FSM3D" parent="EROPlayerCharacter/EROCharacter" index="0"]
 GraphData = {
@@ -705,9 +707,15 @@ GraphData = {
 [node name="CollisionShape" parent="EROPlayerCharacter/EROCharacter" index="1"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.750948, 0 )
 
+[node name="CharacterCamera" parent="EROPlayerCharacter/EROCharacter" index="2"]
+editor/display_folded = true
+
 [node name="Camera" parent="EROPlayerCharacter/EROCharacter/CharacterCamera/CameraGimball" index="0"]
 h_offset = 0.0
 v_offset = 0.0
+
+[node name="PivotPoint" parent="EROPlayerCharacter/EROCharacter" index="4"]
+transform = Transform( 0.723402, 0, -0.690428, 0, 1, 0, 0.690428, 0, 0.723402, -1.90735e-06, 0, 0 )
 
 [node name="Door" type="Spatial" parent="." index="6"]
 editor/display_folded = true
@@ -832,7 +840,6 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Lod", "Transform" ]
 
 [node name="Scene Root2" parent="." index="12" instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( -0.160534, 0, 0.98703, 0, 1, 0, -0.98703, 0, -0.160534, 53.0476, 2.91827, -2.84444 )
 script = SubResource( 16 )
 
@@ -896,7 +903,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="14"]
-editor/display_folded = true
 navmesh = SubResource( 17 )
 enabled = true
 

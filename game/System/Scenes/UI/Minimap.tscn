@@ -2,7 +2,7 @@
 
 [ext_resource path="res://System/Scripts/Scenes/Minimap.gd" type="Script" id=1]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -23,7 +23,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Mouse" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags" ]
 renderer = null
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -107,7 +107,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 

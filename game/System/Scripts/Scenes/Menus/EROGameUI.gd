@@ -1,7 +1,6 @@
-# This node should be parent of all game UI nodes
-# this way when pausing the game this hides too
-
 extends Control
+
+class_name EROGameUI
 
 func _ready():
 	EROOverlayedMenus.connect("show_game_ui", self, "show")
