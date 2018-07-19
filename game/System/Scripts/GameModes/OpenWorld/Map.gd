@@ -5,6 +5,7 @@ extends Control
 # var b = "text"
 
 var markers = {}
+var marker_categories = {}
 
 onready var legend = get_node("Control/Legend")
 
@@ -66,37 +67,43 @@ func set_map_origin(origin):
 	update_all_marker_transforms()
 
 func update_all_marker_transforms():
-	for marker in markers.keys():
-		update_marker_transform(marker)
+	for marker_list in marker_categories.values():
+		for marker_data in marker_list:
+			update_marker_transform(marker_data)
 
 func update_viewport_size():
 	get_renderer_viewport().size = rect_size
 
 func add_new_marker(marker):
-	
 	var legend_entry = MapLegend.instance()
-	legend_entry.set_marker(marker)
-	
+	if not marker_categories.has(marker.type):
+		legend_entry.set_marker(marker.get_marker_type_data())
+		marker_categories[marker.type] = []
+		legend.add_child(legend_entry)
 	var map_icon = MinimapIcon.new()
 	map_icon.sprite_texture = marker.get_marker_icon()
 	
-	markers[marker] = {
+	var marker_data = {
 		"map_icon": map_icon,
-		"legend": legend_entry
+		"legend": legend_entry,
+		"world_marker": marker
 	}
+	
+	marker_categories[marker.type].append(marker_data)
 	
 	$MapIcons.add_child(map_icon)
 	
-	legend.add_child(legend_entry)
 	
-	marker.connect("marker_position_changed", self, "update_marker_transform", [marker])
-	map_icon.sprite.connect("mouse_entered", self, "show_label", [marker])
+	
+	marker.connect("marker_position_changed", self, "update_marker_transform", [marker_data])
+	map_icon.sprite.connect("mouse_entered", self, "show_label", [marker_data])
 	map_icon.sprite.connect("mouse_exited", self, "hide_label")
 	
-	update_marker_transform(marker)
+	update_marker_transform(marker_data)
 
-func update_marker_transform(marker):
-	var map_icon = markers[marker]["map_icon"]
+func update_marker_transform(marker_data):
+	var map_icon = marker_data["map_icon"]
+	var marker = marker_data["world_marker"]
 	map_icon.set_position_centered(global2map(marker.global_transform.origin))
 	
 	if marker.display_rotation:
@@ -109,9 +116,10 @@ func get_renderer():
 func get_renderer_viewport():
 	return get_node(road_renderer)
 
-func show_label(marker):
-	hovering_marker = marker
-	var map_icon = markers[marker]["map_icon"]
+func show_label(marker_data):
+	hovering_marker = marker_data
+	var marker = marker_data["world_marker"]
+	var map_icon = marker_data["map_icon"]
 	item_label.text = marker.marker_name
 	item_label.rect_global_position = map_icon.rect_global_position + map_icon.rect_size / 2 - item_label.rect_size / 2
 	item_label.rect_global_position -= Vector2(0, 32)

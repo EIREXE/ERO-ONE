@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://System/Scenes/TestMap/grid_dragon.material" type="Material" id=1]
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://Content/BaseContent/Bodies/Female/Female.tscn" type="PackedScene" id=8]
 [ext_resource path="res://System/Textures/dev/grid-purple.png" type="Texture" id=9]
 [ext_resource path="res://System/Scenes/TestMap/Material.material" type="Material" id=10]
-[ext_resource path="res://System/Scenes/World/Minimap/MinimapRoad.tscn" type="PackedScene" id=11]
+[ext_resource path="res://System/Scripts/GameModes/OpenWorld/WorldMarker.gd" type="Script" id=11]
+[ext_resource path="res://System/Scripts/Scenes/World/Minimap/MinimapRoad.gd" type="Script" id=12]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -573,8 +574,10 @@ shape = SubResource( 4 )
 disabled = false
 
 [node name="Scene Root" type="Spatial" parent="." index="3"]
+editor/display_folded = true
 
 [node name="Cube.003" type="MeshInstance" parent="Scene Root" index="0"]
+editor/display_folded = true
 transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.15116, 7.73473e-09 )
 layers = 1
 material_override = null
@@ -609,6 +612,7 @@ disabled = false
 transform = Transform( 1, 0, 0, 0, 0.853215, -0.52156, 0, 0.52156, 0.853215, 0, 0, 0 )
 
 [node name="Cube.001" type="MeshInstance" parent="Scene Root" index="2"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0531044, 0.00208759, 0.0661316 )
 layers = 1
 material_override = null
@@ -681,7 +685,6 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-editor/display_folded = true
 transform = Transform( -0.612301, -2.40795e-09, 0.790625, 9.94145e-09, 1, 1.07448e-08, -0.790625, 1.4439e-08, -0.612301, 51.6184, 2.93186, 0.0408669 )
 _sections_unfolded = [ "Transform" ]
 
@@ -716,7 +719,6 @@ v_offset = 0.0
 transform = Transform( 0.723402, 0, -0.690428, 0, 1, 0, 0.690428, 0, 0.723402, -1.90735e-06, 0, 0 )
 
 [node name="Door" type="Spatial" parent="." index="6"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10664, 1.25671, 1.69004 )
 _sections_unfolded = [ "Transform" ]
 
@@ -902,7 +904,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="14"]
-editor/display_folded = true
 navmesh = SubResource( 17 )
 enabled = true
 
@@ -1068,28 +1069,37 @@ _sections_unfolded = [ "Material" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2117, 3.53947, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="MinimapRoad4" parent="." index="16" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.206, 4.43062, 0 )
+[node name="Spatial" type="Position3D" parent="." index="16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70.7038, 3.79119, 0 )
+script = ExtResource( 11 )
+type = 1
+marker_name = "Marker"
+display_rotation = false
+
+[node name="Position3D2" type="Position3D" parent="." index="17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5352, 3.79119, 0.039782 )
+script = ExtResource( 12 )
 disconnected = true
 
-[node name="MinimapRoad5" parent="MinimapRoad4" index="2" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9226, 0, 0 )
+[node name="Position3D3" type="Position3D" parent="Position3D2" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
+script = ExtResource( 12 )
+disconnected = false
 
-[node name="MinimapRoad8" parent="MinimapRoad4/MinimapRoad5" index="2" instance=ExtResource( 11 )]
-transform = Transform( 0.0553047, 0, -0.99847, 0, 1, 0, 0.99847, 0, 0.0553047, 2.52673, 0, 1.11409 )
+[node name="Position3D4" type="Position3D" parent="Position3D2/Position3D3" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.67958 )
+script = ExtResource( 12 )
+disconnected = false
 
-[node name="MinimapRoad9" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8" index="3" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33542, 0, -1.77424 )
+[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4" index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.21402 )
+script = ExtResource( 12 )
+disconnected = null
 
-[node name="MinimapRoad7" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9" index="4" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0768, 0, -0.293182 )
-
-[node name="MinimapRoad5" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9/MinimapRoad7" index="2" instance=ExtResource( 11 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9226, 0, 0 )
-
-[node name="MinimapRoad6" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9/MinimapRoad7/MinimapRoad5" index="2" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7656 )
+[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4/Position3D" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17671, 0, 1.50032 )
+script = ExtResource( 12 )
+disconnected = null
 
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]

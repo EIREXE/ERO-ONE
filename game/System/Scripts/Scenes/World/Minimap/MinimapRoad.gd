@@ -1,5 +1,10 @@
 tool
-extends Spatial
+extends Position3D
+
+class_name MinimapRoad
+
+var tool_placeholder = preload("res://System/Scenes/World/ToolPlaceholder.tscn").instance()
+const PLACEHOLDER_TEXTURE = preload("res://System/Textures/ui/World/EditorHints/road.png")
 
 export(bool) var disconnected setget set_disconnected
 
@@ -12,6 +17,9 @@ func set_disconnected(value):
 
 
 func _ready():
+	add_child(tool_placeholder)
+	tool_placeholder.translation = Vector3()
+	tool_placeholder.texture = PLACEHOLDER_TEXTURE
 	if disconnected:
 		add_to_group("minimap_roads")
 	draw_debug_line()

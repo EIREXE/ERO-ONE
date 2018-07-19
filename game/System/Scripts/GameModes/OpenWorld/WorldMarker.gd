@@ -1,18 +1,23 @@
 tool
-extends Spatial
+extends Position3D
 
 class_name WorldMarker
 
 signal marker_position_changed
 
 enum MarkerType {
-	PLAYER
+	PLAYER,
+	DOT
 }
 
 var marker_type_data = {
 	MarkerType.PLAYER: {
 		"name": "Player",
 		"icon": preload("res://System/Textures/ui/Icons/nav_player.png")
+	},
+	MarkerType.DOT: {
+		"name": "Point of interest",
+		"icon": preload("res://System/Textures/ui/Icons/nav_dot.png")
 	}
 }
 

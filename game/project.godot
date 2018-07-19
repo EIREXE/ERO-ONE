@@ -19,7 +19,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://System/Scripts/GameModes/OpenWorld/MinimapIcon.gd"
 }, {
-"base": "Spatial",
+"base": "Position3D",
+"class": "MinimapRoad",
+"language": "GDScript",
+"path": "res://System/Scripts/Scenes/World/Minimap/MinimapRoad.gd"
+}, {
+"base": "Position3D",
 "class": "WorldMarker",
 "language": "GDScript",
 "path": "res://System/Scripts/GameModes/OpenWorld/WorldMarker.gd"
@@ -256,5 +261,5 @@ quality/shadows/filter_mode=2
 quality/subsurface_scattering/quality=2
 quality/subsurface_scattering/scale=1
 quality/reflections/atlas_subdiv=128
-quality/filters/msaa=4
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
