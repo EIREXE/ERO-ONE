@@ -681,6 +681,7 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
+editor/display_folded = true
 transform = Transform( -0.612301, -2.40795e-09, 0.790625, 9.94145e-09, 1, 1.07448e-08, -0.790625, 1.4439e-08, -0.612301, 51.6184, 2.93186, 0.0408669 )
 _sections_unfolded = [ "Transform" ]
 
@@ -837,6 +838,7 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Lod", "Transform" ]
 
 [node name="Scene Root2" parent="." index="12" instance=ExtResource( 8 )]
+editor/display_folded = true
 transform = Transform( -0.160534, 0, 0.98703, 0, 1, 0, -0.98703, 0, -0.160534, 53.0476, 2.91827, -2.84444 )
 script = SubResource( 16 )
 
@@ -867,6 +869,7 @@ _sections_unfolded = [ "Material" ]
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="Scene Root3" parent="." index="13" instance=ExtResource( 8 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39314, -1.0432, 0 )
 script = SubResource( 16 )
 
@@ -899,6 +902,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="14"]
+editor/display_folded = true
 navmesh = SubResource( 17 )
 enabled = true
 
@@ -1065,24 +1069,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2117, 3.53947, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MinimapRoad4" parent="." index="16" instance=ExtResource( 11 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.206, 4.43062, 0 )
 disconnected = true
 
 [node name="MinimapRoad5" parent="MinimapRoad4" index="2" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9226, 0, 0 )
 
-[node name="MinimapRoad6" parent="MinimapRoad4/MinimapRoad5" index="2" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96326, 20.7656 )
+[node name="MinimapRoad8" parent="MinimapRoad4/MinimapRoad5" index="2" instance=ExtResource( 11 )]
+transform = Transform( 0.0553047, 0, -0.99847, 0, 1, 0, 0.99847, 0, 0.0553047, 2.52673, 0, 1.11409 )
 
-[node name="MinimapRoad7" parent="MinimapRoad4/MinimapRoad5" index="3" instance=ExtResource( 11 )]
+[node name="MinimapRoad9" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8" index="3" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33542, 0, -1.77424 )
+
+[node name="MinimapRoad7" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9" index="4" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0768, 0, -0.293182 )
+
+[node name="MinimapRoad5" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9/MinimapRoad7" index="2" instance=ExtResource( 11 )]
 editor/display_folded = true
-transform = Transform( 0.0553047, 0, -0.99847, 0, 1, 0, 0.99847, 0, 0.0553047, 4.835, 0, 5.40522 )
-
-[node name="MinimapRoad5" parent="MinimapRoad4/MinimapRoad5/MinimapRoad7" index="2" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9226, 0, 0 )
 
-[node name="MinimapRoad6" parent="MinimapRoad4/MinimapRoad5/MinimapRoad7/MinimapRoad5" index="2" instance=ExtResource( 11 )]
+[node name="MinimapRoad6" parent="MinimapRoad4/MinimapRoad5/MinimapRoad8/MinimapRoad9/MinimapRoad7/MinimapRoad5" index="2" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.7656 )
 
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]

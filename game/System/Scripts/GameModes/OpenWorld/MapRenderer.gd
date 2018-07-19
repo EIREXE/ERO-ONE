@@ -8,7 +8,7 @@ class_name road_renderer
 
 var scale = 3.0 setget set_scale
 
-const ROAD_COLOR = Color("#999999")
+const ROAD_COLOR = Color("#fff")
 
 var width_varies_with_scale = true
 
@@ -53,9 +53,9 @@ func draw_roads(node):
 	for child in node.get_children():
 		var to = global3d2minimap(child.global_transform.origin) + origin
 		
-		var width = 20
+		var width = 5
 		if width_varies_with_scale:
-			width = 6.5 * scale
+			width = 2.5 * scale
 		
 		draw_line(from, to, ROAD_COLOR, width)
 		if child.get_child_count() > 1:
