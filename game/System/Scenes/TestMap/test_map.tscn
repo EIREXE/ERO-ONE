@@ -573,7 +573,6 @@ shape = SubResource( 4 )
 disabled = false
 
 [node name="Scene Root" type="Spatial" parent="." index="3"]
-editor/display_folded = true
 
 [node name="Cube.003" type="MeshInstance" parent="Scene Root" index="0"]
 transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.15116, 7.73473e-09 )
@@ -682,10 +681,11 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-transform = Transform( 0.0035316, 0, -0.999994, 0, 1, 0, 0.999994, 0, 0.0035316, 51.6184, 2.93186, 0.0408688 )
+transform = Transform( -0.612301, -2.40795e-09, 0.790625, 9.94145e-09, 1, 1.07448e-08, -0.790625, 1.4439e-08, -0.612301, 51.6184, 2.93186, 0.0408669 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROCharacter" parent="EROPlayerCharacter" index="0"]
+editor/display_folded = false
 transform = Transform( 1, 0, -2.32831e-10, 0, 1, 0, 2.32831e-10, 0, 1, 0, 0, 0 )
 
 [node name="FSM3D" parent="EROPlayerCharacter/EROCharacter" index="0"]
@@ -706,9 +706,6 @@ GraphData = {
 
 [node name="CollisionShape" parent="EROPlayerCharacter/EROCharacter" index="1"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.750948, 0 )
-
-[node name="CharacterCamera" parent="EROPlayerCharacter/EROCharacter" index="2"]
-editor/display_folded = true
 
 [node name="Camera" parent="EROPlayerCharacter/EROCharacter/CharacterCamera/CameraGimball" index="0"]
 h_offset = 0.0
@@ -854,7 +851,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material" ]
 
 [node name="shirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 1.77636e-15, 0, 1, -4.66294e-15, 0, -2.62013e-14, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material", "Transform", "mesh" ]
 
 [node name="skirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="6"]
@@ -870,7 +867,6 @@ _sections_unfolded = [ "Material" ]
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
 
 [node name="Scene Root3" parent="." index="13" instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39314, -1.0432, 0 )
 script = SubResource( 16 )
 

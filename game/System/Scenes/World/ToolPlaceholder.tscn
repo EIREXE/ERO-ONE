@@ -77,7 +77,7 @@ func _ready():
 #	pass
 "
 
-[node name="Sprite3D" type="Sprite3D"]
+[node name="EditorHint" type="Sprite3D" index="0"]
 layers = 1
 material_override = SubResource( 1 )
 cast_shadow = 1
@@ -106,5 +106,5 @@ frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = SubResource( 2 )
-_sections_unfolded = [ "Animation", "Flags", "Geometry", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Flags", "Geometry", "Region", "Transform", "texture" ]
 

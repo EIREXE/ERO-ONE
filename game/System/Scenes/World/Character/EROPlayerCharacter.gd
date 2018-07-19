@@ -6,7 +6,13 @@ onready var character = get_node("EROCharacter")
 
 func _ready():
 	set_process(true)
-	EROOpenWorld.player = self
+	# HACK: Currently the player takes care of setting the game to open world mode
+	EROGameModeManager.change_game_mode(preload("res://System/Scripts/GameModes/OpenWorld/OpenWorldGameMode.tscn").instance())
+	EROGameModeManager.game_mode.player = self
+	var marker = WorldMarker.new()
+	marker.marker_name = "Player"
+	marker.display_rotation = true
+	$EROCharacter/PivotPoint.add_child(marker)
 
 func _process(delta):
 	

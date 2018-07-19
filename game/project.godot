@@ -15,9 +15,19 @@ _global_script_classes=[ {
 "path": "res://System/Scripts/Scenes/Menus/EROGameUI.gd"
 }, {
 "base": "Control",
-"class": "MinimapLocation",
+"class": "MinimapIcon",
 "language": "GDScript",
-"path": "res://System/Scripts/Scenes/Menus/MinimapLocation.gd"
+"path": "res://System/Scripts/GameModes/OpenWorld/MinimapIcon.gd"
+}, {
+"base": "Spatial",
+"class": "WorldMarker",
+"language": "GDScript",
+"path": "res://System/Scripts/GameModes/OpenWorld/WorldMarker.gd"
+}, {
+"base": "Control",
+"class": "road_renderer",
+"language": "GDScript",
+"path": "res://System/Scripts/GameModes/OpenWorld/MapRenderer.gd"
 } ]
 
 [application]
@@ -39,7 +49,7 @@ EROSteganography="*res://System/Scripts/EROSteganography.gd"
 EROSceneLoader="*res://System/Scripts/EROSceneLoader.gd"
 EROOverlayedMenus="*res://System/Scenes/Menus/OverlayedMenus.tscn"
 EROInputSettings="*res://System/Scripts/EROInputSettings.gd"
-EROOpenWorld="*res://System/Scripts/Scenes/OpenWorld/OpenWorld.tscn"
+EROGameModeManager="*res://System/Scripts/EROGameModeManager.gd"
 
 [display]
 

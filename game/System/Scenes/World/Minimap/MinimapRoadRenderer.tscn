@@ -28,7 +28,7 @@ script/source = "extends Control
 
 var scale = 3.0 setget set_scale
 
-const ROAD_COLOR = Color(1.0, 1.0, 1.0 )
+const ROAD_COLOR = Color(1.0, 1.0, 1.0)
 
 var width_varies_with_scale = true
 

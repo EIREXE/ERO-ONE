@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 
 [node name="EROCharacter" parent="." index="0" instance=ExtResource( 2 )]
+editor/display_folded = true
 
 [node name="FSM3D" parent="EROCharacter" index="0"]
 GraphData = {

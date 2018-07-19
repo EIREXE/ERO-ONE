@@ -73,7 +73,8 @@ func _physics_process(delta):
 	var new_transform = pivot_point.global_transform
 	#new_transform = new_transform.looking_at(pivot_point.global_transform.origin + horizontal_input_direction, Vector3(0,1,0))
 	
-	pivot_point.global_transform = pivot_point.global_transform.interpolate_with(new_transform, ROTATION_SPEED*delta)
+	if new_transform != pivot_point.global_transform:
+		pivot_point.global_transform = pivot_point.global_transform.interpolate_with(new_transform, ROTATION_SPEED*delta)
 	
 	input_direction = Vector3()
 	
@@ -87,12 +88,17 @@ func capture_mouse():
 func add_movement_input(input):
 	input_direction += input
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
+		
+		
+		
 		var rotation_y = event.get_relative().x * EROSettings.mouse_sensitivity
 		camera_gimball_base.rotate_y(-rotation_y*get_process_delta_time())
 		var rotation_x = event.get_relative().y * EROSettings.mouse_sensitivity
 		camera_gimball.rotate_x(-rotation_x*get_process_delta_time())
+		
+		print(rotation_x)
 		
 		
 		# Limit vertical rotation
