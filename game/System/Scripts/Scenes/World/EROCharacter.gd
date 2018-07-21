@@ -98,8 +98,6 @@ func _input(event):
 		var rotation_x = event.get_relative().y * EROSettings.mouse_sensitivity
 		camera_gimball.rotate_x(-rotation_x*get_process_delta_time())
 		
-		print(rotation_x)
-		
 		
 		# Limit vertical rotation
 		if abs(rad2deg(camera_gimball.rotation.x)) >= MAX_CAMERA_PITCH:

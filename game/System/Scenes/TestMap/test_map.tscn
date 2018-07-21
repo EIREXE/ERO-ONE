@@ -494,7 +494,7 @@ surfaces/0 = {
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
-transform = Transform( 0.962238, -0.0823242, 0.259463, -0.064948, 0.856212, 0.512525, -0.264349, -0.510024, 0.818532, 3.3009, 1.31188, -0.000606537 )
+transform = Transform( 0.723599, -0.31327, 0.615034, -0.064948, 0.856212, 0.512525, -0.687159, -0.410809, 0.599207, 3.3009, 1.31188, -0.000606537 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.2
@@ -578,7 +578,7 @@ editor/display_folded = true
 
 [node name="Cube.003" type="MeshInstance" parent="Scene Root" index="0"]
 editor/display_folded = true
-transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.15116, 7.73473e-09 )
+transform = Transform( 0.849776, 0, 0, 0, 0.849776, 0, 0, 0, 0.849776, 8.87225, 1.15116, 7.73473e-009 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -669,7 +669,7 @@ shape = SubResource( 9 )
 disabled = false
 
 [node name="Camera" type="Camera" parent="." index="4"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.22104, 98.1909, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, -9.22104, 98.1909, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -685,12 +685,12 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-transform = Transform( -0.612301, -2.40795e-09, 0.790625, 9.94145e-09, 1, 1.07448e-08, -0.790625, 1.4439e-08, -0.612301, 51.6184, 2.93186, 0.0408669 )
+transform = Transform( -0.612301, -2.40795e-009, 0.790625, 9.94145e-009, 1, 1.07448e-008, -0.790625, 1.4439e-008, -0.612301, 51.6184, 2.93186, 0.0408669 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROCharacter" parent="EROPlayerCharacter" index="0"]
 editor/display_folded = false
-transform = Transform( 1, 0, -2.32831e-10, 0, 1, 0, 2.32831e-10, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, -2.32831e-010, 0, 1, 0, 2.32831e-010, 0, 1, 0, 0, 0 )
 
 [node name="FSM3D" parent="EROPlayerCharacter/EROCharacter" index="0"]
 GraphData = {
@@ -709,14 +709,14 @@ GraphData = {
 }
 
 [node name="CollisionShape" parent="EROPlayerCharacter/EROCharacter" index="1"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.750948, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.750948, 0 )
 
 [node name="Camera" parent="EROPlayerCharacter/EROCharacter/CharacterCamera/CameraGimball" index="0"]
 h_offset = 0.0
 v_offset = 0.0
 
 [node name="PivotPoint" parent="EROPlayerCharacter/EROCharacter" index="4"]
-transform = Transform( 0.723402, 0, -0.690428, 0, 1, 0, 0.690428, 0, 0.723402, -1.90735e-06, 0, 0 )
+transform = Transform( 0.723402, 0, -0.690428, 0, 1, 0, 0.690428, 0, 0.723402, -1.90735e-006, 0, 0 )
 
 [node name="Door" type="Spatial" parent="." index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10664, 1.25671, 1.69004 )
@@ -840,7 +840,6 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Lod", "Transform" ]
 
 [node name="Scene Root2" parent="." index="12" instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( -0.160534, 0, 0.98703, 0, 1, 0, -0.98703, 0, -0.160534, 53.0476, 2.91827, -2.84444 )
 script = SubResource( 16 )
 
@@ -855,28 +854,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material" ]
 
 [node name="shirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="4"]
-transform = Transform( 1, 0, 1.77636e-15, 0, 1, -4.66294e-15, 0, -2.62013e-14, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 1.77636e-015, 0, 1, -4.66294e-015, 0, -2.62013e-014, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material", "Transform", "mesh" ]
 
 [node name="skirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="6"]
-transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 1.05173 )
+transform = Transform( 1, 0, 0, 0, 1, -5.10703e-015, 0, -4.88498e-015, 1, 0, 0, 1.05173 )
 
 [node name="skirt_2" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="7"]
-transform = Transform( 1, 0, 0, 0, 1, -5.10703e-15, 0, -4.88498e-15, 1, 0, 0, 1.05173 )
+transform = Transform( 1, 0, 0, 0, 1, -5.10703e-015, 0, -4.88498e-015, 1, 0, 0, 1.05173 )
 
 [node name="face" parent="Scene Root2/Schoolgirl_mod" index="3"]
 _sections_unfolded = [ "Material" ]
 
 [node name="hair" parent="Scene Root2/Schoolgirl_mod" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -1.42109e-014, 0, 1.42109e-014, 1, 0, 0, 0 )
 
 [node name="Scene Root3" parent="." index="13" instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39314, -1.0432, 0 )
 script = SubResource( 16 )
 
 [node name="Schoolgirl_mod" parent="Scene Root3" index="0"]
-transform = Transform( 0.1, 0, 0, 0, -1.19209e-08, -0.1, 0, 0.1, -1.19209e-08, -1.23824, 1.3447, 0 )
+transform = Transform( 0.1, 0, 0, 0, -1.19209e-008, -0.1, 0, 0.1, -1.19209e-008, -1.23824, 1.3447, 0 )
 
 [node name="bra" parent="Scene Root3/Schoolgirl_mod/clothes_mod" index="0"]
 _sections_unfolded = [ "Transform" ]
@@ -892,7 +890,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Transform", "mesh" ]
 
 [node name="shoes" parent="Scene Root3/Schoolgirl_mod/clothes_mod" index="5"]
-transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -1.42109e-014, 0, 1.42109e-014, 1, 0, 0, 0 )
 
 [node name="skirt" parent="Scene Root3/Schoolgirl_mod/clothes_mod" index="6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
@@ -901,7 +899,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05173 )
 
 [node name="hair" parent="Scene Root3/Schoolgirl_mod" index="4"]
-transform = Transform( 1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -1.42109e-014, 0, 1.42109e-014, 1, 0, 0, 0 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="14"]
 navmesh = SubResource( 17 )
@@ -938,7 +936,7 @@ shape = SubResource( 20 )
 disabled = false
 
 [node name="Cube2" type="MeshInstance" parent="NavigationMeshInstance" index="1"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40.3393, 3.3659, -18.901 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 40.3393, 3.3659, -18.901 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -954,7 +952,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube9" type="MeshInstance" parent="NavigationMeshInstance" index="2"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 93.5742, 3.3659, 16.1797 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 93.5742, 3.3659, 16.1797 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -970,7 +968,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube5" type="MeshInstance" parent="NavigationMeshInstance" index="3"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 74.9512, 3.3659, -18.901 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 74.9512, 3.3659, -18.901 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -986,7 +984,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube8" type="MeshInstance" parent="NavigationMeshInstance" index="4"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 58.9623, 3.3659, 16.1797 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 58.9623, 3.3659, 16.1797 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1002,7 +1000,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube3" type="MeshInstance" parent="NavigationMeshInstance" index="5"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.9623, 3.3659, -18.901 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 58.9623, 3.3659, -18.901 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1018,7 +1016,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube6" type="MeshInstance" parent="NavigationMeshInstance" index="6"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 74.9512, 3.3659, 16.1797 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 74.9512, 3.3659, 16.1797 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1034,7 +1032,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube4" type="MeshInstance" parent="NavigationMeshInstance" index="7"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 93.5742, 3.3659, -18.901 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 93.5742, 3.3659, -18.901 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1050,7 +1048,7 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Cube7" type="MeshInstance" parent="NavigationMeshInstance" index="8"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40.3393, 3.3659, 16.1797 )
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 40.3393, 3.3659, 16.1797 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1070,33 +1068,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2117, 3.53947, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spatial" type="Position3D" parent="." index="16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70.7038, 3.79119, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.497, 3.79119, 5.40026 )
 script = ExtResource( 11 )
 type = 1
-marker_name = "Marker"
+marker_name = "A pinche furry"
 display_rotation = false
+important = true
 
 [node name="Position3D2" type="Position3D" parent="." index="17"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5352, 3.79119, 0.039782 )
 script = ExtResource( 12 )
 disconnected = true
 
-[node name="Position3D3" type="Position3D" parent="Position3D2" index="2"]
+[node name="Position3D3" type="Position3D" parent="Position3D2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 script = ExtResource( 12 )
 disconnected = false
 
-[node name="Position3D4" type="Position3D" parent="Position3D2/Position3D3" index="4"]
+[node name="Position3D4" type="Position3D" parent="Position3D2/Position3D3" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.67958 )
 script = ExtResource( 12 )
 disconnected = false
 
-[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4" index="6"]
+[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.21402 )
 script = ExtResource( 12 )
 disconnected = null
 
-[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4/Position3D" index="2"]
+[node name="Position3D" type="Position3D" parent="Position3D2/Position3D3/Position3D4/Position3D" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17671, 0, 1.50032 )
 script = ExtResource( 12 )
 disconnected = null

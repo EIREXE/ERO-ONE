@@ -27,6 +27,8 @@ export(String) var marker_name = "Marker"
 
 export(bool) var display_rotation = false
 
+export(bool) var important = false
+
 var tool_placeholder = preload("res://System/Scenes/World/ToolPlaceholder.tscn").instance()
 const PLACEHOLDER_TEXTURE = preload("res://System/Textures/ui/World/EditorHints/minimap.png")
 

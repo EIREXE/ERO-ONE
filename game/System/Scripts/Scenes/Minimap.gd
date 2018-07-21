@@ -14,3 +14,4 @@ func _process(delta):
 	sprite.rotation.z = -(rotation.y)
 	
 	get_node(renderer).get_node("RoadRenderer").set_origin(player.global_transform.origin)
+	get_node(renderer).get_node("RoadRenderer").set_scale(10.0)

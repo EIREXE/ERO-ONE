@@ -104,7 +104,13 @@ func add_new_marker(marker):
 func update_marker_transform(marker_data):
 	var map_icon = marker_data["map_icon"]
 	var marker = marker_data["world_marker"]
-	map_icon.set_position_centered(global2map(marker.global_transform.origin))
+	
+	var position = global2map(marker.global_transform.origin)
+	if marker.important:
+		position.x = clamp(position.x, 0.0, rect_size.x)
+		position.y = clamp(position.y, 0.0, rect_size.y)
+	
+	map_icon.set_position_centered(position)
 	
 	if marker.display_rotation:
 		var rotation = marker.global_transform.basis.get_euler()
