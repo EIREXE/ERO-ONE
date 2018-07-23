@@ -27,6 +27,9 @@ func _ready():
 func set_position_centered(position):
 	rect_position = position - rect_size / 2
 
+func set_position_centered_global(position):
+	rect_global_position = position - rect_size / 2
+
 func set_sprite_texture(value):
 	sprite_texture = value
 	sprite.texture = value

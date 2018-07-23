@@ -40,11 +40,11 @@ func draw_debug_line():
 			imm.clear()
 			imm.begin(Mesh.PRIMITIVE_LINES)
 			imm.set_color(Color(0.0, 0.0, 0.0))
-			
-			imm.add_vertex(to_local(get_parent().global_transform.origin))
-			imm.set_color(Color(0.0, 0.0, 0.0))
-			imm.add_vertex(Vector3(0.0, 0.0, 0.0))
-			imm.end()
+			if get_parent():
+				imm.add_vertex(to_local(get_parent().global_transform.origin))
+				imm.set_color(Color(0.0, 0.0, 0.0))
+				imm.add_vertex(Vector3(0.0, 0.0, 0.0))
+				imm.end()
 		else:
 			if imm:
 				imm.clear()

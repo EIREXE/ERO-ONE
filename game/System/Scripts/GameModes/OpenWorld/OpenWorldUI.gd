@@ -2,6 +2,7 @@ extends CanvasLayer
 
 onready var tab_menu = get_node("TabMenu")
 onready var map = get_node("TabMenu/Hbox/Map")
+onready var minimap = get_node("MinimapMask/Minimap")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tab_menu.hide()
@@ -14,6 +15,7 @@ func _input(event):
 				tab_menu.hide()
 				EROOverlayedMenus.unpause_game()
 				EROOverlayedMenus.show_game_ui()
+				minimap.on_show()
 			else:
 				EROOverlayedMenus.pause_game()
 				EROOverlayedMenus.hide_game_ui()
