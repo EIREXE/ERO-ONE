@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://System/Scenes/TestMap/grid_dragon.material" type="Material" id=1]
 [ext_resource path="res://System/Scenes/TestMap/material_wall.material" type="Material" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://System/Scenes/TestMap/Material.material" type="Material" id=10]
 [ext_resource path="res://System/Scripts/GameModes/OpenWorld/WorldMarker.gd" type="Script" id=11]
 [ext_resource path="res://System/Scripts/Scenes/World/Minimap/MinimapRoad.gd" type="Script" id=12]
+[ext_resource path="res://Content/BaseContent/Bodies/GothicLolita/gothic_lolita.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -494,7 +495,7 @@ surfaces/0 = {
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="0"]
-transform = Transform( 0.723599, -0.31327, 0.615034, -0.064948, 0.856212, 0.512525, -0.687159, -0.410809, 0.599207, 3.3009, 1.31188, -0.000606537 )
+transform = Transform( -0.326969, -0.591311, 0.737185, -0.100587, 0.797406, 0.595001, -0.939667, 0.120396, -0.320205, 3.3009, 1.31188, -0.000606537 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.2
@@ -516,7 +517,7 @@ directional_shadow_split_3 = 0.5
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.7
 directional_shadow_bias_split_scale = 0.25
-directional_shadow_depth_range = 1
+directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
@@ -685,7 +686,8 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROPlayerCharacter" parent="." index="5" instance=ExtResource( 4 )]
-transform = Transform( -0.612301, -2.40795e-009, 0.790625, 9.94145e-009, 1, 1.07448e-008, -0.790625, 1.4439e-008, -0.612301, 51.6184, 2.93186, 0.0408669 )
+editor/display_folded = true
+transform = Transform( -0.611497, -0.000725255, 0.791246, -0.00304271, 0.999994, -0.00143488, -0.791241, -0.00328496, -0.611496, 51.6184, 2.93186, 0.0408669 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EROCharacter" parent="EROPlayerCharacter" index="0"]
@@ -719,6 +721,7 @@ v_offset = 0.0
 transform = Transform( 0.723402, 0, -0.690428, 0, 1, 0, 0.690428, 0, 0.723402, -1.90735e-006, 0, 0 )
 
 [node name="Door" type="Spatial" parent="." index="6"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.10664, 1.25671, 1.69004 )
 _sections_unfolded = [ "Transform" ]
 
@@ -840,6 +843,7 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Lod", "Transform" ]
 
 [node name="Scene Root2" parent="." index="12" instance=ExtResource( 8 )]
+editor/display_folded = true
 transform = Transform( -0.160534, 0, 0.98703, 0, 1, 0, -0.98703, 0, -0.160534, 53.0476, 2.91827, -2.84444 )
 script = SubResource( 16 )
 
@@ -854,7 +858,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material" ]
 
 [node name="shirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="4"]
-transform = Transform( 1, 0, 1.77636e-015, 0, 1, -4.66294e-015, 0, -2.62013e-014, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 1.77636e-015, 0, 1, -1.22125e-014, 0, -3.33067e-014, 1, 0, 0, 0 )
 _sections_unfolded = [ "Material", "Transform", "mesh" ]
 
 [node name="skirt" parent="Scene Root2/Schoolgirl_mod/clothes_mod" index="6"]
@@ -870,6 +874,7 @@ _sections_unfolded = [ "Material" ]
 transform = Transform( 1, 0, 0, 0, 1, -1.42109e-014, 0, 1.42109e-014, 1, 0, 0, 0 )
 
 [node name="Scene Root3" parent="." index="13" instance=ExtResource( 8 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39314, -1.0432, 0 )
 script = SubResource( 16 )
 
@@ -1071,7 +1076,7 @@ _sections_unfolded = [ "Transform" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.497, 3.79119, 5.40026 )
 script = ExtResource( 11 )
 type = 1
-marker_name = "A pinche furry"
+marker_name = "A pinche furry2"
 display_rotation = false
 important = true
 
@@ -1100,6 +1105,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17671, 0, 1.50032 )
 script = ExtResource( 12 )
 disconnected = null
 
+[node name="Scene Root4" parent="." index="18" instance=ExtResource( 13 )]
+transform = Transform( 0.0645424, 0, 0.997915, 0, 1, 0, -0.997915, 0, 0.0645424, 53.1341, 2.92891, -3.58745 )
+
+[node name="skirt" parent="Scene Root4/Goth_loli" index="8"]
+visible = false
+
+[node name="top" parent="Scene Root4/Goth_loli" index="10"]
+visible = false
+
 [connection signal="on_use" from="Door/MeshInstance/ButtonOpen" to="Door/AnimationPlayer" method="play" binds= [ "open_door" ]]
 [connection signal="on_use" from="Door/MeshInstance/ButtonClose" to="Door/AnimationPlayer" method="play" binds= [ "close_door" ]]
 [connection signal="on_use" from="DialogTestButton" to="ERODialogTree" method="execute_dialog"]
@@ -1111,3 +1125,5 @@ disconnected = null
 [editable path="Scene Root2"]
 
 [editable path="Scene Root3"]
+
+[editable path="Scene Root4"]

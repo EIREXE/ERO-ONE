@@ -17,11 +17,6 @@ func _input(event):
 			else:
 				EROOverlayedMenus.pause_game()
 				EROOverlayedMenus.hide_game_ui()
-				#map_renderer.size = $CanvasLayer/Map/Hbox/Map.rect_size
 				tab_menu.show()
-				
 				map.on_show()
-				#map_renderer.set_origin(player.global_transform.origin)
-				#map_scale_target = DEFAULT_MAP_SCALE
-				#map_renderer.renderer.scale = DEFAULT_MAP_SCALE
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

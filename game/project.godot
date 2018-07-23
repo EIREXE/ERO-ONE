@@ -40,6 +40,7 @@ _global_script_classes=[ {
 config/name="ERO-ONE"
 run/main_scene="res://System/Scenes/Menus/StartupScreen.tscn"
 boot_splash/image="res://System/Textures/ui/boot_splash.png"
+boot_splash/bg_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 config/icon="res://System/Textures/ui/icon.png"
 
 [autoload]
