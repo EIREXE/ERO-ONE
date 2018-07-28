@@ -1,13 +1,20 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://System/Scripts/Scenes/editor.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/Editor/editor.gd" type="Script" id=1]
 [ext_resource path="res://System/Models/Editor/EditorCenterPiece.dae" type="PackedScene" id=2]
 [ext_resource path="res://System/Scenes/Menus/EROGameUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://System/Scripts/Scenes/Editor/CharacterList.gd" type="Script" id=4]
+[ext_resource path="res://System/Scenes/Editor/CharacterList.gd" type="Script" id=4]
 [ext_resource path="res://System/Textures/cards/frame_0.png" type="Texture" id=5]
 [ext_resource path="res://System/Scenes/Editor/EditorCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Content/BaseContent/Bodies/Female/Female.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Content/TestContent/Bodies/BodyTest/ELFHAIR.dae" type="PackedScene" id=8]
+
+
+
+
+
+
+
 
 [sub_resource type="GIProbeData" id=1]
 

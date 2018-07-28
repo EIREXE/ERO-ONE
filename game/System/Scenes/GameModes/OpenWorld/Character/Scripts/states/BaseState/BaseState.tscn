@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://System/Scenes/GameModes/OpenWorld/Character/Scripts/states/BaseState/BaseState.gd" type="Script" id=1]
+
+
+[node name="BaseState" type="Node"]
+
+script = ExtResource( 1 )
+
+

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://System/Scenes/Cameras/EditorCamera.gd" type="Script" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RotationPivot" type="Spatial" parent="." index="0"]
+script = ExtResource( 1 )
+camera_min = 3.0
+camera_max = 20.0
+y_offset_max = 6
+y_offset_min = 0
+x_offset_max = 3
+x_offset_min = -3
+starting_y_offset = 1.5
+starting_y_rotation = 35
+starting_x_rotation = -20
+zoom_level = 0.5
+
+[node name="RotationPivotInner" type="Spatial" parent="RotationPivot" index="0"]
+
+[node name="Camera" type="Camera" parent="RotationPivot/RotationPivotInner" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.75526 )
+keep_aspect = 0
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+
+[node name="Spatial" type="Spatial" parent="." index="1"]
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="Spatial" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.41451 )
+keep_aspect = 0
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 90.0
+size = 1.0
+near = 0.05
+far = 100.0
+target = NodePath("../../RotationPivot/RotationPivotInner/Camera")
+speed = 7.0
+enabled = false
+

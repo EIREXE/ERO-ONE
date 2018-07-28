@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://System/Scripts/Scenes/Editor/EditorColorPicker.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/Editor/EditorColorPicker.gd" type="Script" id=1]
+
+
 
 [node name="EditorColorPicker" type="HSplitContainer" index="0"]
 

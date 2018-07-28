@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://System/Scripts/Scenes/Menus/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo.png" type="Texture" id=2]
 [ext_resource path="res://System/Textures/ui/Background.png" type="Texture" id=3]
 [ext_resource path="res://System/Scenes/Menus/Debug/ServiceMenu.tscn" type="PackedScene" id=4]
@@ -291,9 +291,12 @@ size_flags_vertical = 1
 alignment = 1
 
 [node name="ServiceMenu" parent="." index="6" instance=ExtResource( 4 )]
+layer = 2
 
 [connection signal="pressed" from="VBoxContainer/CharacterEditorButton" to="." method="load_character_editor"]
 [connection signal="pressed" from="VBoxContainer/ContentSettingsButton" to="." method="_on_ContentSettingsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ServiceMenuButton" to="." method="_on_ServiceMenuButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="quit_game"]
+
+[editable path="ServiceMenu"]

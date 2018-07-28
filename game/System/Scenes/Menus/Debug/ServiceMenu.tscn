@@ -12,7 +12,7 @@ var menu_options = [
 	},
 	{
 		\"text\": \"H-Mode Test\",
-		\"scene\": \"res://System/Scenes/HMode/HMode.tscn\"
+		\"scene\": \"res://System/Scenes/GameModes/HMode/HMode.tscn\"
 	},
 	{
 		\"text\": \"Character card editor tool\",
@@ -43,7 +43,7 @@ func hide():
 func show():
 	panel.show()"
 
-[node name="CanvasLayer" type="CanvasLayer" index="0"]
+[node name="CanvasLayer" type="CanvasLayer"]
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://System/Scripts/Scenes/Menus/LoadingScreen.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/Menus/LoadingScreen.gd" type="Script" id=1]
 [ext_resource path="res://System/Textures/ui/logo.png" type="Texture" id=2]
 
-[node name="CanvasLayer" type="CanvasLayer" index="0"]
+[node name="CanvasLayer" type="CanvasLayer"]
 layer = 99
 offset = Vector2( 0, 0 )
 rotation = 0.0

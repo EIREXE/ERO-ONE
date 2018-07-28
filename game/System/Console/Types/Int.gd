@@ -7,7 +7,7 @@ func _init():
 	t = TYPE_INT
 
 
-func get():  # int
+func get(value):  # int
 	if rematch and rematch is RegExMatch:
 		return int(rematch.get_string())
 

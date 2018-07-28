@@ -2,6 +2,7 @@
 
 [ext_resource path="res://System/Scenes/TestMap/FSM/transitions/test/test.gd" type="Script" id=1]
 
+
 [node name="test" type="Node"]
 
 script = ExtResource( 1 )

@@ -26,5 +26,5 @@ func check(_value):  # int
 	return IArgument.ARGASSIG.CANCELED
 
 
-func get():  # Variant
+func get(value):  # Variant
 	return value

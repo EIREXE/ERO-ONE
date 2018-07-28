@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://System/Scenes/GameModes/OpenWorld/Character/Scripts/transitions/on_direction_release/on_direction_release.gd" type="Script" id=1]
+
+
+[node name="on_direction_release" type="Node"]
+
+script = ExtResource( 1 )
+path2SourceStates = [ NodePath("") ]
+path2Target_state = null
+intervalBetweenChecks = -1.0
+
+

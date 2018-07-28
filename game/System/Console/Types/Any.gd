@@ -17,5 +17,5 @@ func check(value):  # int
 	return OK
 
 
-func get():  # Variant
+func get(value):  # Variant
 	return _value

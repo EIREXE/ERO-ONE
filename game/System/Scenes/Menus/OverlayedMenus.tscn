@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://System/Scripts/Scenes/Menus/OverlayedMenus.gd" type="Script" id=1]
+[ext_resource path="res://System/Scenes/Menus/OverlayedMenus.gd" type="Script" id=1]
 [ext_resource path="res://System/Materials/Shaders/Screen/GaussianBlur.shader" type="Shader" id=2]
 [ext_resource path="res://System/Fonts/DoHyeon-Regular-80.tres" type="DynamicFont" id=3]
 [ext_resource path="res://System/Scenes/Menus/EROOptionsMenu.tscn" type="PackedScene" id=4]

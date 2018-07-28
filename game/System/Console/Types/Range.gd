@@ -17,7 +17,7 @@ func _init(_min, _max):
 	rmax = _max
 
 
-func get():  # string
+func get(value):  # string
 	if rematch and rematch is RegExMatch:
 		return clamp(int(rematch.get_string()), rmin, rmax)
 

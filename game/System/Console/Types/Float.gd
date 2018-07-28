@@ -7,7 +7,7 @@ func _init():
 	t = TYPE_REAL
 
 
-func get():  # float
+func get(value):  # float
 	if rematch and rematch is RegExMatch:
 		return float(rematch.get_string().replace(',', '.'))
 

@@ -15,7 +15,7 @@ func check(_value):  # int
 
 
 # @param  Varian  _value
-func get():  # Variant
+func get(value):  # Variant
 	pass
 
 
